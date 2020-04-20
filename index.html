@@ -341,29 +341,10 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>&ensp;&ensp;&ensp;&ensp;本科这几年和现在的研究生阶段，我已经用习惯了TeX，虽然写博客是用Markdown语法，但这个语法并不复杂，也还可以接受，但这个语法渲染TeX数学公式时总是不尽人意，连矩阵都不能完整打出的话，我建这个博客就完全没有意义，所以看了网上很多人的帖子，方法真是五花八门，说干啥的都有，经过不断地采坑，总算是找到了一个可行的方法。</p>
-<p>&ensp;&ensp;&ensp;&ensp;hexo默认的渲染器是marked，但并不支持mathjax。kramed是在marked基础上修改的，支持了mathjax。你的hexo工程目录下的node_modules中可以找到对应的渲染器文件夹，但一般只能找到marked，找不到kramed，所以需要先在工程目录下用以下命令安装kramed：</p>
-<p><center><br>npm uninstall hexo-renderer-marked —save</p>
-<p>npm install hexo-renderer-kramed —save</p>
-<center>
-
-<p>之后再在每个博客的md文件头里加上mathjax: true就可以排版比较复杂的数学公式了，效果如下：</p>
-<script type="math/tex; mode=display">A^*=\left(\begin{array}{cccc}
-A_{11} & A_{21} & \cdots & A_{n 1} \\
-A_{12} & A_{22} & \cdots & A_{n 2} \\
-\vdots & \vdots & & \vdots \\
-A_{1 n} & A_{2 n} & \cdots & A_{n n}
-\end{array}\right)</script><script type="math/tex; mode=display">\left[\begin{array}{llll}
-a_{11} & a_{12} & \cdots & a_{1 n} \\
-a_{21} & a_{22} & \cdots & a_{2 n} \\
-\cdots & \cdots & \cdots & \cdots \\
-a_{n 1} & a_{n 2} & \cdots & a_{n n}
-\end{array}\right]\left[\begin{array}{cccc}
-A_{11} & A_{21} & \cdots & A_{n 1} \\
-A_{12} & A_{22} & \cdots & A_{n 2} \\
-\vdots & \vdots & & \vdots \\
-A_{1 n} & A_{2 n} & \cdots & A_{n n}
-\end{array}\right]</script>
+    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
+    
+    <a class="article-more-a" href="/2020/04/20/hexo%E5%8D%9A%E5%AE%A2%E5%A6%82%E4%BD%95%E6%8E%92%E7%89%88%E5%A4%8D%E6%9D%82%E5%85%AC%E5%BC%8F/#more">更多内容 >></a>
+    
     
 
     
@@ -782,11 +763,11 @@ A_{1 n} & A_{2 n} & \cdots & A_{n n}
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
             
             <div class="clearfix"></div>
