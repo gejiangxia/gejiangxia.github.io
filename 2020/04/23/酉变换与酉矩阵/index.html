@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>博文涉及内容的分类 | Hexo</title>
+  <title>酉变换与酉矩阵 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="人非生而知之者，孰能无惑">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博文涉及内容的分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="酉变换与酉矩阵">
+<meta property="og:url" content="http://yoursite.com/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="人非生而知之者，孰能无惑">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-17T03:10:21.000Z">
-<meta property="article:modified_time" content="2020-04-17T03:38:27.858Z">
+<meta property="article:published_time" content="2020-04-23T05:41:25.000Z">
+<meta property="article:modified_time" content="2020-04-23T12:08:36.044Z">
 <meta property="article:author" content="sklois-gjx">
+<meta property="article:tag" content="酉变换">
+<meta property="article:tag" content="酉矩阵">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -214,21 +214,326 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article class="article article-type-post show">
-    <header class="article-header" style="border-bottom: 1px solid #ccc">
+            <article id="post-酉变换与酉矩阵" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
     <h1 class="article-title" itemprop="name">
-      博文涉及内容的分类
+      酉变换与酉矩阵
     </h1>
-    </header>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" class="archive-article-date">
+        <time datetime="2020-04-23T05:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+</a>
+
+  
   
     
-    <div class="category-all-page">
-      <h2>所有博客一共有&nbsp;3&nbsp;个分类</h2>
-      <ul class="category-list-item-list"><li class="category-list-item-list-item"><a class="category-list-item-list-link" href="/categories/%E4%B8%8E%E5%AD%A6%E4%B9%A0%E6%97%A0%E5%85%B3%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">与学习无关的小技巧</a><span class="category-list-item-list-count">1</span></li><li class="category-list-item-list-item"><a class="category-list-item-list-link" href="/categories/%E5%A5%87%E6%80%AA%E7%9A%84%E4%BB%A3%E6%95%B0%E9%97%AE%E9%A2%98/">奇怪的代数问题</a><span class="category-list-item-list-count">1</span></li><li class="category-list-item-list-item"><a class="category-list-item-list-link" href="/categories/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%9A%84%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/">量子信息的代数基础</a><span class="category-list-item-list-count">6</span></li></ul>
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">742字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
+<p>&ensp;&ensp;&ensp;&ensp;酉变换和酉矩阵在量子信息中是非常重要的，本篇博文给出他们的基本定义和常用性质。</p>
+<h2 id="酉变换"><a href="#酉变换" class="headerlink" title="酉变换"></a>酉变换</h2><p>&ensp;&ensp;&ensp;&ensp;酉空间$V$到自身的满射变换$\mathcal{A}$如果保持内积不变，即</p>
+<script type="math/tex; mode=display">(\mathcal{A}\alpha,\mathcal{A}\beta)=(\alpha,\beta)\quad \forall \alpha,\beta \in V</script><p>则称$\mathcal{A}$是$V$上的一个酉变换。</p>
+<p>&ensp;&ensp;&ensp;&ensp;应该注意的是，这里的酉空间维数并没有限制，且没有对$\mathcal{A}$的线性做出要求，只要求是满射且保持内积不变即可，实际上有如下定理：</p>
+<h3 id="酉变换一定是线性变换，且为双射"><a href="#酉变换一定是线性变换，且为双射" class="headerlink" title="酉变换一定是线性变换，且为双射"></a>酉变换一定是线性变换，且为双射</h3><p>证明：思想并不复杂，直接利用内积不变性即可，首先$\forall \alpha,\beta ,\gamma \in V$有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(\mathcal{A}(\alpha+\gamma),\mathcal{A}\beta)&=(\alpha+\gamma,\beta) \\
+&=(\alpha+\beta)+(\gamma,\beta) \\
+&=(\mathcal{A}\alpha+\mathcal{A}\beta)+(\mathcal{A}\gamma,\mathcal{A}\beta) \\
+&=(\mathcal{A}\alpha+\mathcal{A}\gamma,\mathcal{A}\beta)\\
+(\mathcal{A}(\alpha+\gamma)-\mathcal{A}\alpha-\mathcal{A}\gamma,\mathcal{A}\beta)&=0
+\end{aligned}</script><p>这里的$\beta $是任意取的，$\mathcal{A}$又是满射，则$\mathcal{A}\beta$可以取任何$V$中的元素，则必有$\mathcal{A}(\alpha+\gamma)=\mathcal{A}\alpha+\mathcal{A}\gamma$。同理，$\forall k \in \mathbb{C}$，有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(\mathcal{A}(k\alpha),\mathcal{A}\beta)&=(k\alpha,\beta) \\
+&=k(\alpha ,\beta) \\
+&=k(\mathcal{A}\alpha ,\mathcal{A}\beta)\\
+&=(k\mathcal{A}\alpha ,\mathcal{A}\beta)\\
+(\mathcal{A}(k\alpha)-k\mathcal{A}\alpha,\mathcal{A}\beta)&=0 
+\end{aligned}</script><p>同理有$\mathcal{A}(k\alpha)=k\mathcal{A}\alpha$，所以酉变换一定是线性变换，则显然也是单射，所以酉变换一定是线性变换，且为双射。</p>
+<p>另外还有比较平凡的性质：</p>
+<p>1，酉变换的复合还是酉变换，酉变换的逆还是酉变换</p>
+<p>2，酉变换将标准正交基映成标准正交基</p>
+<p>3，酉变换在标准正交基下对应的矩阵是酉矩阵(利用内积不变可以直接证明)</p>
+<p>&ensp;&ensp;&ensp;&ensp;酉变换将标准正交基映成标准正交基，这个性质并不依赖于酉变换的线性性质，只依赖于酉变换的内积不变性，所以对于一个有限维酉空间，只要一个变换满足内积不变性，那就将标准正交基映成标准正交基，又根据维数有限，则此变换肯定就是满射，所以是酉变换。故有限维酉空间只需要变换满足内积不变性，就是酉变换，无限维酉空间还需要满足变换是一个满射，这是维数无限与有限的一个区别。</p>
+<h2 id="酉矩阵"><a href="#酉矩阵" class="headerlink" title="酉矩阵"></a>酉矩阵</h2><p>&ensp;&ensp;&ensp;&ensp;酉矩阵的定义非常简单，复数域上的$n$级矩阵$P$如果满足$P^{\dagger}P=I$，则称$P$是酉矩阵，其中$P^\dagger$是矩阵$P$的共轭转置。酉矩阵的基础性质非常丰富，包括特征值，矩阵分解等等，下面一一给出酉矩阵比较重要的几个性质。</p>
+<p>未完待续</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝冰露<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
     </div>
     
-  </article>
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          sklois-gjx
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://yoursite.com/2020/04/23/酉变换与酉矩阵/" title="酉变换与酉矩阵" target="_blank">http://yoursite.com/2020/04/23/酉变换与酉矩阵/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉变换</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉矩阵</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
   
+  
+    <a href="/2020/04/22/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%AD%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E7%AC%A6%E5%8F%B7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">量子信息中的狄拉克符号</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#酉变换"><span class="toc-number">1.1.</span> <span class="toc-text">酉变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#酉变换一定是线性变换，且为双射"><span class="toc-number">1.1.1.</span> <span class="toc-text">酉变换一定是线性变换，且为双射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#酉矩阵"><span class="toc-number">1.2.</span> <span class="toc-text">酉矩阵</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+<div id="SOHUCS" sid="酉变换与酉矩阵" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "1",
+        conf: "1"
+    });
+</script>
+</script>
+
+
+
+
+
+
+  <div id="giteement-ctn"></div>
+  
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
+  
+  <script>
+  <!-- id: "酉变换与酉矩阵" -->
+  var giteement = new Giteement({
+    id: '20200423134125',
+    owner: 'gejiangxia',
+    repo: 'cunchupinglun',
+    backcall_uri: 'https://gejiangxia.github.io/',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: '27e177887f019cc620d25a9f6ff199009646d34dc2121893f5c3d8ef1b4d4dfb',
+      client_secret: 'e100abbdaee462a8b89440573514ead96f090348620cdfcc53b0fd6acdeea20f'
+    },
+  })
+  giteement.render('giteement-ctn')
+  </script>
+
+
+
+
+
+
+
 
           </div>
         </div>
@@ -268,7 +573,7 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
