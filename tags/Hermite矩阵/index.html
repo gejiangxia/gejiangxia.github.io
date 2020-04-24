@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>酉变换与酉矩阵 | Hexo</title>
+  <title>Tag: Hermite矩阵 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="article">
-<meta property="og:title" content="酉变换与酉矩阵">
-<meta property="og:url" content="http://yoursite.com/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/index.html">
+  <meta name="description" content="人非生而知之者，孰能无惑">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/Hermite%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="人非生而知之者，孰能无惑">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-23T05:41:25.000Z">
-<meta property="article:modified_time" content="2020-04-24T15:41:11.544Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="酉变换">
-<meta property="article:tag" content="酉矩阵">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -214,215 +212,57 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-酉变换与酉矩阵" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2020/04/24/Hermite%E5%8F%98%E6%8D%A2%E4%B8%8EHermite%E7%9F%A9%E9%98%B5/" class="archive-article-date">
+        <time datetime="2020-04-24T15:33:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+</a>
+
+        </div>
+    	 
   
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2020/04/24/Hermite%E5%8F%98%E6%8D%A2%E4%B8%8EHermite%E7%9F%A9%E9%98%B5/" target="_blank">Hermite变换与Hermite矩阵</a>
   
-    <h1 class="article-title" itemprop="name">
-      酉变换与酉矩阵
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" class="archive-article-date">
-        <time datetime="2020-04-23T05:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.3k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">5分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;酉变换和酉矩阵在量子信息中是非常重要的，本篇博文给出他们的基本定义和常用性质。实际上如果限定数域为实数域的话，酉空间就变成了欧几里得空间，酉变换就是正交变换，酉矩阵就是正交矩阵，但一旦回到复数域，酉变换和酉矩阵的性质就更加丰富和本质。</p>
-<h2 id="酉变换"><a href="#酉变换" class="headerlink" title="酉变换"></a>酉变换</h2><p>&ensp;&ensp;&ensp;&ensp;酉空间$V$到自身的满射变换$\mathcal{A}$如果保持内积不变，即</p>
-<script type="math/tex; mode=display">(\mathcal{A}\alpha,\mathcal{A}\beta)=(\alpha,\beta)\quad \forall \alpha,\beta \in V</script><p>则称$\mathcal{A}$是$V$上的一个酉变换。</p>
-<p>&ensp;&ensp;&ensp;&ensp;应该注意的是，这里的酉空间维数并没有限制，且没有对$\mathcal{A}$的线性做出要求，只要求是满射且保持内积不变即可，实际上有如下定理：</p>
-<h3 id="酉变换一定是线性变换，且为双射"><a href="#酉变换一定是线性变换，且为双射" class="headerlink" title="酉变换一定是线性变换，且为双射"></a>酉变换一定是线性变换，且为双射</h3><p>证明：思想并不复杂，直接利用内积不变性即可，首先$\forall \alpha,\beta ,\gamma \in V$有：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-(\mathcal{A}(\alpha+\gamma),\mathcal{A}\beta)&=(\alpha+\gamma,\beta) \\
-&=(\alpha+\beta)+(\gamma,\beta) \\
-&=(\mathcal{A}\alpha+\mathcal{A}\beta)+(\mathcal{A}\gamma,\mathcal{A}\beta) \\
-&=(\mathcal{A}\alpha+\mathcal{A}\gamma,\mathcal{A}\beta)\\
-(\mathcal{A}(\alpha+\gamma)-\mathcal{A}\alpha-\mathcal{A}\gamma,\mathcal{A}\beta)&=0
-\end{aligned}</script><p>这里的$\beta $是任意取的，$\mathcal{A}$又是满射，则$\mathcal{A}\beta$可以取任何$V$中的元素，则必有$\mathcal{A}(\alpha+\gamma)=\mathcal{A}\alpha+\mathcal{A}\gamma$。同理，$\forall k \in \mathbb{C}$，有：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-(\mathcal{A}(k\alpha),\mathcal{A}\beta)&=(k\alpha,\beta) \\
-&=k(\alpha ,\beta) \\
-&=k(\mathcal{A}\alpha ,\mathcal{A}\beta)\\
-&=(k\mathcal{A}\alpha ,\mathcal{A}\beta)\\
-(\mathcal{A}(k\alpha)-k\mathcal{A}\alpha,\mathcal{A}\beta)&=0 
-\end{aligned}</script><p>同理有$\mathcal{A}(k\alpha)=k\mathcal{A}\alpha$，所以酉变换一定是线性变换，则显然也是单射，所以酉变换一定是线性变换，且为双射。</p>
-<p>另外还有比较平凡的性质：</p>
-<p>1，酉变换的复合还是酉变换，酉变换的逆还是酉变换</p>
-<p>2，酉变换将标准正交基映成标准正交基</p>
-<p>3，酉变换在标准正交基下对应的矩阵是酉矩阵(利用内积不变可以直接证明)</p>
-<p>&ensp;&ensp;&ensp;&ensp;酉变换将标准正交基映成标准正交基，这个性质并不依赖于酉变换的线性性质，只依赖于酉变换的内积不变性，所以对于一个有限维酉空间，只要一个变换满足内积不变性，那就将标准正交基映成标准正交基，又根据维数有限，则此变换肯定就是满射，所以是酉变换。故有限维酉空间只需要变换满足内积不变性，就是酉变换，无限维酉空间还需要满足变换是一个满射，这是维数无限与有限的一个区别。</p>
-<h2 id="酉矩阵"><a href="#酉矩阵" class="headerlink" title="酉矩阵"></a>酉矩阵</h2><p>&ensp;&ensp;&ensp;&ensp;酉矩阵的定义非常简单，复数域上的$n$级矩阵$P$如果满足$P^{\dagger}P=I$，则称$P$是酉矩阵，其中$P^\dagger$是矩阵$P$的共轭转置。酉矩阵的基础性质非常丰富，包括特征值，矩阵分解等等，下面一一给出酉矩阵比较重要的几个性质。</p>
-<h3 id="1，-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。"><a href="#1，-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。" class="headerlink" title="1，$n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。"></a>1，$n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例22</p>
-<h3 id="2，两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。"><a href="#2，两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。" class="headerlink" title="2，两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger=B^\dagger A^\dagger$，$(A^{-1})^\dagger=(A^\dagger)^{-1}$。"></a>2，两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger=B^\dagger A^\dagger$，$(A^{-1})^\dagger=(A^\dagger)^{-1}$。</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例23</p>
-<h3 id="3，酉矩阵的行列式值是一个复数，其模长为1"><a href="#3，酉矩阵的行列式值是一个复数，其模长为1" class="headerlink" title="3，酉矩阵的行列式值是一个复数，其模长为1"></a>3，酉矩阵的行列式值是一个复数，其模长为1</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例24</p>
-<h3 id="4，-n-级酉矩阵一定可以酉相似于一个对角矩阵"><a href="#4，-n-级酉矩阵一定可以酉相似于一个对角矩阵" class="headerlink" title="4，$n$级酉矩阵一定可以酉相似于一个对角矩阵"></a>4，$n$级酉矩阵一定可以酉相似于一个对角矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;证明思想很简单，因为酉矩阵一定是正规矩阵，而正规矩阵与酉相似对角化等价，则酉矩阵一定可以酉相似对角化。正规变换和正规矩阵会在后面的博文里涉及到。</p>
-<h3 id="5，酉矩阵的特征值是一个复数，其模长为1"><a href="#5，酉矩阵的特征值是一个复数，其模长为1" class="headerlink" title="5，酉矩阵的特征值是一个复数，其模长为1"></a>5，酉矩阵的特征值是一个复数，其模长为1</h3><p>&ensp;&ensp;&ensp;&ensp;证明：$n$级酉矩阵$A$一定可以酉相似于一个对角矩阵$D$，则此对角矩阵对角上的$n$个值就是特征值，设$D=diag \lbrace \lambda_1,\lambda_2, \cdots ,\lambda_n \rbrace$，则有$P^{-1}AP=D$，则有:</p>
-<script type="math/tex; mode=display">DD^{\dagger}=(P^{-1}AP)(P^{-1}AP)^{\dagger}=P^{-1}APP^{\dagger}A^{\dagger}(P^{-1})^{\dagger}=P^{-1} A A^{\dagger} P=I</script><p>因此$\lambda_j \bar{\lambda_j}=1$，从而$|\lambda_j|=1$，于是命题得证，酉矩阵的特征值是一个模长为1的复数，可以记做</p>
-<script type="math/tex; mode=display">\lambda_j=cos \theta_j+ isin \theta_j=e^{i \theta_j}, 0\leq \theta_j <2\pi, j=1,2, \cdots ,n</script><h3 id="6，酉矩阵属于不同特征值的特征向量一定正交"><a href="#6，酉矩阵属于不同特征值的特征向量一定正交" class="headerlink" title="6，酉矩阵属于不同特征值的特征向量一定正交"></a>6，酉矩阵属于不同特征值的特征向量一定正交</h3><p>&ensp;&ensp;&ensp;&ensp;这是比较特殊的一个点，因为普通矩阵属于不同特征值的特征向量一定线性无关，但不一定正交。这个的证明思想也非常简单，因为酉矩阵是正规矩阵，而正规矩阵属于不同特征值的特征向量一定正交，所以酉矩阵属于不同特征值的特征向量一定正交。正规变换和正规矩阵会在后面的博文里涉及到。</p>
-<h3 id="7，给出所有的2级酉矩阵"><a href="#7，给出所有的2级酉矩阵" class="headerlink" title="7，给出所有的2级酉矩阵"></a>7，给出所有的2级酉矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;这个问题在量子信息中是有实际应用的，因为单量子比特的所有量子电路门都可以抽象成为一个2级酉矩阵。这个的求解思路也非常简单，首先设2级酉矩阵为</p>
-<script type="math/tex; mode=display">A = \left[ \begin{array}{*{20}{c}}
-a_{11}&a_{12}\\
-a_{21}&a_{22}
-\end{array} \right]</script><p>由$A^{-1}=A^{\dagger}$，有</p>
-<script type="math/tex; mode=display">\frac{1}{|A|} \left[ \begin{array}{*{20}{c}}
-a_{22}&-a_{12}\\
--a_{21}&a_{22}
-\end{array} \right] = \left[ \begin{array}{*{20}{c}}
-\bar{a_{11}}&\bar{a_{21}}\\
-\bar{a_{12}}&\bar{a_{22}}
-\end{array} \right]</script><p>由此得出</p>
-<script type="math/tex; mode=display">\left\{ \begin{array}{l}
-a_{22}=|A| \bar{a_{11}}\\
-a_{12}=-|A| \bar{a_{21}}
-\end{array} \right.</script><p>需要注意的是，非常显然的，如果想要确定出$a<em>{22}$，$a</em>{12}$得值，必须先确定$|A|$，$a<em>{11}$，$a</em>{21}$的值才可以，只得到这三个中多的任意两个是不可能得到所有值得。</p>
-<p>由于酉矩阵的行列式值模长为一，所以$|A|=1$，由于酉矩阵的列向量组是一组标准正交基，则有</p>
-<script type="math/tex; mode=display">|a_{11}|^2+|a_{21}|^2=1</script><p>于是可以假设有$\theta(0 \leq \theta \leq \frac{\pi}{2})$，使得</p>
-<script type="math/tex; mode=display">|a_{11}|=cos \theta,|a_{21}=sin \theta|</script><p>因此可设有$0 \leq \theta_j &lt; 2 \pi, j=1,2,3$使得</p>
-<script type="math/tex; mode=display">\left\{ \begin{array}{l}
-a_{11}=cos \theta e^{i \theta_1}\\
-a_{21}=sin \theta e^{i \theta_2} \\
-|A|=e^{i \theta_3}
-\end{array} \right.</script><p>于是可以求得</p>
-<script type="math/tex; mode=display">\left\{ \begin{array}{l}
-a_{22}=cos \theta e^{i \theta_3} e^{-i \theta_1}\\
-a_{12}=-sin \theta e^{i \theta_3}  e^{-i \theta_2}
-\end{array} \right.</script><script type="math/tex; mode=display">A = \left[ \begin{array}{*{20}{c}}
-cos \theta e^{i \theta_1} & -sin \theta e^{i \theta_3}  e^{-i \theta_2}\\
-sin \theta e^{i \theta_2} & cos \theta e^{i \theta_3} e^{-i \theta_1}
-\end{array} \right]</script><p>直接验证可以知道，形如上矩阵的矩阵都是酉矩阵，于是上式的确给出了所有的2级酉矩阵，其中$\theta(0 \leq \theta \leq \frac{\pi}{2})$，$0 \leq \theta_j &lt; 2 \pi, j=1,2,3$。也可以把上式写成下述形式：</p>
-<script type="math/tex; mode=display">A = \left[ \begin{array}{*{20}{c}}
-e^{-i \theta_2} & 0\\
-0 & e^{-i \theta_1}
-\end{array} \right] \left[ \begin{array}{*{20}{c}}
-cos \theta & -sin \theta \\
-sin \theta  & cos \theta 
-\end{array} \right] \left[ \begin{array}{*{20}{c}}
-e^{i (\theta_1+\theta_2)} & 0\\
-0 &  e^{i \theta_3} 
-\end{array} \right]</script><p>这就是在量子信息中非常常用的表达方式。</p>
-<h3 id="还有一个性质"><a href="#还有一个性质" class="headerlink" title="还有一个性质"></a>还有一个性质</h3><p>&ensp;&ensp;&ensp;&ensp;之前老师讲过任意一个多量子比特门都可以被Toffli门，CNOT门，(还有一个门我忘记了。。)来模拟，证明过程中也用到了酉矩阵的一些性质(实际上就是任一个酉矩阵都可以分解成固定几种酉矩阵的乘积)，但由于当初课上的笔记还在学校，这个证明我后面遇到再补吧，印象中丘维声的高等代数学习指导书中有类似证明。</p>
-
-    
-
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝冰露<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/alipay.jpg">
-                    <span class="reward-type">支付宝</span>
-                  </div>
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/weixin.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          sklois-gjx
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/04/23/酉变换与酉矩阵/" title="酉变换与酉矩阵" target="_blank">http://yoursite.com/2020/04/23/酉变换与酉矩阵/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉变换</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hermite变换</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉矩阵</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hermite矩阵</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -435,161 +275,17 @@ e^{i (\theta_1+\theta_2)} & 0\\
 	</div>
 
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2020/04/24/Hermite%E5%8F%98%E6%8D%A2%E4%B8%8EHermite%E7%9F%A9%E9%98%B5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hermite变换与Hermite矩阵
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/22/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%AD%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E7%AC%A6%E5%8F%B7/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">量子信息中的狄拉克符号</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#酉变换"><span class="toc-number">1.1.</span> <span class="toc-text">酉变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#酉变换一定是线性变换，且为双射"><span class="toc-number">1.1.1.</span> <span class="toc-text">酉变换一定是线性变换，且为双射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#酉矩阵"><span class="toc-number">1.2.</span> <span class="toc-text">酉矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。"><span class="toc-number">1.2.1.</span> <span class="toc-text">1，$n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。"><span class="toc-number">1.2.2.</span> <span class="toc-text">2，两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger&#x3D;B^\dagger A^\dagger$，$(A^{-1})^\dagger&#x3D;(A^\dagger)^{-1}$。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，酉矩阵的行列式值是一个复数，其模长为1"><span class="toc-number">1.2.3.</span> <span class="toc-text">3，酉矩阵的行列式值是一个复数，其模长为1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，-n-级酉矩阵一定可以酉相似于一个对角矩阵"><span class="toc-number">1.2.4.</span> <span class="toc-text">4，$n$级酉矩阵一定可以酉相似于一个对角矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5，酉矩阵的特征值是一个复数，其模长为1"><span class="toc-number">1.2.5.</span> <span class="toc-text">5，酉矩阵的特征值是一个复数，其模长为1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6，酉矩阵属于不同特征值的特征向量一定正交"><span class="toc-number">1.2.6.</span> <span class="toc-text">6，酉矩阵属于不同特征值的特征向量一定正交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7，给出所有的2级酉矩阵"><span class="toc-number">1.2.7.</span> <span class="toc-text">7，给出所有的2级酉矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#还有一个性质"><span class="toc-number">1.2.8.</span> <span class="toc-text">还有一个性质</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-
-
-<div id="SOHUCS" sid="酉变换与酉矩阵" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "1",
-        conf: "1"
-    });
-</script>
-</script>
-
-
-
-
-
-
-  <div id="giteement-ctn"></div>
-  
-    <link rel="stylesheet" href="/lib/default.css">
-    <script src="/lib/giteement.browser.js"></script>
-  
-  <script>
-  <!-- id: "酉变换与酉矩阵" -->
-  var giteement = new Giteement({
-    id: '20200423134125',
-    owner: 'gejiangxia',
-    repo: 'cunchupinglun',
-    backcall_uri: 'https://gejiangxia.github.io/',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
-    oauth: {
-      client_id: '27e177887f019cc620d25a9f6ff199009646d34dc2121893f5c3d8ef1b4d4dfb',
-      client_secret: 'e100abbdaee462a8b89440573514ead96f090348620cdfcc53b0fd6acdeea20f'
-    },
-  })
-  giteement.render('giteement-ctn')
-  </script>
-
-
-
-
-
-
+    
 
 
           </div>
@@ -630,9 +326,9 @@ e^{i (\theta_1+\theta_2)} & 0\\
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
