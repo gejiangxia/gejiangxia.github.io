@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-23T05:41:25.000Z">
-<meta property="article:modified_time" content="2020-04-24T15:41:11.544Z">
+<meta property="article:modified_time" content="2020-04-25T03:41:06.900Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="酉变换">
 <meta property="article:tag" content="酉矩阵">
@@ -269,10 +269,10 @@
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
 <p>&ensp;&ensp;&ensp;&ensp;酉变换和酉矩阵在量子信息中是非常重要的，本篇博文给出他们的基本定义和常用性质。实际上如果限定数域为实数域的话，酉空间就变成了欧几里得空间，酉变换就是正交变换，酉矩阵就是正交矩阵，但一旦回到复数域，酉变换和酉矩阵的性质就更加丰富和本质。</p>
-<h2 id="酉变换"><a href="#酉变换" class="headerlink" title="酉变换"></a>酉变换</h2><p>&ensp;&ensp;&ensp;&ensp;酉空间$V$到自身的满射变换$\mathcal{A}$如果保持内积不变，即</p>
+<h2 id="一-酉变换"><a href="#一-酉变换" class="headerlink" title="一 酉变换"></a>一 酉变换</h2><p>&ensp;&ensp;&ensp;&ensp;酉空间$V$到自身的满射变换$\mathcal{A}$如果保持内积不变，即</p>
 <script type="math/tex; mode=display">(\mathcal{A}\alpha,\mathcal{A}\beta)=(\alpha,\beta)\quad \forall \alpha,\beta \in V</script><p>则称$\mathcal{A}$是$V$上的一个酉变换。</p>
 <p>&ensp;&ensp;&ensp;&ensp;应该注意的是，这里的酉空间维数并没有限制，且没有对$\mathcal{A}$的线性做出要求，只要求是满射且保持内积不变即可，实际上有如下定理：</p>
-<h3 id="酉变换一定是线性变换，且为双射"><a href="#酉变换一定是线性变换，且为双射" class="headerlink" title="酉变换一定是线性变换，且为双射"></a>酉变换一定是线性变换，且为双射</h3><p>证明：思想并不复杂，直接利用内积不变性即可，首先$\forall \alpha,\beta ,\gamma \in V$有：</p>
+<h3 id="1-1-酉变换一定是线性变换，且为双射"><a href="#1-1-酉变换一定是线性变换，且为双射" class="headerlink" title="1.1 酉变换一定是线性变换，且为双射"></a>1.1 酉变换一定是线性变换，且为双射</h3><p>证明：思想并不复杂，直接利用内积不变性即可，首先$\forall \alpha,\beta ,\gamma \in V$有：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 (\mathcal{A}(\alpha+\gamma),\mathcal{A}\beta)&=(\alpha+\gamma,\beta) \\
@@ -294,15 +294,15 @@
 <p>2，酉变换将标准正交基映成标准正交基</p>
 <p>3，酉变换在标准正交基下对应的矩阵是酉矩阵(利用内积不变可以直接证明)</p>
 <p>&ensp;&ensp;&ensp;&ensp;酉变换将标准正交基映成标准正交基，这个性质并不依赖于酉变换的线性性质，只依赖于酉变换的内积不变性，所以对于一个有限维酉空间，只要一个变换满足内积不变性，那就将标准正交基映成标准正交基，又根据维数有限，则此变换肯定就是满射，所以是酉变换。故有限维酉空间只需要变换满足内积不变性，就是酉变换，无限维酉空间还需要满足变换是一个满射，这是维数无限与有限的一个区别。</p>
-<h2 id="酉矩阵"><a href="#酉矩阵" class="headerlink" title="酉矩阵"></a>酉矩阵</h2><p>&ensp;&ensp;&ensp;&ensp;酉矩阵的定义非常简单，复数域上的$n$级矩阵$P$如果满足$P^{\dagger}P=I$，则称$P$是酉矩阵，其中$P^\dagger$是矩阵$P$的共轭转置。酉矩阵的基础性质非常丰富，包括特征值，矩阵分解等等，下面一一给出酉矩阵比较重要的几个性质。</p>
-<h3 id="1，-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。"><a href="#1，-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。" class="headerlink" title="1，$n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。"></a>1，$n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例22</p>
-<h3 id="2，两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。"><a href="#2，两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。" class="headerlink" title="2，两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger=B^\dagger A^\dagger$，$(A^{-1})^\dagger=(A^\dagger)^{-1}$。"></a>2，两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger=B^\dagger A^\dagger$，$(A^{-1})^\dagger=(A^\dagger)^{-1}$。</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例23</p>
-<h3 id="3，酉矩阵的行列式值是一个复数，其模长为1"><a href="#3，酉矩阵的行列式值是一个复数，其模长为1" class="headerlink" title="3，酉矩阵的行列式值是一个复数，其模长为1"></a>3，酉矩阵的行列式值是一个复数，其模长为1</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例24</p>
-<h3 id="4，-n-级酉矩阵一定可以酉相似于一个对角矩阵"><a href="#4，-n-级酉矩阵一定可以酉相似于一个对角矩阵" class="headerlink" title="4，$n$级酉矩阵一定可以酉相似于一个对角矩阵"></a>4，$n$级酉矩阵一定可以酉相似于一个对角矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;证明思想很简单，因为酉矩阵一定是正规矩阵，而正规矩阵与酉相似对角化等价，则酉矩阵一定可以酉相似对角化。正规变换和正规矩阵会在后面的博文里涉及到。</p>
-<h3 id="5，酉矩阵的特征值是一个复数，其模长为1"><a href="#5，酉矩阵的特征值是一个复数，其模长为1" class="headerlink" title="5，酉矩阵的特征值是一个复数，其模长为1"></a>5，酉矩阵的特征值是一个复数，其模长为1</h3><p>&ensp;&ensp;&ensp;&ensp;证明：$n$级酉矩阵$A$一定可以酉相似于一个对角矩阵$D$，则此对角矩阵对角上的$n$个值就是特征值，设$D=diag \lbrace \lambda_1,\lambda_2, \cdots ,\lambda_n \rbrace$，则有$P^{-1}AP=D$，则有:</p>
+<h2 id="二-酉矩阵"><a href="#二-酉矩阵" class="headerlink" title="二 酉矩阵"></a>二 酉矩阵</h2><p>&ensp;&ensp;&ensp;&ensp;酉矩阵的定义非常简单，复数域上的$n$级矩阵$P$如果满足$P^{\dagger}P=I$，则称$P$是酉矩阵，其中$P^\dagger$是矩阵$P$的共轭转置。酉矩阵的基础性质非常丰富，包括特征值，矩阵分解等等，下面一一给出酉矩阵比较重要的几个性质。</p>
+<h3 id="2-1-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。"><a href="#2-1-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。" class="headerlink" title="2.1 $n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。"></a>2.1 $n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例22</p>
+<h3 id="2-2-两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。"><a href="#2-2-两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。" class="headerlink" title="2.2 两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger=B^\dagger A^\dagger$，$(A^{-1})^\dagger=(A^\dagger)^{-1}$。"></a>2.2 两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger=B^\dagger A^\dagger$，$(A^{-1})^\dagger=(A^\dagger)^{-1}$。</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例23</p>
+<h3 id="2-3-酉矩阵的行列式值是一个复数，其模长为1"><a href="#2-3-酉矩阵的行列式值是一个复数，其模长为1" class="headerlink" title="2.3 酉矩阵的行列式值是一个复数，其模长为1"></a>2.3 酉矩阵的行列式值是一个复数，其模长为1</h3><p>&ensp;&ensp;&ensp;&ensp;证明是很平凡的证明，见丘维声高等代数学习指导书上册247页例24</p>
+<h3 id="2-4-n-级酉矩阵一定可以酉相似于一个对角矩阵"><a href="#2-4-n-级酉矩阵一定可以酉相似于一个对角矩阵" class="headerlink" title="2.4 $n$级酉矩阵一定可以酉相似于一个对角矩阵"></a>2.4 $n$级酉矩阵一定可以酉相似于一个对角矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;证明思想很简单，因为酉矩阵一定是正规矩阵，而正规矩阵与酉相似对角化等价，则酉矩阵一定可以酉相似对角化。正规变换和正规矩阵会在后面的博文里涉及到。</p>
+<h3 id="2-5-酉矩阵的特征值是一个复数，其模长为1"><a href="#2-5-酉矩阵的特征值是一个复数，其模长为1" class="headerlink" title="2.5 酉矩阵的特征值是一个复数，其模长为1"></a>2.5 酉矩阵的特征值是一个复数，其模长为1</h3><p>&ensp;&ensp;&ensp;&ensp;证明：$n$级酉矩阵$A$一定可以酉相似于一个对角矩阵$D$，则此对角矩阵对角上的$n$个值就是特征值，设$D=diag \lbrace \lambda_1,\lambda_2, \cdots ,\lambda_n \rbrace$，则有$P^{-1}AP=D$，则有:</p>
 <script type="math/tex; mode=display">DD^{\dagger}=(P^{-1}AP)(P^{-1}AP)^{\dagger}=P^{-1}APP^{\dagger}A^{\dagger}(P^{-1})^{\dagger}=P^{-1} A A^{\dagger} P=I</script><p>因此$\lambda_j \bar{\lambda_j}=1$，从而$|\lambda_j|=1$，于是命题得证，酉矩阵的特征值是一个模长为1的复数，可以记做</p>
-<script type="math/tex; mode=display">\lambda_j=cos \theta_j+ isin \theta_j=e^{i \theta_j}, 0\leq \theta_j <2\pi, j=1,2, \cdots ,n</script><h3 id="6，酉矩阵属于不同特征值的特征向量一定正交"><a href="#6，酉矩阵属于不同特征值的特征向量一定正交" class="headerlink" title="6，酉矩阵属于不同特征值的特征向量一定正交"></a>6，酉矩阵属于不同特征值的特征向量一定正交</h3><p>&ensp;&ensp;&ensp;&ensp;这是比较特殊的一个点，因为普通矩阵属于不同特征值的特征向量一定线性无关，但不一定正交。这个的证明思想也非常简单，因为酉矩阵是正规矩阵，而正规矩阵属于不同特征值的特征向量一定正交，所以酉矩阵属于不同特征值的特征向量一定正交。正规变换和正规矩阵会在后面的博文里涉及到。</p>
-<h3 id="7，给出所有的2级酉矩阵"><a href="#7，给出所有的2级酉矩阵" class="headerlink" title="7，给出所有的2级酉矩阵"></a>7，给出所有的2级酉矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;这个问题在量子信息中是有实际应用的，因为单量子比特的所有量子电路门都可以抽象成为一个2级酉矩阵。这个的求解思路也非常简单，首先设2级酉矩阵为</p>
+<script type="math/tex; mode=display">\lambda_j=cos \theta_j+ isin \theta_j=e^{i \theta_j}, 0\leq \theta_j <2\pi, j=1,2, \cdots ,n</script><h3 id="2-6-酉矩阵属于不同特征值的特征向量一定正交"><a href="#2-6-酉矩阵属于不同特征值的特征向量一定正交" class="headerlink" title="2.6 酉矩阵属于不同特征值的特征向量一定正交"></a>2.6 酉矩阵属于不同特征值的特征向量一定正交</h3><p>&ensp;&ensp;&ensp;&ensp;这是比较特殊的一个点，因为普通矩阵属于不同特征值的特征向量一定线性无关，但不一定正交。这个的证明思想也非常简单，因为酉矩阵是正规矩阵，而正规矩阵属于不同特征值的特征向量一定正交，所以酉矩阵属于不同特征值的特征向量一定正交。正规变换和正规矩阵会在后面的博文里涉及到。</p>
+<h3 id="2-7-给出所有的2级酉矩阵"><a href="#2-7-给出所有的2级酉矩阵" class="headerlink" title="2.7 给出所有的2级酉矩阵"></a>2.7 给出所有的2级酉矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;这个问题在量子信息中是有实际应用的，因为单量子比特的所有量子电路门都可以抽象成为一个2级酉矩阵。这个的求解思路也非常简单，首先设2级酉矩阵为</p>
 <script type="math/tex; mode=display">A = \left[ \begin{array}{*{20}{c}}
 a_{11}&a_{12}\\
 a_{21}&a_{22}
@@ -343,7 +343,7 @@ sin \theta  & cos \theta
 e^{i (\theta_1+\theta_2)} & 0\\
 0 &  e^{i \theta_3} 
 \end{array} \right]</script><p>这就是在量子信息中非常常用的表达方式。</p>
-<h3 id="还有一个性质"><a href="#还有一个性质" class="headerlink" title="还有一个性质"></a>还有一个性质</h3><p>&ensp;&ensp;&ensp;&ensp;之前老师讲过任意一个多量子比特门都可以被Toffli门，CNOT门，(还有一个门我忘记了。。)来模拟，证明过程中也用到了酉矩阵的一些性质(实际上就是任一个酉矩阵都可以分解成固定几种酉矩阵的乘积)，但由于当初课上的笔记还在学校，这个证明我后面遇到再补吧，印象中丘维声的高等代数学习指导书中有类似证明。</p>
+<h3 id="2-8-还有一个性质"><a href="#2-8-还有一个性质" class="headerlink" title="2.8 还有一个性质"></a>2.8 还有一个性质</h3><p>&ensp;&ensp;&ensp;&ensp;之前老师讲过任意一个多量子比特门都可以被Toffli门，CNOT门，(还有一个门我忘记了。。)来模拟，证明过程中也用到了酉矩阵的一些性质(实际上就是任一个酉矩阵都可以分解成固定几种酉矩阵的乘积)，但由于当初课上的笔记还在学校，这个证明我后面遇到再补吧，印象中丘维声的高等代数学习指导书中有类似证明。</p>
 
     
 
@@ -536,7 +536,7 @@ e^{i (\theta_1+\theta_2)} & 0\\
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#酉变换"><span class="toc-number">1.1.</span> <span class="toc-text">酉变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#酉变换一定是线性变换，且为双射"><span class="toc-number">1.1.1.</span> <span class="toc-text">酉变换一定是线性变换，且为双射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#酉矩阵"><span class="toc-number">1.2.</span> <span class="toc-text">酉矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。"><span class="toc-number">1.2.1.</span> <span class="toc-text">1，$n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。"><span class="toc-number">1.2.2.</span> <span class="toc-text">2，两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger&#x3D;B^\dagger A^\dagger$，$(A^{-1})^\dagger&#x3D;(A^\dagger)^{-1}$。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，酉矩阵的行列式值是一个复数，其模长为1"><span class="toc-number">1.2.3.</span> <span class="toc-text">3，酉矩阵的行列式值是一个复数，其模长为1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，-n-级酉矩阵一定可以酉相似于一个对角矩阵"><span class="toc-number">1.2.4.</span> <span class="toc-text">4，$n$级酉矩阵一定可以酉相似于一个对角矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5，酉矩阵的特征值是一个复数，其模长为1"><span class="toc-number">1.2.5.</span> <span class="toc-text">5，酉矩阵的特征值是一个复数，其模长为1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6，酉矩阵属于不同特征值的特征向量一定正交"><span class="toc-number">1.2.6.</span> <span class="toc-text">6，酉矩阵属于不同特征值的特征向量一定正交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7，给出所有的2级酉矩阵"><span class="toc-number">1.2.7.</span> <span class="toc-text">7，给出所有的2级酉矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#还有一个性质"><span class="toc-number">1.2.8.</span> <span class="toc-text">还有一个性质</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-酉变换"><span class="toc-number">1.1.</span> <span class="toc-text">一 酉变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-酉变换一定是线性变换，且为双射"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 酉变换一定是线性变换，且为双射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-酉矩阵"><span class="toc-number">1.2.</span> <span class="toc-text">二 酉矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-n-级矩阵是酉矩阵，当且仅当矩阵的-n-个行向量或-n-个列向量都是酉空间-mathbb-C-n-上的一组单位正交向量。"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 $n$级矩阵是酉矩阵，当且仅当矩阵的$n$个行向量或$n$个列向量都是酉空间$\mathbb{C}^n$上的一组单位正交向量。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-两个-n-级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且-AB-dagger-B-dagger-A-dagger-，-A-1-dagger-A-dagger-1-。"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 两个$n$级酉矩阵的乘积还是酉矩阵，酉矩阵的逆还是酉矩阵，且$(AB)^\dagger&#x3D;B^\dagger A^\dagger$，$(A^{-1})^\dagger&#x3D;(A^\dagger)^{-1}$。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-酉矩阵的行列式值是一个复数，其模长为1"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 酉矩阵的行列式值是一个复数，其模长为1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-n-级酉矩阵一定可以酉相似于一个对角矩阵"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 $n$级酉矩阵一定可以酉相似于一个对角矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-酉矩阵的特征值是一个复数，其模长为1"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 酉矩阵的特征值是一个复数，其模长为1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-酉矩阵属于不同特征值的特征向量一定正交"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 酉矩阵属于不同特征值的特征向量一定正交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-给出所有的2级酉矩阵"><span class="toc-number">1.2.7.</span> <span class="toc-text">2.7 给出所有的2级酉矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-还有一个性质"><span class="toc-number">1.2.8.</span> <span class="toc-text">2.8 还有一个性质</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -747,19 +747,11 @@ e^{i (\theta_1+\theta_2)} & 0\\
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,11 +759,15 @@ e^{i (\theta_1+\theta_2)} & 0\\
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
+                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,6 +776,14 @@ e^{i (\theta_1+\theta_2)} & 0\\
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
             
             <div class="clearfix"></div>

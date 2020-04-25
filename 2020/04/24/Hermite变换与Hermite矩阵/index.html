@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-24T15:33:22.000Z">
-<meta property="article:modified_time" content="2020-04-25T02:18:35.363Z">
+<meta property="article:modified_time" content="2020-04-25T03:39:20.257Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="Hermite变换">
 <meta property="article:tag" content="Hermite矩阵">
@@ -269,25 +269,25 @@
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
 <p>&ensp;&ensp;&ensp;&ensp;$Hermite$变换又叫做自伴随变换，实际上它就是一种特殊的伴随变换，伴随变换后面的博文会写，这篇博文主要关注于$Hermite$变换和其对应的$Hermite$矩阵。实际上如果限定为实数域的话，酉空间就变成了欧几里得空间，$Hermite$变换就和对称变换是一样的(印象中是叫对称变换)，$Hermite$矩阵就和对称矩阵是一样的，但一旦回到复数域，$Hermite$变换和$Hermite$矩阵的性质就更加丰富和本质。</p>
-<h2 id="Hermite-变换"><a href="#Hermite-变换" class="headerlink" title="$Hermite$变换"></a>$Hermite$变换</h2><p>&ensp;&ensp;&ensp;&ensp;酉空间$V$上的$Hermite$变换$\mathcal{A}$如果满足</p>
+<h2 id="一-Hermite-变换"><a href="#一-Hermite-变换" class="headerlink" title="一 $Hermite$变换"></a>一 $Hermite$变换</h2><p>&ensp;&ensp;&ensp;&ensp;酉空间$V$上的$Hermite$变换$\mathcal{A}$如果满足</p>
 <script type="math/tex; mode=display">(\mathcal{A} \alpha , \beta)=(\alpha ,\mathcal{A} \beta) , \forall \alpha, \beta \in V</script><p>则称$\mathcal{A}$是$V$上的一个$Hermite$变换。</p>
-<h3 id="Hermite-变换-mathcal-A-一定是线性变换"><a href="#Hermite-变换-mathcal-A-一定是线性变换" class="headerlink" title="$Hermite$变换$\mathcal{A}$一定是线性变换"></a>$Hermite$变换$\mathcal{A}$一定是线性变换</h3><p>&ensp;&ensp;&ensp;&ensp;证明思想很简单，直接利用定义即可，对于任意$\alpha ,\beta \in V$，任取$\gamma \in V$，有：</p>
+<h3 id="1-1-Hermite-变换-mathcal-A-一定是线性变换"><a href="#1-1-Hermite-变换-mathcal-A-一定是线性变换" class="headerlink" title="1.1 $Hermite$变换$\mathcal{A}$一定是线性变换"></a>1.1 $Hermite$变换$\mathcal{A}$一定是线性变换</h3><p>&ensp;&ensp;&ensp;&ensp;证明思想很简单，直接利用定义即可，对于任意$\alpha ,\beta \in V$，任取$\gamma \in V$，有：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 (\mathcal{A}(\alpha+\beta),\gamma) &= (\alpha+\beta,\mathcal{A}\gamma)=(\alpha,\mathcal{A}\gamma)+(\beta,\mathcal{A}\gamma) \\
 &=(\mathcal{A} \alpha, \gamma)+(\mathcal{A}\beta , \gamma)=(\mathcal{A}\alpha+\mathcal{A}\beta, \gamma)
 \end{aligned}</script><p>因此$(\mathcal{A}(\alpha+\beta)-(\mathcal{A}\alpha+\mathcal{A}\beta), \gamma)=0$。从而$\mathcal{A}(\alpha+\beta)=\mathcal{A}\alpha+\mathcal{A}\beta$。类似可证$\mathcal{A}(k \alpha)=k\mathcal{A}\alpha$，$ \forall k \in \mathbb{C}$。因此$\mathcal{A}$是$V$上的一个线性变换。</p>
-<h3 id="变换-mathcal-A-是-Hermite-变换当且仅当变换-mathcal-A-在任意一个标准正交基下的矩阵-A-满足-A-dagger-A"><a href="#变换-mathcal-A-是-Hermite-变换当且仅当变换-mathcal-A-在任意一个标准正交基下的矩阵-A-满足-A-dagger-A" class="headerlink" title="变换$\mathcal{A}$是$Hermite$变换当且仅当变换$\mathcal{A}$在任意一个标准正交基下的矩阵$A$满足$A^\dagger =A$"></a>变换$\mathcal{A}$是$Hermite$变换当且仅当变换$\mathcal{A}$在任意一个标准正交基下的矩阵$A$满足$A^\dagger =A$</h3><p>&ensp;&ensp;&ensp;&ensp;也就是说矩阵$A$的共轭转置一定等于它本身，这个的证明也并不复杂，可以先证明必要性，任取一个标准正交基$\eta_1,\cdots,\eta_n$，设</p>
+<h3 id="1-2-变换-mathcal-A-是-Hermite-变换当且仅当变换-mathcal-A-在任意一个标准正交基下的矩阵-A-满足-A-dagger-A"><a href="#1-2-变换-mathcal-A-是-Hermite-变换当且仅当变换-mathcal-A-在任意一个标准正交基下的矩阵-A-满足-A-dagger-A" class="headerlink" title="1.2 变换$\mathcal{A}$是$Hermite$变换当且仅当变换$\mathcal{A}$在任意一个标准正交基下的矩阵$A$满足$A^\dagger =A$"></a>1.2 变换$\mathcal{A}$是$Hermite$变换当且仅当变换$\mathcal{A}$在任意一个标准正交基下的矩阵$A$满足$A^\dagger =A$</h3><p>&ensp;&ensp;&ensp;&ensp;也就是说矩阵$A$的共轭转置一定等于它本身，这个的证明也并不复杂，可以先证明必要性，任取一个标准正交基$\eta_1,\cdots,\eta_n$，设</p>
 <script type="math/tex; mode=display">\mathcal{A}(\eta_1,\cdots,\eta_n)=(\eta_1,\cdots,\eta_n)A</script><p>则$\mathcal{A} \eta_j $在标准正交基$ \eta_1,\cdots,\eta_n$下的坐标的第$i$个分量为</p>
 <script type="math/tex; mode=display">a_{ij}=(\mathcal{A}\eta_j,\eta_i),i,j=1,2,\cdots,n</script><p>因此有：</p>
 <script type="math/tex; mode=display">a_{ij}=(\mathcal{A}\eta_j,\eta_i)=(\eta_j,\mathcal{A}\eta_i)=\overline{(\mathcal{A}\eta_i ,\eta_j)}=\bar{a_{ji}},i,j=1,2,\cdots,n</script><p>显然就可得出$A^\dagger =A$。至于充分性，如果$A^\dagger =A$，那根据上面的证法，对任意的一个标准正交基$\eta_1,\cdots,\eta_n$，都有</p>
 <script type="math/tex; mode=display">(\mathcal{A}\eta_j,\eta_i)=a_{ij}=\bar{a_{ji}}=\overline{(\mathcal{A}\eta_i ,\eta_j)}=(\eta_j,\mathcal{A}\eta_i),i,j=1,2,\cdots,n</script><p>也就是说此时的变换$\mathcal{A}$对标准正交基满足$(\mathcal{A}\eta_j,\eta_i)=(\eta_j,\mathcal{A}\eta_i)$，当然可以平凡的证明$\forall \alpha, \beta \in V$，变换$\mathcal{A}$满足$(\mathcal{A} \alpha , \beta)=(\alpha ,\mathcal{A} \beta) $，即为$Hermite$变换。</p>
-<h3 id="酉空间-V-上的-Hermite-变换的特征值一定为实数"><a href="#酉空间-V-上的-Hermite-变换的特征值一定为实数" class="headerlink" title="酉空间$V$上的$Hermite$变换的特征值一定为实数"></a>酉空间$V$上的$Hermite$变换的特征值一定为实数</h3><p>&ensp;&ensp;&ensp;&ensp;首先数域为复数域，那特征值就必然存在，只是有可能为复数也有可能为实数，设$\lambda_1$是$Hermite$变换$\mathcal{A}$的一个特征值，$\xi$是$\mathcal{A}$的属于$\lambda_1$的一个特征向量，则有：</p>
+<h3 id="1-3酉空间-V-上的-Hermite-变换的特征值一定为实数"><a href="#1-3酉空间-V-上的-Hermite-变换的特征值一定为实数" class="headerlink" title="1.3酉空间$V$上的$Hermite$变换的特征值一定为实数"></a>1.3酉空间$V$上的$Hermite$变换的特征值一定为实数</h3><p>&ensp;&ensp;&ensp;&ensp;首先数域为复数域，那特征值就必然存在，只是有可能为复数也有可能为实数，设$\lambda_1$是$Hermite$变换$\mathcal{A}$的一个特征值，$\xi$是$\mathcal{A}$的属于$\lambda_1$的一个特征向量，则有：</p>
 <script type="math/tex; mode=display">\lambda_1(\xi,\xi)=(\lambda_1\xi,\xi)=(\mathcal{A}\xi,\xi)=(\xi,\mathcal{A}\xi)=(\xi,\lambda_1\xi)=\bar{\lambda_1}(\xi,\xi)</script><p>由此得出$(\lambda_1-\bar{\lambda_1})(\xi,\xi)=0$，$\xi$一定是非零的向量(因为$\xi$对应的元素一定是非零元素)，则必有$\lambda_1=\bar{\lambda_1}$，则显然特征值必为实数。</p>
-<h2 id="Hermite-矩阵"><a href="#Hermite-矩阵" class="headerlink" title="$Hermite$矩阵"></a>$Hermite$矩阵</h2><p>&ensp;&ensp;&ensp;&ensp;接下来给出一些常用的$Hermite$矩阵的性质，它和$Hermite$变换有一些相似之处，但本质不同，先考虑变换，在考虑矩阵。</p>
-<h3 id="任意一个-Hermite-矩阵都可以酉相似与一个实对角矩阵"><a href="#任意一个-Hermite-矩阵都可以酉相似与一个实对角矩阵" class="headerlink" title="任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵"></a>任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;证明思路非常简单，首先$Hermite$矩阵一定是正规矩阵，正规矩阵一定可以酉对角化，则$Hermite$矩阵也可以酉对角化，只需证明$Hermite$矩阵的特征值全为实数即可。因为矩阵与对应变换的特征值实际上是一个概念，所以前面已经证过了$Hermite$矩阵的特征值全为实数，所以原命题得证，任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵</p>
+<h2 id="二-Hermite-矩阵"><a href="#二-Hermite-矩阵" class="headerlink" title="二 $Hermite$矩阵"></a>二 $Hermite$矩阵</h2><p>&ensp;&ensp;&ensp;&ensp;接下来给出一些常用的$Hermite$矩阵的性质，它和$Hermite$变换有一些相似之处，但本质不同，先考虑变换，在考虑矩阵。</p>
+<h3 id="2-1-任意一个-Hermite-矩阵都可以酉相似与一个实对角矩阵"><a href="#2-1-任意一个-Hermite-矩阵都可以酉相似与一个实对角矩阵" class="headerlink" title="2.1 任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵"></a>2.1 任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;证明思路非常简单，首先$Hermite$矩阵一定是正规矩阵，正规矩阵一定可以酉对角化，则$Hermite$矩阵也可以酉对角化，只需证明$Hermite$矩阵的特征值全为实数即可。因为矩阵与对应变换的特征值实际上是一个概念，所以前面已经证过了$Hermite$矩阵的特征值全为实数，所以原命题得证，任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵</p>
 <p>&ensp;&ensp;&ensp;&ensp;正规变换与正规矩阵其余博文里会进行总结。另外矩阵与对应变换的“特征向量”的概念是有一些差异的，对矩阵来说，特征向量就是$\mathbb{C}^n$中的一个向量，但变换的特征向量是$V$中的一个元素。</p>
-<h3 id="Hermite-矩阵属于不同特征值的特征向量一定正交"><a href="#Hermite-矩阵属于不同特征值的特征向量一定正交" class="headerlink" title="$Hermite$矩阵属于不同特征值的特征向量一定正交"></a>$Hermite$矩阵属于不同特征值的特征向量一定正交</h3><p>&ensp;&ensp;&ensp;&ensp;证明思路非常简单，首先$Hermite$矩阵一定是正规矩阵，正规矩阵属于不同特征值的特征向量一定正交，所以原命题得证，正规变换与正规矩阵其余博文里会进行总结。</p>
+<h3 id="2-2-Hermite-矩阵属于不同特征值的特征向量一定正交"><a href="#2-2-Hermite-矩阵属于不同特征值的特征向量一定正交" class="headerlink" title="2.2 $Hermite$矩阵属于不同特征值的特征向量一定正交"></a>2.2 $Hermite$矩阵属于不同特征值的特征向量一定正交</h3><p>&ensp;&ensp;&ensp;&ensp;证明思路非常简单，首先$Hermite$矩阵一定是正规矩阵，正规矩阵属于不同特征值的特征向量一定正交，所以原命题得证，正规变换与正规矩阵其余博文里会进行总结。</p>
 
     
 
@@ -442,6 +442,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2020/04/25/%E4%BC%B4%E9%9A%8F%E5%8F%98%E6%8D%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          伴随变换
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">酉变换与酉矩阵</div>
@@ -471,7 +480,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hermite-变换"><span class="toc-number">1.1.</span> <span class="toc-text">$Hermite$变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hermite-变换-mathcal-A-一定是线性变换"><span class="toc-number">1.1.1.</span> <span class="toc-text">$Hermite$变换$\mathcal{A}$一定是线性变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变换-mathcal-A-是-Hermite-变换当且仅当变换-mathcal-A-在任意一个标准正交基下的矩阵-A-满足-A-dagger-A"><span class="toc-number">1.1.2.</span> <span class="toc-text">变换$\mathcal{A}$是$Hermite$变换当且仅当变换$\mathcal{A}$在任意一个标准正交基下的矩阵$A$满足$A^\dagger &#x3D;A$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#酉空间-V-上的-Hermite-变换的特征值一定为实数"><span class="toc-number">1.1.3.</span> <span class="toc-text">酉空间$V$上的$Hermite$变换的特征值一定为实数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hermite-矩阵"><span class="toc-number">1.2.</span> <span class="toc-text">$Hermite$矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#任意一个-Hermite-矩阵都可以酉相似与一个实对角矩阵"><span class="toc-number">1.2.1.</span> <span class="toc-text">任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hermite-矩阵属于不同特征值的特征向量一定正交"><span class="toc-number">1.2.2.</span> <span class="toc-text">$Hermite$矩阵属于不同特征值的特征向量一定正交</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Hermite-变换"><span class="toc-number">1.1.</span> <span class="toc-text">一 $Hermite$变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Hermite-变换-mathcal-A-一定是线性变换"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 $Hermite$变换$\mathcal{A}$一定是线性变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-变换-mathcal-A-是-Hermite-变换当且仅当变换-mathcal-A-在任意一个标准正交基下的矩阵-A-满足-A-dagger-A"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 变换$\mathcal{A}$是$Hermite$变换当且仅当变换$\mathcal{A}$在任意一个标准正交基下的矩阵$A$满足$A^\dagger &#x3D;A$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3酉空间-V-上的-Hermite-变换的特征值一定为实数"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3酉空间$V$上的$Hermite$变换的特征值一定为实数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Hermite-矩阵"><span class="toc-number">1.2.</span> <span class="toc-text">二 $Hermite$矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-任意一个-Hermite-矩阵都可以酉相似与一个实对角矩阵"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 任意一个$Hermite$矩阵都可以酉相似与一个实对角矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Hermite-矩阵属于不同特征值的特征向量一定正交"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 $Hermite$矩阵属于不同特征值的特征向量一定正交</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -682,19 +691,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,11 +703,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
+                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,6 +720,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
             
             <div class="clearfix"></div>
