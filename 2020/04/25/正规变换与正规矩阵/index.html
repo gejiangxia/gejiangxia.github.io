@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-25T03:52:27.000Z">
-<meta property="article:modified_time" content="2020-04-25T05:22:55.679Z">
+<meta property="article:modified_time" content="2020-04-25T09:51:45.896Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="正规变换">
 <meta property="article:tag" content="正规矩阵">
@@ -247,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">8字</span>
+      <span class="post-count">1.2k字</span>
     </span>
   </span>
 
@@ -256,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -268,7 +268,20 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;正规变换</p>
+<h2 id="一-正规变换"><a href="#一-正规变换" class="headerlink" title="一 正规变换"></a>一 正规变换</h2><p>&ensp;&ensp;&ensp;&ensp;设$V$是酉空间，$\mathcal{A}$是$V$上的线性变换，如果$\mathcal{A}$有伴随变换$\mathcal{A}^\dagger$且</p>
+<script type="math/tex; mode=display">\mathcal{A}^\dagger \mathcal{A}=\mathcal{A} \mathcal{A}^\dagger</script><p>那么称$\mathcal{A}$是正规变换。</p>
+<p>&ensp;&ensp;&ensp;&ensp;正规变换就是说这个变换可以和自己的伴随变换可交换，可以发现酉变换，$Hermite$变换实际上都是正规变换，正规变换的要求更低。正规变换有如下性质：</p>
+<h3 id="1-1-线性变换-mathcal-A-是正规的当且仅当-mathcal-A-在-V-的任一标准正交基下的矩阵是正规的"><a href="#1-1-线性变换-mathcal-A-是正规的当且仅当-mathcal-A-在-V-的任一标准正交基下的矩阵是正规的" class="headerlink" title="1.1  线性变换$\mathcal{A}$是正规的当且仅当$\mathcal{A}$在$V$的任一标准正交基下的矩阵是正规的"></a>1.1  线性变换$\mathcal{A}$是正规的当且仅当$\mathcal{A}$在$V$的任一标准正交基下的矩阵是正规的</h3><p>&ensp;&ensp;&ensp;&ensp;首先看必要性，设变换$\mathcal{A}$在标准正交基下对应的矩阵是$A$，则其伴随变换对应的矩阵是$A^\dagger$，如果$\mathcal{A}$是正规的，则有$\mathcal{A}^\dagger \mathcal{A}=\mathcal{A} \mathcal{A}^\dagger$，线性变换构成的空间和矩阵构成的空间是同构的，则必有$A^\dagger A=A A^\dagger$成立，则矩阵$A$为正规矩阵。</p>
+<p>&ensp;&ensp;&ensp;&ensp;再证充分性，这个也是很显然的，矩阵与线性变换是对应的，既然矩阵有正规的性质，变换当然也有。需要注意的是充分性和必要性的的证明都用到了伴随变换对应的矩阵是原变换对应矩阵的共轭转置这一点。</p>
+<h3 id="1-2-一个线性变换-mathcal-A-是酉空间上的正规变换，当且仅当-V-中存在一个标准正交基，使得-mathcal-A-在这组基下的矩阵是对角矩阵"><a href="#1-2-一个线性变换-mathcal-A-是酉空间上的正规变换，当且仅当-V-中存在一个标准正交基，使得-mathcal-A-在这组基下的矩阵是对角矩阵" class="headerlink" title="1.2 一个线性变换$\mathcal{A}$是酉空间上的正规变换，当且仅当$V$中存在一个标准正交基，使得$\mathcal{A}$在这组基下的矩阵是对角矩阵"></a>1.2 一个线性变换$\mathcal{A}$是酉空间上的正规变换，当且仅当$V$中存在一个标准正交基，使得$\mathcal{A}$在这组基下的矩阵是对角矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;这可以说是正规变换最重要的一个结论，这个结论并不复杂，先从变换的角度去看，只要这个变换是正规变换，在某一个标准正交基下它的矩阵表达可能不是对角的，但我们一定可以找到另外一组标准正交基，通过一个基变换，将变换的矩阵形式化为对角矩阵。标准正交基和标准正交基之间的过渡矩阵肯定是酉矩阵，则这两个对应的矩阵形式就是酉相似。</p>
+<p>&ensp;&ensp;&ensp;&ensp;这解决了本科代数非常重要的一个问题，也就是到底什么样的矩阵可以酉相似对角化，本科代数的很多基础题目都是从这一点出发考核的，尤其是高等代数的很多考研题目。首先在复数域上，任何矩阵都可以相似对角化，因为复数根的个数必然与特征多项式的次数相同，所以复数域上更多关注的是能否酉相似对角化。</p>
+<p>&ensp;&ensp;&ensp;&ensp;这个定理的详细证明在丘维声的高等代数学习指导书下册的645页定理12。</p>
+<h2 id="二-正规矩阵"><a href="#二-正规矩阵" class="headerlink" title="二 正规矩阵"></a>二 正规矩阵</h2><p>&ensp;&ensp;&ensp;&ensp;首先给出定义，一个$n$级复矩阵如果满足</p>
+<script type="math/tex; mode=display">A^\dagger A=A A^\dagger</script><p>那么就称$A$是正规矩阵。<br>正规矩阵的定义是由正规变换自然导出的，它有如下常用的性质：</p>
+<h3 id="2-1-一个矩阵是正规矩阵，当且仅当这个矩阵可以酉相似对交化"><a href="#2-1-一个矩阵是正规矩阵，当且仅当这个矩阵可以酉相似对交化" class="headerlink" title="2.1 一个矩阵是正规矩阵，当且仅当这个矩阵可以酉相似对交化"></a>2.1 一个矩阵是正规矩阵，当且仅当这个矩阵可以酉相似对交化</h3><p>&ensp;&ensp;&ensp;&ensp;一个正规矩阵就对应着一个正规变换，正规变换等价于可在标准正交基下完成对角化的变换，标准正交基和标准正交基之间的过渡矩阵肯定是酉矩阵，则正规矩阵就等价于可以酉相似对角化的矩阵。</p>
+<p>&ensp;&ensp;&ensp;&ensp;之前的博文里用到了这个性质，酉矩阵，$Hermite$矩阵都是正规矩阵，所以一定可以酉相似对角化。</p>
+<h3 id="2-2-A-为正规矩阵，-lambda-0-是-A-的一个特征值，-alpha-是-A-的属于-lambda-0-的一个特征向量，那么-bar-lambda-0-是-A-dagger-的一个特征值，-alpha-是-A-dagger-的属于-bar-lambda-0-的一个特征向量"><a href="#2-2-A-为正规矩阵，-lambda-0-是-A-的一个特征值，-alpha-是-A-的属于-lambda-0-的一个特征向量，那么-bar-lambda-0-是-A-dagger-的一个特征值，-alpha-是-A-dagger-的属于-bar-lambda-0-的一个特征向量" class="headerlink" title="2.2 $A$为正规矩阵，$\lambda_0$是$A$的一个特征值，$\alpha$是$A$的属于$\lambda_0$的一个特征向量，那么$\bar{\lambda_0}$是$A^\dagger$的一个特征值，$\alpha$是$A^\dagger$的属于$\bar{\lambda_0}$的一个特征向量"></a>2.2 $A$为正规矩阵，$\lambda_0$是$A$的一个特征值，$\alpha$是$A$的属于$\lambda_0$的一个特征向量，那么$\bar{\lambda_0}$是$A^\dagger$的一个特征值，$\alpha$是$A^\dagger$的属于$\bar{\lambda_0}$的一个特征向量</h3><p>&ensp;&ensp;&ensp;&ensp;正规矩阵与其共轭转置的特征值是互为共轭的，但互为共轭的特征值对应的特征向量是相同的。具体证明见丘维声的高等代数学习指导书上册的333页12题。</p>
+<h3 id="2-3-正规矩阵属于不同特征值的特征向量一定正交"><a href="#2-3-正规矩阵属于不同特征值的特征向量一定正交" class="headerlink" title="2.3 正规矩阵属于不同特征值的特征向量一定正交"></a>2.3 正规矩阵属于不同特征值的特征向量一定正交</h3><p>&ensp;&ensp;&ensp;&ensp;普通矩阵属于不同特征值的特征向量一定是线性无关的，但正规矩阵比较特殊，正规矩阵属于不同特征值的特征向量一定正交，具体证明见丘维声的高等代数学习指导书上册的333页13题。之前的博文里用到了这个性质，酉矩阵，$Hermite$矩阵都是正规矩阵，所以酉矩阵，$Hermite$矩阵属于不同特征值的特征向量一定正交。</p>
 
     
 
@@ -452,7 +465,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-正规变换"><span class="toc-number">1.1.</span> <span class="toc-text">一 正规变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-线性变换-mathcal-A-是正规的当且仅当-mathcal-A-在-V-的任一标准正交基下的矩阵是正规的"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1  线性变换$\mathcal{A}$是正规的当且仅当$\mathcal{A}$在$V$的任一标准正交基下的矩阵是正规的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-一个线性变换-mathcal-A-是酉空间上的正规变换，当且仅当-V-中存在一个标准正交基，使得-mathcal-A-在这组基下的矩阵是对角矩阵"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 一个线性变换$\mathcal{A}$是酉空间上的正规变换，当且仅当$V$中存在一个标准正交基，使得$\mathcal{A}$在这组基下的矩阵是对角矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-正规矩阵"><span class="toc-number">1.2.</span> <span class="toc-text">二 正规矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-一个矩阵是正规矩阵，当且仅当这个矩阵可以酉相似对交化"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 一个矩阵是正规矩阵，当且仅当这个矩阵可以酉相似对交化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-A-为正规矩阵，-lambda-0-是-A-的一个特征值，-alpha-是-A-的属于-lambda-0-的一个特征向量，那么-bar-lambda-0-是-A-dagger-的一个特征值，-alpha-是-A-dagger-的属于-bar-lambda-0-的一个特征向量"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 $A$为正规矩阵，$\lambda_0$是$A$的一个特征值，$\alpha$是$A$的属于$\lambda_0$的一个特征向量，那么$\bar{\lambda_0}$是$A^\dagger$的一个特征值，$\alpha$是$A^\dagger$的属于$\bar{\lambda_0}$的一个特征向量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-正规矩阵属于不同特征值的特征向量一定正交"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 正规矩阵属于不同特征值的特征向量一定正交</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -659,10 +672,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
               </li>
              
@@ -675,7 +684,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,15 +700,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,10 +721,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
             
             <div class="clearfix"></div>
