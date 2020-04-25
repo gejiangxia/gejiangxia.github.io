@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>线性空间的基本定义 | Hexo</title>
+  <title>奇异值分解和极式分解 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta property="og:type" content="article">
-<meta property="og:title" content="线性空间的基本定义">
-<meta property="og:url" content="http://yoursite.com/2020/04/18/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89/index.html">
+<meta property="og:title" content="奇异值分解和极式分解">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E5%92%8C%E6%9E%81%E5%BC%8F%E5%88%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-18T14:04:57.000Z">
-<meta property="article:modified_time" content="2020-04-21T01:48:15.298Z">
+<meta property="article:published_time" content="2020-04-25T13:24:11.000Z">
+<meta property="article:modified_time" content="2020-04-25T13:49:05.453Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="线性空间">
+<meta property="article:tag" content="奇异值分解">
+<meta property="article:tag" content="极式分解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -213,14 +214,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-线性空间的基本定义" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-奇异值分解和极式分解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      线性空间的基本定义
+      奇异值分解和极式分解
     </h1>
   
 
@@ -232,8 +233,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/04/18/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89/" class="archive-article-date">
-        <time datetime="2020-04-18T14:04:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+<a href="/2020/04/25/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E5%92%8C%E6%9E%81%E5%BC%8F%E5%88%86%E8%A7%A3/" class="archive-article-date">
+        <time datetime="2020-04-25T13:24:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
 </a>
 
   
@@ -246,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">575字</span>
+      <span class="post-count">193字</span>
     </span>
   </span>
 
@@ -255,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">1分</span>
     </span>
   </span>
 </div>
@@ -267,41 +268,19 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;线性空间是代数里非常基础的一个定义，几年前刚学的时候我也仅仅感觉是一个定义而已，但现在回头看，发现这种基础的代数结构所能承载的信息真的很大，并不是我以前想象的那么简单，当然线性空间也是更复杂空间的基础，比如量子信息中常用到的$Hilbert$空间。</p>
-<p>&ensp;&ensp;&ensp;&ensp;给出定义前先给出一些基础定义如下：</p>
-<p>笛卡尔积：$S \times M := \lbrace (a,b)|a \in S, b \in M  \rbrace$称为$S$与$M$的笛卡尔积</p>
-<p>代数运算：非空集合$S$上的一个代数运算是指$S \times S$到$S$的一个映射<font color='red'> (代数运算重要的点是封闭性，这在以后群的定义中也会用到)</font></p>
-<p>&ensp;&ensp;&ensp;&ensp;由此给出线性空间定义如下:</p>
-<p>设$V$是一个非空集合，$K$是一个数域，$V$上有一个代数运算如下，称为加法</p>
-<script type="math/tex; mode=display">(\alpha ,\beta ) \mapsto \alpha  + \beta</script><p>$K$与$V$之间有一个运算如下，称为数量乘法</p>
-<script type="math/tex; mode=display">(k,\alpha ) \mapsto k\alpha</script><p>加法与数量乘法满足如下8条法则，加法与数量乘法各4条:</p>
-<center>
-$1^0 \quad \alpha + \beta =\beta +\alpha, \forall \alpha  ,\beta \in V$
-</center>
-<center>
-$2^0 \quad (\alpha  + \beta ) + \gamma  = \alpha  + (\beta  + \gamma ) \quad \forall \alpha ,\beta ,\gamma  \in V$
-</center>
-<center>
-$3^0 \quad V$中有一个元素，记成$0$，满足$\alpha+0=\alpha, \forall \alpha \in V$，把$0$称为$V$的零元
-</center>
-<center>
-$4^0 \quad $对于$\alpha \in V$，有$\beta \in V$，使$\alpha + \beta =0$，把$\beta$称为$\alpha$的负元
-</center>
-<center>
-$5^0 \quad $存在元素$1\in K$，使得$1\alpha=\alpha, \forall \alpha \in V$
-</center>
-<center>
-$6^0 \quad (kl) \alpha=k(l \alpha),\forall k,l \in K,\alpha  \in V$
-</center>
-<center>
-$7^0 \quad  (k+l) \alpha =k \alpha +l\alpha, \forall k,l \in K,\alpha  \in V$
-</center>
-<center>
-$8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \in V$
-</center>
-
-<p>则$V$称为数域$K$上的一个线性空间。</p>
-<p>&ensp;&ensp;&ensp;&ensp;可以发现，<font color='red'> 线性空间就是一个加法群再配上一个特殊的数乘运算，这样就表示了一种特殊的代数结构</font>，称为数乘是因为$K$一定是一个数域，这个$K$可以和$V$一样也可以不一样，这是空间的结构相比于群更丰富的一个原因。</p>
+<h2 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h2><p>&ensp;&ensp;&ensp;&ensp;设$A$是$m\times n$矩阵，$Rank(A)=r$，总可以找到一个$n$级酉矩阵$U$和一个$m$级酉矩阵$V$以及对角阵</p>
+<script type="math/tex; mode=display">s_0=\left[ \begin{array}{*{20}{c}}
+s_1&{}&0\\
+{}& \ddots &{}\\
+0&{}&s_r
+\end{array} \right] , s_1 \geq \cdots \geq s_r >0</script><p>使得表达式</p>
+<script type="math/tex; mode=display">A=V \left[ \begin{array}{*{20}{c}}
+s_0&0\\
+0&0
+\end{array} \right] U</script><p>成立。</p>
+<h2 id="极式分解"><a href="#极式分解" class="headerlink" title="极式分解"></a>极式分解</h2><p>&ensp;&ensp;&ensp;&ensp;令$A$是向量空间$V$上的矩阵，则存在酉矩阵$U$和半正定$Hermite$矩阵$J,K$使得</p>
+<script type="math/tex; mode=display">A=UJ=KU</script><p>其中$J$和$K$是唯一满足这些方程的半正定$Hermite$矩阵，如果$A$可逆，则$U$是唯一的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;极式分解涉及到正定和半正定的$Hermite$矩阵，以后遇到这些再总结吧。</p>
 
     
 
@@ -348,7 +327,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/04/18/线性空间的基本定义/" title="线性空间的基本定义" target="_blank">http://yoursite.com/2020/04/18/线性空间的基本定义/</a>
+          <a href="http://yoursite.com/2020/04/25/奇异值分解和极式分解/" title="奇异值分解和极式分解" target="_blank">http://yoursite.com/2020/04/25/奇异值分解和极式分解/</a>
         </li>
         
         <li>
@@ -370,7 +349,11 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性空间</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">奇异值分解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">极式分解</a>
         		</li>
       		
 		</ul>
@@ -437,7 +420,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/18/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/25/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E5%92%8C%E6%9E%81%E5%BC%8F%E5%88%86%E8%A7%A3/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -452,18 +435,18 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
 
 <nav id="article-nav">
   
-    <a href="/2020/04/20/%E4%BA%92%E9%80%86%E7%9F%A9%E9%98%B5%E5%8F%AF%E4%BA%A4%E6%8D%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/25/%E5%BC%A0%E9%87%8F%E7%A7%AF/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          互逆矩阵必定可交换
+          张量积
         
       </div>
     </a>
   
   
-    <a href="/2020/04/16/%E7%BD%AE%E9%A1%B6%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">疫情期间的挣扎式学习</div>
+    <a href="/2020/04/25/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E4%B8%AAbeamer%E6%A8%A1%E6%9D%BF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我最喜欢的一个beamer模板</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -490,7 +473,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解"><span class="toc-number">1.1.</span> <span class="toc-text">奇异值分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极式分解"><span class="toc-number">1.2.</span> <span class="toc-text">极式分解</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -503,7 +486,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
 
 
 
-<div id="SOHUCS" sid="线性空间的基本定义" ></div> 
+<div id="SOHUCS" sid="奇异值分解和极式分解" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -524,9 +507,9 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "线性空间的基本定义" -->
+  <!-- id: "奇异值分解和极式分解" -->
   var giteement = new Giteement({
-    id: '20200418220457',
+    id: '20200425212411',
     owner: 'gejiangxia',
     repo: 'cunchupinglun',
     backcall_uri: 'https://gejiangxia.github.io/',
