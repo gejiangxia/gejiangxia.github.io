@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-25T13:50:55.000Z">
-<meta property="article:modified_time" content="2020-04-27T03:15:23.547Z">
+<meta property="article:modified_time" content="2020-04-27T03:48:44.561Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="张量积">
 <meta name="twitter:card" content="summary">
@@ -296,7 +296,7 @@ c_{n1}D&c_{n2}D& \cdots &c_{nn}D
 <script type="math/tex; mode=display">(A \otimes B)^\dagger= \overline{((A \otimes B)^T)}=\overline{(A^T \otimes B^T)}=(\overline{A^T} \otimes \overline{B^T})=(A \otimes B)</script><p>显然$(A \otimes B)$的共轭转置就是它本身，原命题得证。</p>
 <h3 id="9-两个酉矩阵的直积还是酉矩阵"><a href="#9-两个酉矩阵的直积还是酉矩阵" class="headerlink" title="9 两个酉矩阵的直积还是酉矩阵"></a>9 两个酉矩阵的直积还是酉矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;这个的证明也并不复杂，主要利用了前面的性质：</p>
 <script type="math/tex; mode=display">(A \otimes B)^{-1}=A^{-1} \otimes B^{-1}=A^\dagger \otimes B^\dagger=(A \otimes B)^\dagger</script><p>显然$(A \otimes B)$的逆矩阵就是它的共轭转置，原命题得证。</p>
-<h3 id="10-tr-A-otimes-B-tr-A-tr-B"><a href="#10-tr-A-otimes-B-tr-A-tr-B" class="headerlink" title="10 $tr(A \otimes B)=tr(A)tr(B)$"></a>10 $tr(A \otimes B)=tr(A)tr(B)$</h3><h3 id="11-rank-A-otimes-B-rank-A-rank-B"><a href="#11-rank-A-otimes-B-rank-A-rank-B" class="headerlink" title="11 $rank(A \otimes B)=rank(A)rank(B)$"></a>11 $rank(A \otimes B)=rank(A)rank(B)$</h3><h3 id="12-A-otimes-B-A-m-B-n-A-in-mathbb-C-mm-B-in-mathbb-C-nn"><a href="#12-A-otimes-B-A-m-B-n-A-in-mathbb-C-mm-B-in-mathbb-C-nn" class="headerlink" title="12 $|A \otimes B|=|A|^m  |B|^n, A \in \mathbb{C}^{mm}, B \in \mathbb{C}^{nn}$"></a>12 $|A \otimes B|=|A|^m  |B|^n, A \in \mathbb{C}^{mm}, B \in \mathbb{C}^{nn}$</h3><p>&ensp;&ensp;&ensp;&ensp;这个的证明也并不复杂，主要利用了前面的性质：</p>
+<h3 id="10-tr-A-otimes-B-tr-A-tr-B"><a href="#10-tr-A-otimes-B-tr-A-tr-B" class="headerlink" title="10 $tr(A \otimes B)=tr(A)tr(B)$"></a>10 $tr(A \otimes B)=tr(A)tr(B)$</h3><h3 id="11-rank-A-otimes-B-rank-A-rank-B"><a href="#11-rank-A-otimes-B-rank-A-rank-B" class="headerlink" title="11 $rank(A \otimes B)=rank(A)rank(B)$"></a>11 $rank(A \otimes B)=rank(A)rank(B)$</h3><h3 id="12-A-otimes-B-A-m-B-n-A-in-mathbb-C-nn-B-in-mathbb-C-mm"><a href="#12-A-otimes-B-A-m-B-n-A-in-mathbb-C-nn-B-in-mathbb-C-mm" class="headerlink" title="12 $|A \otimes B|=|A|^m  |B|^n, A \in \mathbb{C}^{nn}, B \in \mathbb{C}^{mm}$"></a>12 $|A \otimes B|=|A|^m  |B|^n, A \in \mathbb{C}^{nn}, B \in \mathbb{C}^{mm}$</h3><p>&ensp;&ensp;&ensp;&ensp;这个的证明也并不复杂，主要利用了前面的性质：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 |A \otimes B|&=|(AI_n) \otimes (I_mB)|=|(A \otimes I_m)(I_n \otimes B)|\\
@@ -493,7 +493,7 @@ B&0& \cdots &0\\
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-0-otimes-A-A-otimes-0-0"><span class="toc-number">1.0.1.</span> <span class="toc-text">1 $0 \otimes A&#x3D;A \otimes 0&#x3D;0$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-A-1-A-2-otimes-B-A-1-otimes-B-A-2-otimes-B-A-otimes-B-1-B-2-A-otimes-B-1-A-otimes-B-2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2 $(A_1+A_2) \otimes B &#x3D; A_1 \otimes B +A_2 \otimes B$,$A\otimes(B_1+B_2)&#x3D;A\otimes B_1 +A\otimes B_2$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-alpha-A-otimes-beta-B-alpha-beta-A-otimes-B"><span class="toc-number">1.0.3.</span> <span class="toc-text">3 $(\alpha A)\otimes (\beta B)&#x3D;\alpha \beta (A \otimes B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-A-otimes-B-otimes-C-A-otimes-B-otimes-C"><span class="toc-number">1.0.4.</span> <span class="toc-text">4 $(A \otimes B) \otimes C &#x3D;A \otimes (B \otimes C)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-A-otimes-B-C-otimes-D-AC-otimes-BD"><span class="toc-number">1.0.5.</span> <span class="toc-text">5 $(A\otimes B)(C \otimes D)&#x3D;(AC)\otimes (BD)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-A-otimes-B-1-A-1-otimes-B-1"><span class="toc-number">1.0.6.</span> <span class="toc-text">6 $(A \otimes B)^{-1}&#x3D;A^{-1} \otimes B^{-1}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-A-otimes-B-T-A-T-otimes-B-T"><span class="toc-number">1.0.7.</span> <span class="toc-text">7 $(A \otimes B)^T&#x3D;A^T \otimes B^T$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-两个上-下-三角矩阵的直积还是上下三角阵"><span class="toc-number">1.0.8.</span> <span class="toc-text">8 两个上(下)三角矩阵的直积还是上下三角阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-两个-Hermite-矩阵的直积还是-Hermite-矩阵"><span class="toc-number">1.0.9.</span> <span class="toc-text">9 两个$Hermite$矩阵的直积还是$Hermite$矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-两个酉矩阵的直积还是酉矩阵"><span class="toc-number">1.0.10.</span> <span class="toc-text">9 两个酉矩阵的直积还是酉矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-tr-A-otimes-B-tr-A-tr-B"><span class="toc-number">1.0.11.</span> <span class="toc-text">10 $tr(A \otimes B)&#x3D;tr(A)tr(B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-rank-A-otimes-B-rank-A-rank-B"><span class="toc-number">1.0.12.</span> <span class="toc-text">11 $rank(A \otimes B)&#x3D;rank(A)rank(B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-A-otimes-B-A-m-B-n-A-in-mathbb-C-mm-B-in-mathbb-C-nn"><span class="toc-number">1.0.13.</span> <span class="toc-text">12 $|A \otimes B|&#x3D;|A|^m  |B|^n, A \in \mathbb{C}^{mm}, B \in \mathbb{C}^{nn}$</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-0-otimes-A-A-otimes-0-0"><span class="toc-number">1.0.1.</span> <span class="toc-text">1 $0 \otimes A&#x3D;A \otimes 0&#x3D;0$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-A-1-A-2-otimes-B-A-1-otimes-B-A-2-otimes-B-A-otimes-B-1-B-2-A-otimes-B-1-A-otimes-B-2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2 $(A_1+A_2) \otimes B &#x3D; A_1 \otimes B +A_2 \otimes B$,$A\otimes(B_1+B_2)&#x3D;A\otimes B_1 +A\otimes B_2$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-alpha-A-otimes-beta-B-alpha-beta-A-otimes-B"><span class="toc-number">1.0.3.</span> <span class="toc-text">3 $(\alpha A)\otimes (\beta B)&#x3D;\alpha \beta (A \otimes B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-A-otimes-B-otimes-C-A-otimes-B-otimes-C"><span class="toc-number">1.0.4.</span> <span class="toc-text">4 $(A \otimes B) \otimes C &#x3D;A \otimes (B \otimes C)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-A-otimes-B-C-otimes-D-AC-otimes-BD"><span class="toc-number">1.0.5.</span> <span class="toc-text">5 $(A\otimes B)(C \otimes D)&#x3D;(AC)\otimes (BD)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-A-otimes-B-1-A-1-otimes-B-1"><span class="toc-number">1.0.6.</span> <span class="toc-text">6 $(A \otimes B)^{-1}&#x3D;A^{-1} \otimes B^{-1}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-A-otimes-B-T-A-T-otimes-B-T"><span class="toc-number">1.0.7.</span> <span class="toc-text">7 $(A \otimes B)^T&#x3D;A^T \otimes B^T$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-两个上-下-三角矩阵的直积还是上下三角阵"><span class="toc-number">1.0.8.</span> <span class="toc-text">8 两个上(下)三角矩阵的直积还是上下三角阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-两个-Hermite-矩阵的直积还是-Hermite-矩阵"><span class="toc-number">1.0.9.</span> <span class="toc-text">9 两个$Hermite$矩阵的直积还是$Hermite$矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-两个酉矩阵的直积还是酉矩阵"><span class="toc-number">1.0.10.</span> <span class="toc-text">9 两个酉矩阵的直积还是酉矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-tr-A-otimes-B-tr-A-tr-B"><span class="toc-number">1.0.11.</span> <span class="toc-text">10 $tr(A \otimes B)&#x3D;tr(A)tr(B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-rank-A-otimes-B-rank-A-rank-B"><span class="toc-number">1.0.12.</span> <span class="toc-text">11 $rank(A \otimes B)&#x3D;rank(A)rank(B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-A-otimes-B-A-m-B-n-A-in-mathbb-C-nn-B-in-mathbb-C-mm"><span class="toc-number">1.0.13.</span> <span class="toc-text">12 $|A \otimes B|&#x3D;|A|^m  |B|^n, A \in \mathbb{C}^{nn}, B \in \mathbb{C}^{mm}$</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -748,15 +748,11 @@ B&0& \cdots &0\\
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -765,6 +761,10 @@ B&0& \cdots &0\\
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
              
               <li class="article-tag-list-item">
