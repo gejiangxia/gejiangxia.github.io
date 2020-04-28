@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-28T10:23:57.000Z">
-<meta property="article:modified_time" content="2020-04-28T10:27:55.272Z">
+<meta property="article:modified_time" content="2020-04-28T13:24:38.612Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="ELGamal加密方案">
 <meta property="article:tag" content="DDH假设">
@@ -248,7 +248,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">135字</span>
+      <span class="post-count">1.9k字</span>
     </span>
   </span>
 
@@ -257,7 +257,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">8分</span>
     </span>
   </span>
 </div>
@@ -270,6 +270,39 @@
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
 <p>&ensp;&ensp;&ensp;&ensp;新建了一个分类，几种方案的可证明安全，实际上我这学期的公钥密码学课程的主要内容就是证明一些基础方案的安全性，这些方案有的复杂有的简单，我希望在这个分类里能好好总结这些可证明方案的证明思路，当然我可能会写的较为粗略，如果读者对公钥密码的方案比较感兴趣的话，可以私聊我一起交流学习。</p>
+<h2 id="ELGamal加密方案"><a href="#ELGamal加密方案" class="headerlink" title="ELGamal加密方案"></a>ELGamal加密方案</h2><p>&ensp;&ensp;&ensp;&ensp;ELGamal加密方案的结构并不复杂，设$\mathcal{G}$是一个多项式时间算法，输入$1^\lambda$，输出一个循环群$\mathbb{G}$，此群的阶数为长度为$\lambda$比特的素数$q$，设$g$是此群的一个生成元。对应的ELGamal加密方案主要结构如下：<br>Gen：输入$1^\lambda$，运行$\mathcal{G}$得到$(\mathbb{G},q,g)$，选择$x\leftarrow \mathbb{Z}_q$，计算$h:=g^x$。公钥为$pk=(\mathcal{G},q,g,h)$，私钥为$sk=(\mathcal{G},q,g,x)$<br>Enc：输入公钥$pk=(\mathcal{G},q,g,h)$，消息$m \in \mathbb{G}$，随机选择$y\leftarrow \mathbb{Z}_q$，输出密文<script type="math/tex">(c_1,c_2)=(g^y,h^y \cdot m)</script><br>Dec：输入私钥$sk=(\mathcal{G},q,g,x)$，密文$(c_1,c_2)$，计算消息：<script type="math/tex">m:=\frac{c_2}{c_1^x}=c_2 \cdot (c_1^x)^{-1}=c_2 \cdot (c_1^{-1})^x</script></p>
+<h2 id="CPA安全"><a href="#CPA安全" class="headerlink" title="CPA安全"></a>CPA安全</h2><p>&ensp;&ensp;&ensp;&ensp;首先要明白什么叫CPA安全，其实就是在Chosen-plaintext attack下安全的方案就是CPA安全的方案，也就是在选择明文攻击下安全，即攻击者可以随便挑选一个明文，然后得到对应的密文，但在实际的密码方案设计中，大家需要的是一个标准，CPA代表着攻击者有一个特殊能力，这个大家都清楚，但如何去标准的描述这个能力呢？有了基础的定义标准，才能有密码方案的标准，这就需要用到之前的可分辨实验。</p>
+<h3 id="CPA安全-不可分辨实验"><a href="#CPA安全-不可分辨实验" class="headerlink" title="CPA安全-不可分辨实验"></a>CPA安全-不可分辨实验</h3><p>实验<script type="math/tex">Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)</script>定义如下：<br>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对等长的消息<script type="math/tex">m_0,m_1</script><br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">Enc_{pk}(m_b)</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(1^\lambda ,pk)$输出一个比特<script type="math/tex">b' \in \{0,1\}</script>作为对$b$的猜测<br>5，如果$b’=b$则实验输出1，否则输出0.实验结束<br>&ensp;&ensp;&ensp;&ensp;如果$Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)=1$，则说$\mathcal{A}$成功，$\mathcal{A}$成功的优势定义为：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\prod}(\lambda):=|Pr[ Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)=1]-\frac{1}{2}|</script><p>由此就可以给出现在公认的CPA安全的定义如下：</p>
+<h4 id="CPA安全定义"><a href="#CPA安全定义" class="headerlink" title="CPA安全定义"></a>CPA安全定义</h4><p>如果下列条件满足，则说公钥加密方案$\Pi$具有在选择明文攻击下不可分辨加密(CPA-安全)：对于所有$PPT$敌手$\mathcal{A}$，存在可忽略函数$negl$，使得</p>
+<script type="math/tex; mode=display">Pr[ Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)=1] \leq \frac{1}{2}+negl(\lambda)</script><p>即</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\Pi}^{cpa}(\lambda) \leq negl(\lambda)</script><h2 id="DDH假设"><a href="#DDH假设" class="headerlink" title="DDH假设"></a>DDH假设</h2><p>&ensp;&ensp;&ensp;&ensp;有了CPA的定义之后就要去证明ELGamal加密方案是CPA安全的，但是现代的密码学都是基于一个个假设之上的，ELGamal加密方案的困难性假设就是DDH假设，其具体定义如下：<br>DDH问题：判定性Diffile-Hellman问题是对于$q$阶循环群$\mathcal{G}$来说，对于一个随机的生成元$g$，以及随机的$x,y \leftarrow \mathbb{Z}_q$，给定$g^x,g^y$以及$h=g^z \in \mathbb{G}$：判定是否有$h=g^{xy}$。<br>DDH假设：DDH问题对于$\mathcal{G}$是难解的，即如果对于所有$PPT$敌手$\mathcal{A}$，存在一个可忽略函数$negl$使得：</p>
+<script type="math/tex; mode=display">|Pr[ \mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^z)=1]-Pr[ \mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]| \leq negl(\lambda)</script><p>有了这个假设，接下来就可以进行ELGamal加密方案的CPA安全证明。</p>
+<h2 id="ELGamal加密方案的CPA安全证明"><a href="#ELGamal加密方案的CPA安全证明" class="headerlink" title="ELGamal加密方案的CPA安全证明"></a>ELGamal加密方案的CPA安全证明</h2><p>&ensp;&ensp;&ensp;&ensp;根据前面CPA安全的定义，我们现在的目标其实很清晰了，只要证明下面这个实验的成功优势可忽略即可：</p>
+<script type="math/tex; mode=display">
+Exp_1(\lambda): \\
+(pk,sk) \leftarrow Gen(1^\lambda) \\
+pk=(\mathcal{G},q,g,h=g^x), sk=(\mathcal{G},q,g,h,x)\\
+\mathcal{A}(1^\lambda ,pk) \rightarrow m_0, m_1 \in \mathbb{G} \\
+b \in \{0,1\}, y\leftarrow \mathbb{Z}_q, (c_1,c_2)=(g^y,h^y \cdot m_b) \\
+\mathcal{A}(1^\lambda ,pk, (c_1,c_2)) \rightarrow b' \in \{0,1\} \\
+b'=b, output \quad 1, else \quad 0</script><p>由此我们定义一个新的实验$Exp_2(\lambda)$如下：</p>
+<script type="math/tex; mode=display">
+Exp_2(\lambda): \\
+(pk,sk) \leftarrow Gen(1^\lambda), \color{red}{\hat{h} \leftarrow \mathbb{G}}\\
+pk=(\mathcal{G},q,g,h=g^x), sk=(\mathcal{G},q,g,h,x)\\
+\mathcal{A}(1^\lambda ,pk) \rightarrow m_0, m_1 \in \mathbb{G} \\
+b \in \{0,1\}, y\leftarrow \mathbb{Z}_q, \color{red}{(c_1,c_2)=(g^y, \hat{h} \cdot m_b)} \\
+\mathcal{A}(1^\lambda ,pk, (c_1,c_2)) \rightarrow b' \in \{0,1\} \\
+b'=b, output \quad 1, else \quad 0</script><p>&ensp;&ensp;&ensp;&ensp;注意实验$Exp_2(\lambda)$，它的$\hat{h}$是随机地从$\mathbb{G}$中选取的，所以有：</p>
+<script type="math/tex; mode=display">Pr[\hat{g} \in \mathbb{G} : \hat{h} \cdot m_b=\hat{g}]=Pr[\hat{h} =\hat{g}m_b^{-1}]=\frac{1}{q}</script><p>所以$c_2=\hat{h} \cdot m_b$就是均匀分布在$\mathbb{G}$中的，与$m_b$无关，它是一个随机的值，而$c_1$本身就是随机分布，所以实验$Exp_2(\lambda)$，$(c_1,c_2)$本身就是完全随机的，与$m_b$的取值没有关系，也就是说$m_b$的取值独立，和那这样无论敌手$\mathcal{A}$有多强的能力，都只能随机的去猜$b$，所以此时必有：</p>
+<script type="math/tex; mode=display">Pr[Exp_2(\lambda) ]=\frac{1}{2}</script><p>&ensp;&ensp;&ensp;&ensp;接下来我们定义一个$PPT$的判定算法$\mathcal{D}$如下：<br>Input:$(\mathbb{G},q,g,g_1,g_2,g_3)$<br>&ensp;&ensp;&ensp;&ensp;1，$pk=(\mathcal{G},q,g,g_1)$，调用$\mathcal{A}$，得到<script type="math/tex">m_0,m_1 \leftarrow(pk)</script><br>&ensp;&ensp;&ensp;&ensp;2，选择$b \leftarrow {0,1}$，令<script type="math/tex">c_1=g_2 ,c_2=g_3 \cdot m_b</script>，发送<script type="math/tex">(c_1,c_2)</script>给$\mathcal{A}$<br>&ensp;&ensp;&ensp;&ensp;3，$\mathcal{A}$输出$b’ \in {0,1}$<br>Output：若输出1，否则输出0</p>
+<p>&ensp;&ensp;&ensp;&ensp;显然算法$\mathcal{D}$仅仅调用了算法$\mathcal{A}$，故$\mathcal{D}$也是$PPT$算法，且算法$\mathcal{D}$吸收了不可分辨实验的一些特点，也变得可以直接用来区分一个组$(g,g^x,g^y,g^z)$是不是一个DH组，首先如果一个组$(g,g^x,g^y,g^z)$是DH组，即$(g,g^x,g^y,g^z)=(g,g^x,g^y,g^{xy})$，则必有：</p>
+<script type="math/tex; mode=display">Pr[ \mathcal{D}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]=Pr[ Exp_1(\lambda)=1]</script><p>如果一个组$(g,g^x,g^y,g^z)$不是DH组，则有：</p>
+<script type="math/tex; mode=display">Pr[ \mathcal{D}(\mathbb{G},q,g,g^x,g^y,g^z)=1]=Pr[ Exp_2(\lambda)=1]=\frac{1}{2}</script><p>所以根据DDH假设有：</p>
+<script type="math/tex; mode=display">|Pr[ \mathcal{D}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]-Pr[ \mathcal{D}(\mathbb{G},q,g,g^x,g^y,g^z)=1]| =|Pr[ Exp_1(\lambda)=1]-\frac{1}{2}| \leq negl(\lambda)</script><p>也就是说CPA-不可分辨实验成功的优势<script type="math/tex">Adv_{\mathcal{A},\Pi}^{cpa}(\lambda)</script>为：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\Pi}^{cpa}(\lambda) =|Pr[ Exp_1(\lambda)=1]-\frac{1}{2}| \leq negl(\lambda)</script><p>到此也就证毕了，我们证明了ELGamal加密方案的CPA-不可分辨实验成功的优势是可忽略的，也就是说ELGamal加密方案就是CPA安全的，当然前提是DDH假设成立。</p>
+<h2 id="ELGamal加密方案的一些性质"><a href="#ELGamal加密方案的一些性质" class="headerlink" title="ELGamal加密方案的一些性质"></a>ELGamal加密方案的一些性质</h2><p>&ensp;&ensp;&ensp;&ensp;ELGamal加密方案非常的简单，但也存在一些问题，首先必须要有明文$m \in \mathbb{G}$，这对加密方案是很大的限制，必须对明文进行一些分组之后才能应用此方案，而且加密效率并不高。具体还有什么缺点和优点，以后遇到后再补充吧。</p>
 
     
 
@@ -457,7 +490,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ELGamal加密方案"><span class="toc-number">1.1.</span> <span class="toc-text">ELGamal加密方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPA安全"><span class="toc-number">1.2.</span> <span class="toc-text">CPA安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPA安全-不可分辨实验"><span class="toc-number">1.2.1.</span> <span class="toc-text">CPA安全-不可分辨实验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPA安全定义"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">CPA安全定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDH假设"><span class="toc-number">1.3.</span> <span class="toc-text">DDH假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELGamal加密方案的CPA安全证明"><span class="toc-number">1.4.</span> <span class="toc-text">ELGamal加密方案的CPA安全证明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELGamal加密方案的一些性质"><span class="toc-number">1.5.</span> <span class="toc-text">ELGamal加密方案的一些性质</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -660,6 +693,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
@@ -672,6 +709,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
               </li>
              
@@ -680,11 +721,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+                <a href="javascript:void(0)" class="js-tag color1">可忽略函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+                <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,23 +749,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">可忽略函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">张量积</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">beamer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -740,7 +769,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,7 +785,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
             
             <div class="clearfix"></div>
