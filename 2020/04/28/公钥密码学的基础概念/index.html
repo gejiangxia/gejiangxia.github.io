@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 酉矩阵 | Hexo</title>
+  <title>可忽略函数与不可分辨 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="人非生而知之者，孰能无惑">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/%E9%85%89%E7%9F%A9%E9%98%B5/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="可忽略函数与不可分辨">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="人非生而知之者，孰能无惑">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-28T08:16:52.000Z">
+<meta property="article:modified_time" content="2020-04-28T10:20:32.367Z">
 <meta property="article:author" content="sklois-gjx">
+<meta property="article:tag" content="可忽略函数">
+<meta property="article:tag" content="不可分辨">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -212,80 +214,339 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-公钥密码学的基础概念" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" class="archive-article-date">
-        <time datetime="2020-04-23T05:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" target="_blank">酉变换与酉矩阵</a>
   
+    <h1 class="article-title" itemprop="name">
+      可忽略函数与不可分辨
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/04/28/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="archive-article-date">
+        <time datetime="2020-04-28T08:16:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">7分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
+<p>&ensp;&ensp;&ensp;&ensp;公钥密码学的基础概念比较驳杂，有些东西理解起来很简单，有些东西理解起来不太直观，部分概念牵涉到计算复杂性的理论。我在博文里面新开了一个categorie:公钥密码学的基础概念，以后遇到不同的就会慢慢更新，如果我有新的理解也会慢慢更新，当然这个categorie里的博文我不会写的特别详细，有些非常简单的东西我就直接略过了，可能没有公钥密码基础的同学读起来比较困难。</p>
+<h2 id="可忽略函数"><a href="#可忽略函数" class="headerlink" title="可忽略函数"></a>可忽略函数</h2><p>&ensp;&ensp;&ensp;&ensp;一个可忽略函数$f: \mathbb{Z}  \mapsto \mathbb{R}$满足：对于任何$c&gt;0$，存在一个$N_0&gt;0$，当$\lambda&gt;N_0$时，有$f(\lambda)&lt; \frac{1}{\lambda^c}$。</p>
+<p>&ensp;&ensp;&ensp;&ensp;概念非常简单，有大一高数基础就可以看懂，可忽略函数一般记做$negl(\lambda)$。虽然概念简单，但可忽略这个概念非常重要，是定义密码方案安全性的重要基础，也就是要求方案成功“破解”的概率可忽略。比较常见的可忽略函数有$2^{-\lambda}, 2^{-\sqrt{\lambda}}, \lambda^{-log\lambda}$。</p>
+<h2 id="不可分辨"><a href="#不可分辨" class="headerlink" title="不可分辨"></a>不可分辨</h2><p>&ensp;&ensp;&ensp;&ensp;实际上不可分辨和以前的计算不可区分没有多大区别，只是这里为了在公钥密码里应用的更方便，区分算法(或者分辨算法)是一个分辨实验或者分辨game。<br>&ensp;&ensp;&ensp;&ensp;首先给定两个随机分布总体$\mathcal{X}$和$\mathcal{Y}$</p>
+<script type="math/tex; mode=display">\mathcal{X}:=\lbrace \mathcal{X}_\lambda \rbrace_{\lambda \in \mathbb{N}}</script><script type="math/tex; mode=display">\mathcal{Y}:=\lbrace \mathcal{Y}_\lambda \rbrace_{\lambda \in \mathbb{N}}</script><p>对敌手$\mathcal{A}$，任意$b\in\lbrace 0,1 \rbrace$，可以进行下面的分辨实验(安全参数为$1^\lambda$，标志着输入长度)</p>
+<h3 id="分辨实验-Expt-mathcal-A-mathcal-X-mathcal-Y-ind-b-cdot-，输入-1-lambda"><a href="#分辨实验-Expt-mathcal-A-mathcal-X-mathcal-Y-ind-b-cdot-，输入-1-lambda" class="headerlink" title="分辨实验$Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-b}(\cdot)$，输入$1^\lambda$"></a>分辨实验$Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-b}(\cdot)$，输入$1^\lambda$</h3><p>1，抽取<script type="math/tex">x_0 \leftarrow \mathcal{X}_\lambda , x_1 \leftarrow \mathcal{Y}_\lambda</script>，把$x_b$给$\mathcal{A}(1^\lambda)$<br>2，算法$\mathcal{A}(1^\lambda ,x_b)$输出一个比特$b’$<br>3，实验输出$b’$，实验结束</p>
+<p>&ensp;&ensp;&ensp;&ensp;如果敌手猜对$b$，即$b=b’$，则说敌手分辨成功。敌手分辨成功的优势$Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda)$定义为</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda):=|Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =1]-Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]|</script><p>如果任何$PPT$的敌手$\mathcal{A}$，分辨的优势均是$\lambda$的可忽略函数，则说$\mathcal{X}$和$\mathcal{Y}$是不可分辨的。</p>
+<h2 id="关于不可分辨的一些分析"><a href="#关于不可分辨的一些分析" class="headerlink" title="关于不可分辨的一些分析"></a>关于不可分辨的一些分析</h2><h3 id="不可分辨是渐近意义下的"><a href="#不可分辨是渐近意义下的" class="headerlink" title="不可分辨是渐近意义下的"></a>不可分辨是渐近意义下的</h3><p>&ensp;&ensp;&ensp;&ensp;首先来看随机分布总体的概念，<script type="math/tex">\mathcal{X}:=\lbrace \mathcal{X}_\lambda \rbrace_{\lambda \in \mathbb{N}}</script>和<script type="math/tex">\mathcal{Y}:=\lbrace \mathcal{Y}_\lambda \rbrace_{\lambda \in \mathbb{N}}</script>是两个随机分布总体，$\lambda \in \mathbb{N} , \lambda$可以取成一个$\mathbb{N} \rightarrow \mathbb{N}$的函数$f(n)$，所以$\mathcal{X}$与$\mathcal{Y}$可以理解为两个随机分布序列</p>
+<script type="math/tex; mode=display">\mathcal{X} : \mathcal{X}_{f(1)},\mathcal{X}_{f(2)}, \cdots \cdots</script><script type="math/tex; mode=display">\mathcal{Y} : \mathcal{Y}_{f(1)},\mathcal{Y}_{f(2)}, \cdots \cdots</script><p>当$\lambda$确定后<script type="math/tex">\mathcal{X}_\lambda</script>与<script type="math/tex">\mathcal{Y}_\lambda</script>是一个分布，比如<script type="math/tex">\mathcal{X}_\lambda</script>与<script type="math/tex">\mathcal{Y}_\lambda</script>可以都是上<script type="math/tex">\{ 0,1\}^\lambda</script>的分布，所以给了一个$\lambda$只是从分布序列里确定了某一个分布。</p>
+<p>&ensp;&ensp;&ensp;&ensp;所以$\mathcal{X}$与$\mathcal{Y}$不可分辨是渐近性质的，$Adv(\lambda)$可忽略，即任意<script type="math/tex">c>0, \exists N_0>0  ,s.t. \lambda >N_0</script>时有$Adv(\lambda) \leq \frac{1}{\lambda^c}$，所以$\lambda$比较小时，$Adv(\lambda)$不一定很小，可能还比$\frac{1}{\lambda^c}$大，所以说$Adv(\lambda)$是渐近性质的，当$\lambda$逐渐变大时，$\mathcal{X}$与$\mathcal{Y}$不可分辨。</p>
+<h3 id="优势的等价定义"><a href="#优势的等价定义" class="headerlink" title="优势的等价定义"></a>优势的等价定义</h3><p>&ensp;&ensp;&ensp;&ensp;前面的定义里，算法$\mathcal{A}$成功的优势定义为：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda):=|Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =1]-Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]|</script><p>实际上可以理解为敌手分辨成功的概率和分辨失败的概率之间的差距，这个差距越大，敌手就“越”能分辨。但实际上，这个优势还有一种定义方式，首先有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda) &:=|Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =1]-Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]| \\
+&= |1-Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =0]-Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]|\\
+&= |Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =0]+Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]-1|
+\end{aligned}</script><p>另外有：</p>
+<script type="math/tex; mode=display">
+Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =0]+Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1] =2(\frac{1}{2}Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =0]+\frac{1}{2}Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]) \\
+=2(Pr[b=0 ]Pr[ Expt success|b=0]+Pr[b=1 ]Pr[ Expt success|b=1])\\
+=2Pr[ Expt success]</script><p>则有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda) &:=|Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =1]-Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]| \\
+&= |1-Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =0]-Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]|\\
+&= |Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =0]+Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]-1| \\
+&=|2Pr[ Expt success]-1| \\
+&=2|Pr[ Expt success]-\frac{1}{2}|
+\end{aligned}</script><p>所以优势也可以写成：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda) :=|Pr[ Expt success]-\frac{1}{2}|</script><p>所以可以发现这两种定义方式:</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda):=|Pr[ Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-0}(1^\lambda) =1]-Pr[Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-1}(1^\lambda) =1]|</script><script type="math/tex; mode=display">Adv_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-01}(\lambda) :=|Pr[ Expt success]-\frac{1}{2}|</script><p>实际上是完全等价的，只不过是相差了一个两倍的关系而已，具体使用时，哪一个更方便于证明就用哪一个。</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝冰露<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          sklois-gjx
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://yoursite.com/2020/04/28/公钥密码学的基础概念/" title="可忽略函数与不可分辨" target="_blank">http://yoursite.com/2020/04/28/公钥密码学的基础概念/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉变换</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">可忽略函数</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉矩阵</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">不可分辨</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
+        			<a href="/categories/公钥密码学的基础概念//" class="article-tag-list-link color1">公钥密码学的基础概念</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/28/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2020/04/28/ELGamal%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88%E6%98%AFCPA%E5%AE%89%E5%85%A8%E7%9A%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ELGamal加密方案是CPA安全的
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/25/%E5%BC%A0%E9%87%8F%E7%A7%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">张量积</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#可忽略函数"><span class="toc-number">1.1.</span> <span class="toc-text">可忽略函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不可分辨"><span class="toc-number">1.2.</span> <span class="toc-text">不可分辨</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分辨实验-Expt-mathcal-A-mathcal-X-mathcal-Y-ind-b-cdot-，输入-1-lambda"><span class="toc-number">1.2.1.</span> <span class="toc-text">分辨实验$Expt_{\mathcal{A},(\mathcal{X},\mathcal{Y})}^{ind-b}(\cdot)$，输入$1^\lambda$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于不可分辨的一些分析"><span class="toc-number">1.3.</span> <span class="toc-text">关于不可分辨的一些分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#不可分辨是渐近意义下的"><span class="toc-number">1.3.1.</span> <span class="toc-text">不可分辨是渐近意义下的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优势的等价定义"><span class="toc-number">1.3.2.</span> <span class="toc-text">优势的等价定义</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+<div id="SOHUCS" sid="公钥密码学的基础概念" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "1",
+        conf: "1"
+    });
+</script>
+</script>
+
+
+
+
+
+
+  <div id="giteement-ctn"></div>
+  
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
+  
+  <script>
+  <!-- id: "可忽略函数与不可分辨" -->
+  var giteement = new Giteement({
+    id: '20200428161652',
+    owner: 'gejiangxia',
+    repo: 'cunchupinglun',
+    backcall_uri: 'https://gejiangxia.github.io/',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: '27e177887f019cc620d25a9f6ff199009646d34dc2121893f5c3d8ef1b4d4dfb',
+      client_secret: 'e100abbdaee462a8b89440573514ead96f090348620cdfcc53b0fd6acdeea20f'
+    },
+  })
+  giteement.render('giteement-ctn')
+  </script>
+
+
+
+
+
+
 
 
           </div>
@@ -326,9 +587,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
