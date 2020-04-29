@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>拟随机置换与拟随机函数 | Hexo</title>
+  <title>拟随机函数与拟随机置换 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta property="og:type" content="article">
-<meta property="og:title" content="拟随机置换与拟随机函数">
+<meta property="og:title" content="拟随机函数与拟随机置换">
 <meta property="og:url" content="http://yoursite.com/2020/04/29/%E6%8B%9F%E9%9A%8F%E6%9C%BA%E7%BD%AE%E6%8D%A2%E4%B8%8E%E6%8B%9F%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-29T05:11:16.000Z">
-<meta property="article:modified_time" content="2020-04-29T05:28:19.030Z">
+<meta property="article:modified_time" content="2020-04-29T15:11:22.879Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="拟随机置换">
 <meta property="article:tag" content="拟随机函数">
@@ -221,7 +221,7 @@
   
   
     <h1 class="article-title" itemprop="name">
-      拟随机置换与拟随机函数
+      拟随机函数与拟随机置换
     </h1>
   
 
@@ -247,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">0字</span>
+      <span class="post-count">2.2k字</span>
     </span>
   </span>
 
@@ -256,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">9分</span>
     </span>
   </span>
 </div>
@@ -268,7 +268,80 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>。。。。。。</p>
+<p>&ensp;&ensp;&ensp;&ensp;拟随机和之前理论密码学的伪随机其实原理一样，只是有些细微处的差别，首先伪随机听起来不像是真正的随机，像是人为构造的假的随机一样，但拟随机内容多一点，像是模拟一个真随机，所以真随机也可以叫成拟随机，但把伪随机叫成真随机是有些奇怪的，后面我们均考虑拟随机。另外无论是拟随机函数还是拟随机置换都是对一个函数族来说的，并不是一个单个的函数是拟随机。</p>
+<h2 id="函数族"><a href="#函数族" class="headerlink" title="函数族"></a>函数族</h2><p>&ensp;&ensp;&ensp;&ensp;设<script type="math/tex">l_1,l_2>0</script>是正整数，是安全参数$\lambda$的多项式，函数族$\mathcal{F}$的定义如下：</p>
+<script type="math/tex; mode=display">\mathcal{F}:=\{F_s\}_{s\in S(1^\lambda)} \subseteq \Gamma_{l_1,l_2}</script><script type="math/tex; mode=display">\Gamma_{l_1,l_2}:=\{f|f:\{0,1\}^{l_1} \rightarrow \{0,1\}^{l_2}\}</script><p>其中<script type="math/tex">\Gamma_{l_1,l_2}</script>是从<script type="math/tex">\{0,1\}^{l_1}</script>到<script type="math/tex">\{0,1\}^{l_2}</script>的所有函数构成的集合，$S$是一个下标集合。<br>&ensp;&ensp;&ensp;&ensp;需要注意的是，这里<script type="math/tex">l_1,l_2</script>都是安全参数$\lambda$的多项式，所以不同的$\lambda$，<script type="math/tex">\Gamma_{l_1,l_2}</script>里的函数的定义域和值域都会发生变化，当然函数的个数也会发生变化，<script type="math/tex">\{0,1\}^{l_1} \rightarrow \{0,1\}^{l_2}</script>上的函数一共有<script type="math/tex">2^{l_22^{l_1}}</script>个。另外函数族$\mathcal{F}$的下标集合$S$必然也是与$\lambda$相关的，记为<script type="math/tex">S(1^\lambda)</script>，所以$\lambda$变化时，<script type="math/tex">\{F_s\}_{s\in S(1^\lambda)}</script>里函数的个数也在发生变化，当然，$S$与$\lambda$到底是什么关系就与具体的函数族的构造相关。</p>
+<h3 id="拟随机函数族"><a href="#拟随机函数族" class="headerlink" title="拟随机函数族"></a>拟随机函数族</h3><p>&ensp;&ensp;&ensp;&ensp;一个函数族<script type="math/tex">\mathcal{F}:=\{F_s\}_{s\in S(1^\lambda)} \subseteq \Gamma_{l_1,l_2}</script>称为是拟随机函数族，如果对于任意$PPT$敌手$\mathcal{A}$，存在可忽略函数$negl$，使得：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\mathcal{F}}^{PRF}=|Pr[ s\leftarrow S:\mathcal{A}^{F_S}(1^\lambda)=1]-Pr[ f\leftarrow \Gamma_{l_1,l_2}:\mathcal{A}^{f}(1^\lambda)=1]| \leq negl(\lambda)</script><p>这里的<script type="math/tex">\mathcal{A}^{F_S}</script>和<script type="math/tex">mathcal{A}^f</script>是说算法$\mathcal{A}$黑盒地调用函数<script type="math/tex">F_S</script>和$f$，即$oracle$形式的调用，算法$\mathcal{A}$给函数$oracle$一个自变量，函数$oracle$返回一个函数值，且相同的询问回复相同的值。这个是非常显然的，因为<script type="math/tex">F_S</script>和$f$都是<script type="math/tex">\{0,1\}^{l_1} \rightarrow \{0,1\}^{l_2}</script>上的函数，光自变量的值就有<script type="math/tex">2^{l_1}</script>个，$PPT$的算法$\mathcal{A}$根本无法完整存储这个函数，只能以$oracle$形式进行调用。</p>
+<h2 id="置换族"><a href="#置换族" class="headerlink" title="置换族"></a>置换族</h2><p>&ensp;&ensp;&ensp;&ensp;置换族的定义和函数族的定义完全类似，首先整数<script type="math/tex">l=l_1=l_2</script>，是安全参数$\lambda$的多项式，置换族$\mathcal{P}$的定义如下：</p>
+<script type="math/tex; mode=display">\mathcal{P}:=\{P_t\}_{t\in T(1^\lambda)} \subseteq \Pi_l</script><script type="math/tex; mode=display">\Pi_l:=\{\pi|\pi:\{0,1\}^l \rightarrow \{0,1\}^l\}</script><p>其中$\pi$是置换，$T$与$S$一样是有效抽样的集合，或者说下标的集合，其余关于安全参数$\lambda$的东西都完全类似。</p>
+<h3 id="拟随机置换族"><a href="#拟随机置换族" class="headerlink" title="拟随机置换族"></a>拟随机置换族</h3><p>&ensp;&ensp;&ensp;&ensp;一个置换族<script type="math/tex">\mathcal{P}:=\{P_t\}_{t\in T(1^\lambda)} \subseteq \Pi_l</script>称为是<script type="math/tex">\{0,1\}^{l}</script>上的拟随机置换族，如果对于任意的$PPT$敌手$\mathcal{A}$，存在可忽略函数$negl$，使得：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\mathcal{P}}^{PRF}=|Pr[ t\leftarrow T:\mathcal{A}^{P_t}(1^\lambda)=1]-Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]| \leq negl(\lambda)</script><p>&ensp;&ensp;&ensp;&ensp;由此我们给出了拟随机置换族和拟随机函数族的定义，实际上这两个概念是存在一定联系的，集中表现在下面的定理中。</p>
+<h2 id="对任意整数-l-gt-0-，-l-是安全参数-lambda-的一个多项式，集合-0-1-l-上的拟随机置换族一定是拟随机函数族"><a href="#对任意整数-l-gt-0-，-l-是安全参数-lambda-的一个多项式，集合-0-1-l-上的拟随机置换族一定是拟随机函数族" class="headerlink" title="对任意整数$l&gt;0$，$l$是安全参数$\lambda$的一个多项式，集合\{0,1\}^{l}上的拟随机置换族一定是拟随机函数族"></a>对任意整数$l&gt;0$，$l$是安全参数$\lambda$的一个多项式，集合<script type="math/tex">\{0,1\}^{l}</script>上的拟随机置换族一定是拟随机函数族</h2><p>&ensp;&ensp;&ensp;&ensp;接下来的主要工作就是证明这个定理，这个定理看起来也比较直观，本身置换就是函数的一种，那这个定理就是说当安全参数$\lambda$逐渐变大时，即使我们仅仅考虑置换函数构成的拟随机置换族，它也可以看成是一个拟随机的函数族，也就是说仅仅是占函数总量很少的置换构成的函数族，$PPT$的算法就已经无法有效分辨了它是置换还是普通函数了，$PPT$的算法能力还是太弱了。<br>&ensp;&ensp;&ensp;&ensp;首先对任意一个$PPT$的算法$\mathcal{A}$，有下式成立：</p>
+<script type="math/tex; mode=display">
+|Pr[t\leftarrow T :\mathcal{A}^{P_t}(1^\lambda)=1]-Pr[ f\leftarrow \Gamma_l:\mathcal{A}^{f}(1^\lambda)=1]|\\
+\leq |Pr[t\leftarrow T :\mathcal{A}^{P_t}(1^\lambda)=1]-Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]|+|Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]-Pr[ f\leftarrow \Gamma_l:\mathcal{A}^{f}(1^\lambda)=1]| \\</script><p>根据拟随机置换族的定义，必有<script type="math/tex">|Pr[t\leftarrow T :\mathcal{A}^{P_t}(1^\lambda)=1]-Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]| \leq negl_1(\lambda)</script>，代入上式就有：</p>
+<script type="math/tex; mode=display">
+|Pr[t\leftarrow T :\mathcal{A}^{P_t}(1^\lambda)=1]-Pr[ f\leftarrow \Gamma_l:\mathcal{A}^{f}(1^\lambda)=1]|\\
+\leq |Pr[t\leftarrow T :\mathcal{A}^{P_t}(1^\lambda)=1]-Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]|+|Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]-Pr[ f\leftarrow \Gamma_l:\mathcal{A}^{f}(1^\lambda)=1]| \\
+\leq negl_1(\lambda)+|Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]-Pr[ f\leftarrow \Gamma_l:\mathcal{A}^{f}(1^\lambda)=1]</script><p>所以只需要证明有可忽略函数$negl_2(\lambda)$使得<script type="math/tex">|Pr[ \pi \leftarrow \Pi_l:\mathcal{A}^{\pi}(1^\lambda)=1]-Pr[ f\leftarrow \Gamma_l:\mathcal{A}^{f}(1^\lambda)=1] |\leq negl_2(\lambda)</script>成立即可，可以发现，这个式子代表着集合<script type="math/tex">\{0,1\}^{l}</script>上的函数族和置换族是不可区分的，接下来就证这个式子。</p>
+<p>&ensp;&ensp;&ensp;&ensp;要证明这个式子，就要用到实验序列的方法，首先算法$\mathcal{A}$是多项式时间的算法，所以可以假设$\mathcal{A}$至多询问$q$次$oracle$，$q$是一个多项式，因为用相同的值询问时，$oracle$必然返回相同的值，所以可以提前假设算法$\mathcal{A}$的$q$次询问必不重复。由此我们给出实验序列如下：</p>
+<html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Exp_1(\lambda): \\
+                \pi \leftarrow \Pi_l \\
+                r \leftarrow R \\
+                x_i \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots i-1}) \in  \{0,1\}^{l}(i=1\cdots q) \\
+                Y_i \leftarrow \pi(x_i)(i=1\cdots q) \\
+                b \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots q}) \in  \{0,1\} \\
+                output \quad b$$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Exp_2(\lambda): \\
+                Y_1 \cdots Y_q \leftarrow \{0,1\}^{l} \\
+                r \leftarrow R \\
+                x_i \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots i-1}) \in  \{0,1\}^{l}(i=1\cdots q) \\
+                if Y_i \notin  Y_{ 1 \cdots i-1} then Y_i to  \mathcal{A}, else Y_i \leftarrow \{0,1\}^{l} \backslash Y_{1\cdots i-1}(i=1\cdots q)\\
+                b \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots q}) \in  \{0,1\} \\
+                output \quad b$$
+            </td>
+        </tr>
+    </table>
+</html>
+<html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Exp_3(\lambda): \\
+                \pi \leftarrow \Pi_l \\
+                r \leftarrow R \\
+                x_i \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots i-1}) \in  \{0,1\}^{l}(i=1\cdots q) \\
+                Y_i  to \mathcal{A} \\
+                b \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots q}) \in  \{0,1\} \\
+                output \quad b$$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Exp_4(\lambda): \\
+                f  \leftarrow \Gamma_l \\
+                r \leftarrow R \\
+                x_i \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots i-1}) \in  \{0,1\}^{l}(i=1\cdots q) \\
+                Y_i  \leftarrow f(x_i) (i=1\cdots q) \\
+                b \leftarrow \mathcal{A}(1^\lambda,r,Y_{1 \cdots q}) \in  \{0,1\} \\
+                output \quad b$$
+            </td>
+        </tr>
+    </table>
+</html>
+
+<p>&ensp;&ensp;&ensp;&ensp;这四个实验是相互联系的，首先<script type="math/tex">Exp_1(\lambda)</script>是从<script type="math/tex">\Pi_l</script>里随机挑选了一个置换作为$oracle$回复算法$\mathcal{A}$的询问，因为假设算法$\mathcal{A}$的询问不相同，根据置换的特点，可知$oracle$的回复必然也互不相同。然而<script type="math/tex">Exp_2(\lambda)</script>是将挑选置换作为$oracle$这一步省略掉了，直接随机挑选了多项式个函数值<script type="math/tex">Y_1 \cdots Y_q \leftarrow \{0,1\}^{l}</script>，这些函数值可能有相同的，但<script type="math/tex">Exp_2(\lambda)</script>里做了特殊处理，它在$oracle$的回复做了手脚，一般是直接以<script type="math/tex">Y_i</script>回复<script type="math/tex">x_i</script>的询问，但<script type="math/tex">Exp_2(\lambda)</script>里会先比较<script type="math/tex">Y_i</script>跟前$i-1$次的回复有没有重复的，如果有重复，就再重新随机挑选一个跟前$i-1$次回复不重复的<script type="math/tex">Y_i</script>回复$\mathcal{A}$，如果不重复，就直接回复原<script type="math/tex">Y_i</script>。<br>&ensp;&ensp;&ensp;&ensp;所以<script type="math/tex">Exp_2(\lambda)</script>最终得到的$q$次回复完全就是$q$个互不相同的随机串，这与<script type="math/tex">Exp_1(\lambda)</script>实际上得到的结果是相同的，首先<script type="math/tex">Exp_1(\lambda)</script>得到的结果必不相同，这是由置换的性质决定的，但为什么是随机的呢？因为在<script type="math/tex">Exp_1(\lambda)</script>的$oracle$里，置换<script type="math/tex">\pi \leftarrow \Pi_l</script>是随机选的，那$\mathcal{A}$得到任何一个随机串$r$的概率都是等可能的:</p>
+<script type="math/tex; mode=display">Pr[r]=Pr[\pi_1]Pr[r=\pi(x)|\pi=\pi_1]+\cdots+Pr[\pi_n]Pr[r=\pi(x)|\pi=\pi_n]=\frac{1}{2^n}(Pr[\pi_1]+\cdots+Pr[\pi_n])=\frac{1}{2^n}</script><p>所以<script type="math/tex">Exp_2(\lambda)</script>与<script type="math/tex">Exp_1(\lambda)</script>这两个实验里算法$\mathcal{A}$能见到的东西是一模一样的，所以必有：</p>
+<script type="math/tex; mode=display">\color{red}{Pr[Exp_1(\lambda)=1]=Pr[Exp_2(\lambda)=1]}</script><p>&ensp;&ensp;&ensp;&ensp;再考虑<script type="math/tex">Exp_3(\lambda)</script></p>
 
     
 
@@ -315,7 +388,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/04/29/拟随机置换与拟随机函数/" title="拟随机置换与拟随机函数" target="_blank">http://yoursite.com/2020/04/29/拟随机置换与拟随机函数/</a>
+          <a href="http://yoursite.com/2020/04/29/拟随机置换与拟随机函数/" title="拟随机函数与拟随机置换" target="_blank">http://yoursite.com/2020/04/29/拟随机置换与拟随机函数/</a>
         </li>
         
         <li>
@@ -427,6 +500,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2020/04/29/%E6%A6%82%E7%8E%87%E5%B7%AE%E5%BC%95%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          概率差引理
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/04/28/CPA%E5%AE%89%E5%85%A8%E7%9A%84%E5%85%AC%E9%92%A5%E6%96%B9%E6%A1%88%E8%82%AF%E5%AE%9A%E5%A4%9A%E6%AC%A1%E5%8A%A0%E5%AF%86%E5%AE%89%E5%85%A8/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">CPA安全的公钥方案肯定多次加密安全</div>
@@ -456,7 +538,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数族"><span class="toc-number">1.1.</span> <span class="toc-text">函数族</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#拟随机函数族"><span class="toc-number">1.1.1.</span> <span class="toc-text">拟随机函数族</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#置换族"><span class="toc-number">1.2.</span> <span class="toc-text">置换族</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#拟随机置换族"><span class="toc-number">1.2.1.</span> <span class="toc-text">拟随机置换族</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对任意整数-l-gt-0-，-l-是安全参数-lambda-的一个多项式，集合-0-1-l-上的拟随机置换族一定是拟随机函数族"><span class="toc-number">1.3.</span> <span class="toc-text">对任意整数$l&gt;0$，$l$是安全参数$\lambda$的一个多项式，集合\{0,1\}^{l}上的拟随机置换族一定是拟随机函数族</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -490,7 +572,7 @@
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "拟随机置换与拟随机函数" -->
+  <!-- id: "拟随机函数与拟随机置换" -->
   var giteement = new Giteement({
     id: '20200429131116',
     owner: 'gejiangxia',
@@ -659,22 +741,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CPA安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CPA-多次加密安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
@@ -683,11 +749,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+                <a href="javascript:void(0)" class="js-tag color1">CPA安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CPA-多次加密安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,6 +774,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,7 +793,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
+                <a href="javascript:void(0)" class="js-tag color1">奇异值分解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">极式分解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,11 +813,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">奇异值分解</a>
+                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">极式分解</a>
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -743,11 +829,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,10 +850,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
             
             <div class="clearfix"></div>
