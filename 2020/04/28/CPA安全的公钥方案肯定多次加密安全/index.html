@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-28T13:51:52.000Z">
-<meta property="article:modified_time" content="2020-04-28T14:09:37.093Z">
+<meta property="article:modified_time" content="2020-04-29T04:38:31.270Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="CPA安全">
 <meta property="article:tag" content="CPA-多次加密安全">
@@ -247,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">159字</span>
+      <span class="post-count">2.5k字</span>
     </span>
   </span>
 
@@ -256,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">11分</span>
     </span>
   </span>
 </div>
@@ -269,7 +269,35 @@
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
 <p>&ensp;&ensp;&ensp;&ensp;前面的博文已经写过CPA安全，也证明了一个CPA安全的方案，但一个方案在单次加密下是安全的，就一定在多次加密下是安全的吗？实际上答案是否定的，对于私钥密码来说，是存在单次加密安全，多次加密不安全的密码方案的，但对于公钥方案来说，CPA安全的公钥方案肯定多次加密安全。这篇博文就给出这个定理的证明，主要是用到了混合分布的思想。</p>
-<h2 id="CPA-多次加密的安全性定义"><a href="#CPA-多次加密的安全性定义" class="headerlink" title="CPA-多次加密的安全性定义"></a>CPA-多次加密的安全性定义</h2>
+<h2 id="CPA-多次加密的安全性定义"><a href="#CPA-多次加密的安全性定义" class="headerlink" title="CPA-多次加密的安全性定义"></a>CPA-多次加密的安全性定义</h2><p>&ensp;&ensp;&ensp;&ensp;和以前一样，想要描述某种安全性的话，就要给出这种安全性的标准定义，这里还是通过实验给出的安全性定义。对于加密方案$\Pi$，以及敌手$\mathcal{A}$，实验<script type="math/tex">Pubk_{\mathcal{A},\Pi}^{mult-b}(\lambda)</script>定义如下：<br>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对消息向量<script type="math/tex">\vec{M_0}=(m_0^1, \cdots ,m_0^t)</script>和<script type="math/tex">\vec{M_1}=(m_1^1, \cdots ,m_1^t)</script>，满足<script type="math/tex">|m_0^i|=|m_1^i|</script>对于所有<script type="math/tex">i \in [t ]</script>成立，$t$是任意确定的关于$\lambda$的多项式<br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">\vec C=(Enc_{pk}(m_b^1), \cdots , Enc_{pk}(m_b^t))</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(\vec C, pk)$输出一个比特<script type="math/tex">b' \in \{ 0,1 \}</script><br>5，输出$b’$<br>如果<script type="math/tex">Pubk_{\mathcal{A},\Pi}^{mult-b}(\lambda)=b</script>则说$\mathcal{A}$成功，则这个方案不是CPA-多次加密安全的。在此实验的基础上给出CPA-多次加密的安全性定义：<br>&ensp;&ensp;&ensp;&ensp;满足下面条件的公钥加密系统$\Pi$称为具有窃听敌手不可分辨的多次加密(也就是CPA-多次加密安全)：对于任一$PPT$敌手$\mathcal{A}$，存在一个可忽略的函数$negl$使得</p>
+<script type="math/tex; mode=display">|Pr[ Pubk_{\mathcal{A},\Pi}^{mult-0}(\lambda)=1]-Pr[ Pubk_{\mathcal{A},\Pi}^{mult-1}(\lambda)=1]| \leq negl(\lambda)</script><h2 id="证明过程"><a href="#证明过程" class="headerlink" title="证明过程"></a>证明过程</h2><p>&ensp;&ensp;&ensp;&ensp;这个的证明过程较为繁琐，需要用到混合分布，混合分布之前理论密码学老师讲过，甚至这个定理老师也讲过，但和公钥密码学的证明有一点小区别。既然是混合分布，那就需要先定义两头的分布，定义如下：</p>
+<script type="math/tex; mode=display">Expt_0(\lambda,1)=Pubk_{\mathcal{A},\Pi}^{mult-1}(1^\lambda)</script><p>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对消息向量<script type="math/tex">\vec{M_0}=(m_0^1, \cdots ,m_0^t)</script>和<script type="math/tex">\vec{M_1}=(m_1^1, \cdots ,m_1^t)</script>，满足<script type="math/tex">|m_0^i|=|m_1^i|</script>对于所有<script type="math/tex">i \in [t ]</script>成立，$t$是任意确定的关于$\lambda$的多项式<br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">\color{red}{\vec C=(Enc_{pk}(m_1^1), \cdots , Enc_{pk}(m_1^t))}</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(\vec C, pk)$输出一个比特<script type="math/tex">b' \in \{ 0,1 \}</script><br>5，输出$b’$</p>
+<script type="math/tex; mode=display">Expt_t(\lambda,0)=Pubk_{\mathcal{A},\Pi}^{mult-0}(1^\lambda)</script><p>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对消息向量<script type="math/tex">\vec{M_0}=(m_0^1, \cdots ,m_0^t)</script>和<script type="math/tex">\vec{M_1}=(m_1^1, \cdots ,m_1^t)</script>，满足<script type="math/tex">|m_0^i|=|m_1^i|</script>对于所有<script type="math/tex">i \in [t ]</script>成立，$t$是任意确定的关于$\lambda$的多项式<br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">\color{red}{\vec C=(Enc_{pk}(m_0^1), \cdots , Enc_{pk}(m_0^t))}</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(\vec C, pk)$输出一个比特<script type="math/tex">b' \in \{ 0,1 \}</script><br>5，输出$b’$</p>
+<p>&ensp;&ensp;&ensp;&ensp;定义了这样两个实验之后，就有如下等式：</p>
+<script type="math/tex; mode=display">Pr[Expt_0(\lambda,1) =1]=Pr[ Pubk_{\mathcal{A},\Pi}^{mult-1}(\lambda)=1]</script><script type="math/tex; mode=display">Pr[Expt_t(\lambda,0) =1]=Pr[ Pubk_{\mathcal{A},\Pi}^{mult-0}(\lambda)=1]</script><p>所以根据CPA-多次加密的安全性定义，为了证明CPA-多次加密的安全性，只需证明存在可忽略函数$negl$使得下式成立即可：</p>
+<script type="math/tex; mode=display">|Pr[Expt_t(\lambda,0) =1]-Pr[Expt_0(\lambda,1) =1]|\leq negl(\lambda)</script><p>&ensp;&ensp;&ensp;&ensp;到现在为止，混合分布的两头分布已经定义好了，接下来就要定义混合分布中间的分布，定义如下(<script type="math/tex">i \in [t ]</script>)：</p>
+<script type="math/tex; mode=display">Expt_i(\lambda):</script><p>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对消息向量<script type="math/tex">\vec{M_0}=(m_0^1, \cdots ,m_0^t)</script>和<script type="math/tex">\vec{M_1}=(m_1^1, \cdots ,m_1^t)</script>，满足<script type="math/tex">|m_0^i|=|m_1^i|</script>对于所有<script type="math/tex">i \in [t ]</script>成立，$t$是任意确定的关于$\lambda$的多项式<br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">\color{red}{\vec {C^i}=(Enc_{pk}(m_0^1), \cdots , Enc_{pk}(m_0^i),Enc_{pk}(m_1^{i+1}), \cdots ,Enc_{pk}(m_1^t))}</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(\vec C, pk)$输出一个比特<script type="math/tex">b' \in \{ 0,1 \}</script><br>5，输出$b’$</p>
+<p>非常直观的就可以看到：</p>
+<script type="math/tex; mode=display">Pr[Expt_0(\lambda)=1 ]=Pr[Expt_0(\lambda,1) =1] \quad Pr[Expt_t(\lambda)=1 ]=Pr[Expt_t(\lambda,0) =1]</script><p>所以只需证明存在可忽略函数$negl$使得下式成立即可：</p>
+<script type="math/tex; mode=display">|Pr[Expt_0(\lambda)=1 ]-Pr[Expt_t(\lambda)=1 ]| \leq negl(\lambda)</script><p>&ensp;&ensp;&ensp;&ensp;接下来，我们主要考虑<script type="math/tex">|Pr[Expt_0(\lambda)=1 ]-Pr[Expt_t(\lambda)=1 ]|</script>这个式子，根据绝对值的性质，有：</p>
+<script type="math/tex; mode=display">|Pr[Expt_0(\lambda)=1 ]-Pr[Expt_t(\lambda)=1 ]| \leq \sum\limits_{i=1}^t |Pr[Expt_{i-1}(\lambda)=1 ]-Pr[Expt_i(\lambda)=1 ]|</script><p>如果对于任意$1 \leq i \leq t$都存在可忽略函数$negl_i$使得下式成立：</p>
+<script type="math/tex; mode=display">|Pr[Expt_{i-1}(\lambda)=1 ]-Pr[Expt_i(\lambda)=1 ]|\leq negl_i</script><p>则因为$t$是多项式大小的，所以<script type="math/tex">negl=\sum\limits_{i=1}^t negl_i</script>一定是可忽略函数，则有</p>
+<script type="math/tex; mode=display">|Pr[Expt_0(\lambda)=1 ]-Pr[Expt_t(\lambda)=1 ]|\leq \sum\limits_{i=1}^t |Pr[Expt_{i-1}(\lambda)=1 ]-Pr[Expt_i(\lambda)=1 ]| =\sum\limits_{i=1}^t negl_i =negl</script><p>这样命题就证毕了，只要我们能证明对于任意$1 \leq i \leq t$都存在可忽略函数$negl_i$使得下式成立即可：</p>
+<script type="math/tex; mode=display">|Pr[Expt_{i-1}(\lambda)=1 ]-Pr[Expt_i(\lambda)=1 ]|\leq negl_i</script><p>&ensp;&ensp;&ensp;&ensp;为了证明<script type="math/tex">|Pr[Expt_{i-1}(\lambda)=1 ]-Pr[Expt_i(\lambda)=1 ]|\leq negl_i</script>，首先给出实验<script type="math/tex">Expt_{i-1}(\lambda)</script>和实验<script type="math/tex">Expt_{i}(\lambda)</script>的具体流程如下;</p>
+<script type="math/tex; mode=display">Expt_{i-1}(\lambda):</script><p>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对消息向量<script type="math/tex">\vec{M_0}=(m_0^1, \cdots ,m_0^t)</script>和<script type="math/tex">\vec{M_1}=(m_1^1, \cdots ,m_1^t)</script>，满足<script type="math/tex">|m_0^i|=|m_1^i|</script>对于所有<script type="math/tex">i \in [t ]</script>成立，$t$是任意确定的关于$\lambda$的多项式<br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">\color{red}{\vec {C^i}=(Enc_{pk}(m_0^1), \cdots , Enc_{pk}(m_0^{i-1}),Enc_{pk}(m_1^{i}), \cdots ,Enc_{pk}(m_1^t))}</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(\vec C, pk)$输出一个比特<script type="math/tex">b' \in \{ 0,1 \}</script><br>5，输出$b’$</p>
+<script type="math/tex; mode=display">Expt_i(\lambda):</script><p>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对消息向量<script type="math/tex">\vec{M_0}=(m_0^1, \cdots ,m_0^t)</script>和<script type="math/tex">\vec{M_1}=(m_1^1, \cdots ,m_1^t)</script>，满足<script type="math/tex">|m_0^i|=|m_1^i|</script>对于所有<script type="math/tex">i \in [t ]</script>成立，$t$是任意确定的关于$\lambda$的多项式<br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">\color{red}{\vec {C^i}=(Enc_{pk}(m_0^1), \cdots , Enc_{pk}(m_0^i),Enc_{pk}(m_1^{i+1}), \cdots ,Enc_{pk}(m_1^t))}</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(\vec C, pk)$输出一个比特<script type="math/tex">b' \in \{ 0,1 \}</script><br>5，输出$b’$</p>
+<p>可以发现，这两个实验的$\vec {C^i}$仅仅在于第$i$个元素不同，实验<script type="math/tex">Expt_{i-1}(\lambda)</script>的第$i$个元素是<script type="math/tex">Enc_{pk}(m_1^{i})</script>，实验<script type="math/tex">Expt_{i}(\lambda)</script>的第$i$个元素是<script type="math/tex">Enc_{pk}(m_0^{i})</script>，由此就可以利用单次加密的CPA安全。</p>
+<p>&ensp;&ensp;&ensp;&ensp;我们想证明<script type="math/tex">|Pr[Expt_{i-1}(\lambda)=1 ]-Pr[Expt_i(\lambda)=1 ]|\leq negl_i</script>，而且我们知道这两个实验仅仅在于$\vec {C^i}$的第$i$个元素不同，由此，我们构造窃听单个加密的敌手$\mathcal{A}’$，$\mathcal{A}’$参加下面的分辨实验：</p>
+<script type="math/tex; mode=display">Pubk_{\mathcal{A}',\Pi}^{cpa-b}(\lambda): b \in \{ 0,1 \}</script><p>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}’$得到$pk$，输出一对等长的消息<script type="math/tex">m_0,m_1</script><br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">\color{red}{c^*=Enc_{pk}(m_b)}</script><br>4，<script type="math/tex">\mathcal{A}'(1^\lambda ,pk,c^*)</script>输出一个比特<script type="math/tex">b' \in \{0,1\}</script>作为对$b$的猜测<br>5，输出$b’$</p>
+<p>接下来给出$\mathcal{A}’$的具体结构如下：</p>
+<script type="math/tex; mode=display">\mathcal{A}'(1^\lambda ,i)</script><p>1，得到公钥$pk$，调用$\mathcal{A}(pk)$得到<script type="math/tex">\vec{M_0}=(m_0^1, \cdots ,m_0^t)</script>和<script type="math/tex">\vec{M_1}=(m_1^1, \cdots ,m_1^t)</script><br>2，$\mathcal{A}’$任意选择<script type="math/tex">i \in [t ]</script>，从<script type="math/tex">\vec{M_0}</script>和<script type="math/tex">\vec{M_1}</script>中输出<script type="math/tex">m_0^i,m_1^i</script><br>3，当$\mathcal{A}’$得到一个密文<script type="math/tex">c^*</script>时，$\mathcal{A}’$令<script type="math/tex">c^i:=c^*</script>，并且对于$0 \leq j \leq i-1$计算<script type="math/tex">c^j=Enc_{pk}(m_0^j)</script>，对于$i+1 \leq j \leq t$计算<script type="math/tex">c^j=Enc_{pk}(m_1^j)</script>，最后令<script type="math/tex">c:=(c^1, \cdots,c^{i-1},c^i,c^{i+1},\cdots ,c^t)</script><br>4，$\mathcal{A}’$运行$\mathcal{A}(c)$，输出$\mathcal{A}$的输出</p>
+<p>所以对于窃听单个加密的分辨实验<script type="math/tex">Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda)</script>来说，显然有：</p>
+<script type="math/tex; mode=display">Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,0)=1]=Pr[Expt_i(\lambda)=1 ]</script><script type="math/tex; mode=display">Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,1)=1]=Pr[Expt_{i-1}(\lambda)=1 ]</script><p>我们前面的假设就是方案$\Pi$在单次加密下是CPA安全的，所以一定有可忽略函数$negl_i$使得：</p>
+<script type="math/tex; mode=display">|Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,0)=1]-Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,1)=1]| \leq negl_i</script><p>则有</p>
+<script type="math/tex; mode=display">|Pr[Expt_i(\lambda)=1 ]-Pr[Expt_{i-1}(\lambda)=1 ]|=|Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,0)=1]-Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,1)=1]| \leq negl_i</script><p>至此，原命题全部得证。</p>
+<h2 id="一些感想"><a href="#一些感想" class="headerlink" title="一些感想"></a>一些感想</h2><p>&ensp;&ensp;&ensp;&ensp;首先这个命题是公钥理论中非常基础的证明，也利用了混合分布，在博文里认真写一写也能加深自己对混合分布的理解。需要注意的地方是，在下面这两个式子里：</p>
+<script type="math/tex; mode=display">Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,0)=1]=Pr[Expt_i(\lambda)=1 ]</script><script type="math/tex; mode=display">Pr[ Pubk_{\mathcal{A}',\Pi}^{cpa}(\lambda,1)=1]=Pr[Expt_{i-1}(\lambda)=1 ]</script><p>我们仅仅考虑概率的相等性，怎么说呢，就是<script type="math/tex">Pubk_{\mathcal{A}',\Pi}^{cpa}</script>这个实验与<script type="math/tex">Expt</script>这个实验是否判断正确我们是不考虑的，可能<script type="math/tex">Pubk_{\mathcal{A}',\Pi}^{cpa}</script>用的是<script type="math/tex">m_0</script>加密，但<script type="math/tex">Expt</script>输出一个1，这些都是有可能的，我们不去关注这些多余的东西，仅仅关注它们的概率大小是不是相等就可以了，从算法构造上来看，它们的确相等，这样便于我们进行概率分析，往CPA安全的定义上靠近，进而完成我们的证明。</p>
+
     
 
     
@@ -452,7 +480,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPA-多次加密的安全性定义"><span class="toc-number">1.1.</span> <span class="toc-text">CPA-多次加密的安全性定义</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPA-多次加密的安全性定义"><span class="toc-number">1.1.</span> <span class="toc-text">CPA-多次加密的安全性定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证明过程"><span class="toc-number">1.2.</span> <span class="toc-text">证明过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些感想"><span class="toc-number">1.3.</span> <span class="toc-text">一些感想</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -671,10 +699,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
               </li>
              
@@ -683,11 +707,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,6 +735,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">张量积</a>
               </li>
              
@@ -719,7 +751,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,15 +767,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,6 +776,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
             
             <div class="clearfix"></div>
