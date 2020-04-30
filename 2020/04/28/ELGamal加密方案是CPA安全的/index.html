@@ -16,11 +16,11 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-28T10:23:57.000Z">
-<meta property="article:modified_time" content="2020-04-29T05:28:20.065Z">
+<meta property="article:modified_time" content="2020-04-30T03:56:53.203Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="CPA安全">
-<meta property="article:tag" content="ELGamal加密方案">
 <meta property="article:tag" content="DDH假设">
+<meta property="article:tag" content="ELGamal加密方案">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -274,7 +274,7 @@
 <h2 id="CPA安全"><a href="#CPA安全" class="headerlink" title="CPA安全"></a>CPA安全</h2><p>&ensp;&ensp;&ensp;&ensp;首先要明白什么叫CPA安全，其实就是在Chosen-plaintext attack下安全的方案就是CPA安全的方案，也就是在选择明文攻击下安全，即攻击者可以随便挑选一个明文，然后得到对应的密文，但在实际的密码方案设计中，大家需要的是一个标准，CPA代表着攻击者有一个特殊能力，这个大家都清楚，但如何去标准的描述这个能力呢？有了基础的定义标准，才能有密码方案的标准，这就需要用到之前的可分辨实验。</p>
 <h3 id="CPA安全-不可分辨实验"><a href="#CPA安全-不可分辨实验" class="headerlink" title="CPA安全-不可分辨实验"></a>CPA安全-不可分辨实验</h3><p>实验<script type="math/tex">Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)</script>定义如下：<br>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$，输出一对等长的消息<script type="math/tex">m_0,m_1</script><br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">Enc_{pk}(m_b)</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}(1^\lambda ,pk)$输出一个比特<script type="math/tex">b' \in \{0,1\}</script>作为对$b$的猜测<br>5，如果$b’=b$则实验输出1，否则输出0.实验结束<br>&ensp;&ensp;&ensp;&ensp;如果$Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)=1$，则说$\mathcal{A}$成功，$\mathcal{A}$成功的优势定义为：</p>
 <script type="math/tex; mode=display">Adv_{\mathcal{A},\prod}(\lambda):=|Pr[ Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)=1]-\frac{1}{2}|</script><p>由此就可以给出现在公认的CPA安全的定义如下：</p>
-<h4 id="CPA安全定义"><a href="#CPA安全定义" class="headerlink" title="CPA安全定义"></a>CPA安全定义</h4><p>如果下列条件满足，则说公钥加密方案$\Pi$具有在选择明文攻击下不可分辨加密(CPA-安全)：对于所有$PPT$敌手$\mathcal{A}$，存在可忽略函数$negl$，使得</p>
+<h4 id="CPA安全定义"><a href="#CPA安全定义" class="headerlink" title="CPA安全定义"></a>CPA安全定义</h4><p>如果下列条件满足，则说公钥加密方案$\Pi$具有在选择明文攻击下不可分辨加密(CPA-安全)：对于任意$PPT$敌手$\mathcal{A}$，存在可忽略函数$negl$，使得</p>
 <script type="math/tex; mode=display">Pr[ Pubk_{\mathcal{A},\Pi}^{cpa}(\lambda)=1] \leq \frac{1}{2}+negl(\lambda)</script><p>即</p>
 <script type="math/tex; mode=display">Adv_{\mathcal{A},\Pi}^{cpa}(\lambda) \leq negl(\lambda)</script><h2 id="DDH假设"><a href="#DDH假设" class="headerlink" title="DDH假设"></a>DDH假设</h2><p>&ensp;&ensp;&ensp;&ensp;有了CPA的定义之后就要去证明ELGamal加密方案是CPA安全的，但是现代的密码学都是基于一个个假设之上的，ELGamal加密方案的困难性假设就是DDH假设，其具体定义如下：<br>DDH问题：判定性Diffile-Hellman问题是对于$q$阶循环群$\mathcal{G}$来说，对于一个随机的生成元$g$，以及随机的$x,y \leftarrow \mathbb{Z}_q$，给定$g^x,g^y$以及$h=g^z \in \mathbb{G}$：判定是否有$h=g^{xy}$。<br>DDH假设：DDH问题对于$\mathcal{G}$是难解的，即如果对于所有$PPT$敌手$\mathcal{A}$，存在一个可忽略函数$negl$使得：</p>
 <script type="math/tex; mode=display">|Pr[ \mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^z)=1]-Pr[ \mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]| \leq negl(\lambda)</script><p>有了这个假设，接下来就可以进行ELGamal加密方案的CPA安全证明。</p>
@@ -375,11 +375,11 @@ b'=b, output \quad 1, else \quad 0</script><p>&ensp;&ensp;&ensp;&ensp;注意实�
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ELGamal加密方案</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DDH假设</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DDH假设</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ELGamal加密方案</a>
         		</li>
       		
 		</ul>
@@ -714,7 +714,19 @@ b'=b, output \quad 1, else \quad 0</script><p>&ensp;&ensp;&ensp;&ensp;注意实�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DDH假设</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CCA安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,23 +738,15 @@ b'=b, output \quad 1, else \quad 0</script><p>&ensp;&ensp;&ensp;&ensp;注意实�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DDH假设</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,7 +770,19 @@ b'=b, output \quad 1, else \quad 0</script><p>&ensp;&ensp;&ensp;&ensp;注意实�
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">张量积</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">正规变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">正规矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,23 +798,15 @@ b'=b, output \quad 1, else \quad 0</script><p>&ensp;&ensp;&ensp;&ensp;注意实�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正规变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正规矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
               </li>
              
               <li class="article-tag-list-item">

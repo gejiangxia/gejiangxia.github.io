@@ -6,22 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>ELGamal加密方案不是CCA安全 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=" 人非生而知之者，孰能无惑"> -->
-  
-  <meta name="description" content="人非生而知之者，孰能无惑">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="ELGamal加密方案不是CCA安全">
+<meta property="og:url" content="http://yoursite.com/2020/04/30/ELGamal%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88%E4%B8%8D%E6%98%AFCCA%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="人非生而知之者，孰能无惑">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-30T03:26:47.000Z">
+<meta property="article:modified_time" content="2020-04-30T05:23:45.804Z">
 <meta property="article:author" content="sklois-gjx">
+<meta property="article:tag" content="DDH假设">
+<meta property="article:tag" content="CCA安全">
+<meta property="article:tag" content="ELGamal加密方案">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -216,1023 +215,315 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-ELGamal加密方案不是CCA安全" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
-    <script src="/lib/oauthcallback.browser.js"></script>
+  
+    <h1 class="article-title" itemprop="name">
+      ELGamal加密方案不是CCA安全
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/04/30/ELGamal%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88%E4%B8%8D%E6%98%AFCCA%E5%AE%89%E5%85%A8/" class="archive-article-date">
+        <time datetime="2020-04-30T03:26:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
+<h2 id="CCA安全定义"><a href="#CCA安全定义" class="headerlink" title="CCA安全定义"></a>CCA安全定义</h2><p>&ensp;&ensp;&ensp;&ensp;对公钥方案来说，CCA安全是比CPA安全还要复杂的，CCA安全一定是CPA安全，但CPA安全不一定是CCA安全，CCA的全称是Chosen-ciphertext attack，也就是选择密文攻击，攻击者可以随便选择一个密文，访问解密应答器并得到对应的明文，这对攻击者的能力是很大的提高。如果一个方案能抵抗选择密文攻击就称为是CCA安全的，但和以前一样，仅仅是文字上的描述是不准确的，要用标准的密码学语言和数学语言进行描述才行，其实还是用到了分辨实验的思想，固定攻击者使用解密应答器的方式，具体定义如下：</p>
+<h3 id="CCA安全-不可分辨实验"><a href="#CCA安全-不可分辨实验" class="headerlink" title="CCA安全-不可分辨实验"></a>CCA安全-不可分辨实验</h3><p>实验<script type="math/tex">Pubk_{\mathcal{A},\Pi}^{cca}(\lambda)</script>定义如下：<br>1，<script type="math/tex">(pk,sk) \leftarrow Gen(1^\lambda)</script><br>2，$\mathcal{A}$得到$pk$和应答器<script type="math/tex">Dec_{sk}(\cdot)</script>，输出一对等长的消息<script type="math/tex">m_0,m_1</script><br>3，选择<script type="math/tex">b \leftarrow \{ 0,1 \}</script>，计算<script type="math/tex">c^*=Enc_{pk}(m_b)</script>，发送给$\mathcal{A}$<br>4，$\mathcal{A}$继续与应答器<script type="math/tex">Dec_{sk}^*(\cdot)</script>交互，但是不允许向应答器询问<script type="math/tex">c^*</script>的对应明文<br>5，$\mathcal{A}$最终输出一个比特$b’$<br>5，如果$b’=b$则实验输出1，否则输出0.实验结束<br>&ensp;&ensp;&ensp;&ensp;注意第四步的应答器<script type="math/tex">Dec_{sk}^*(\cdot)</script>是带有<script type="math/tex">*</script>号的，意思是不允许向应答器询问<script type="math/tex">c^*</script>的对应明文，这是非常显然的，不然这个分辨实验没有意义。<br>&ensp;&ensp;&ensp;&ensp;如果$Pubk_{\mathcal{A},\Pi}^{cca}(\lambda)=1$，则说$\mathcal{A}$成功，$\mathcal{A}$成功的优势定义为：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\prod}(\lambda):=|Pr[ Pubk_{\mathcal{A},\Pi}^{cca}(\lambda)=1]-\frac{1}{2}|</script><p>由此就可以给出现在公认的CCA安全的定义如下：</p>
+<h4 id="CCA安全定义-1"><a href="#CCA安全定义-1" class="headerlink" title="CCA安全定义"></a>CCA安全定义</h4><p>&ensp;&ensp;&ensp;&ensp;如果下列条件满足，则说公钥加密方案$\Pi$具有在选择密文攻击下不可分辨加密(CCA-安全)：对于任意$PPT$敌手$\mathcal{A}$，存在可忽略函数$negl$，使得</p>
+<script type="math/tex; mode=display">Pr[ Pubk_{\mathcal{A},\Pi}^{cca}(\lambda)=1] \leq \frac{1}{2}+negl(\lambda)</script><p>即<script type="math/tex">Adv_{\mathcal{A},\Pi}^{cca}(\lambda) \leq negl(\lambda)</script>。</p>
+<h2 id="ELGamal加密方案的CCA安全"><a href="#ELGamal加密方案的CCA安全" class="headerlink" title="ELGamal加密方案的CCA安全"></a>ELGamal加密方案的CCA安全</h2><p>&ensp;&ensp;&ensp;&ensp;ELGamal加密方案在之前的博文里已经讨论过了，并证明了ELGamal加密方案是CPA安全的，但ELGamal加密方案在上面CCA安全的分辨实验定义下不是安全的。首先回忆一下ELGamal加密方案：</p>
+<h3 id="ELGamal加密方案"><a href="#ELGamal加密方案" class="headerlink" title="ELGamal加密方案"></a>ELGamal加密方案</h3><p>&ensp;&ensp;&ensp;&ensp;ELGamal加密方案的结构并不复杂，设$\mathcal{G}$是一个多项式时间算法，输入$1^\lambda$，输出一个循环群$\mathbb{G}$，此群的阶数为长度为$\lambda$比特的素数$q$，设$g$是此群的一个生成元。对应的ELGamal加密方案主要结构如下：<br>Gen：输入$1^\lambda$，运行$\mathcal{G}$得到$(\mathbb{G},q,g)$，选择$x\leftarrow \mathbb{Z}_q$，计算$h:=g^x$。公钥为$pk=(\mathcal{G},q,g,h)$，私钥为$sk=(\mathcal{G},q,g,x)$<br>Enc：输入公钥$pk=(\mathcal{G},q,g,h)$，消息$m \in \mathbb{G}$，随机选择$y\leftarrow \mathbb{Z}_q$，输出密文<script type="math/tex">(c_1,c_2)=(g^y,h^y \cdot m)</script><br>Dec：输入私钥$sk=(\mathcal{G},q,g,x)$，密文$(c_1,c_2)$，计算消息：<script type="math/tex">m:=\frac{c_2}{c_1^x}=c_2 \cdot (c_1^x)^{-1}=c_2 \cdot (c_1^{-1})^x</script></p>
+<h3 id="ELGamal加密方案不是CCA安全"><a href="#ELGamal加密方案不是CCA安全" class="headerlink" title="ELGamal加密方案不是CCA安全"></a>ELGamal加密方案不是CCA安全</h3><p>&ensp;&ensp;&ensp;&ensp;这个其实非常好理解，只要我们能找到一个$PPT$的敌手$\mathcal{A}$使得<script type="math/tex">Adv_{\mathcal{A},\Pi}^{cca}(\lambda)</script>不是可忽略的即可，实际上这个$\mathcal{A}$的构造可以非常简单。<br>&ensp;&ensp;&ensp;&ensp;首先$\mathcal{A}$随机生成两个等长的明文<script type="math/tex">m_0,m_1</script>，之后得到密文<script type="math/tex">c^*=(g^r,h^r \cdot m_b)</script>，CCA分辨实验里要求不能直接用<script type="math/tex">c^*</script>去询问解密应答器，但可以对<script type="math/tex">c^*</script>进行简单的修改如下：</p>
+<script type="math/tex; mode=display">c=(g\cdot g^r,h\cdot h^r \cdot m_b)=(g^{r+1},h^{r+1}\cdot m_b)</script><p>显然<script type="math/tex">(g^{r+1},h^{r+1}\cdot m_b)</script>仍然是一个合法的密文，且不等于<script type="math/tex">c^*</script>(虽然可能不太准确，但这样的$c$肯定可以构造出来)，这样的<script type="math/tex">c^*</script>解密之后，$\mathcal{A}$就得到了<script type="math/tex">m_b</script>，也就是成功破解了算法，分辨实验成功的优势必为<script type="math/tex">\frac{1}{2}</script>。</p>
+<p>&ensp;&ensp;&ensp;&ensp;所以ELGamal加密方案的确不是CCA安全的</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝冰露<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          sklois-gjx
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://yoursite.com/2020/04/30/ELGamal加密方案不是CCA安全/" title="ELGamal加密方案不是CCA安全" target="_blank">http://yoursite.com/2020/04/30/ELGamal加密方案不是CCA安全/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DDH假设</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CCA安全</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ELGamal加密方案</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/公钥密码学基础理论//" class="article-tag-list-link color5">公钥密码学基础理论</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/公钥密码学基础理论/几种方案的可证明安全//" class="article-tag-list-link color1">几种方案的可证明安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/30/ELGamal%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88%E4%B8%8D%E6%98%AFCCA%E5%AE%89%E5%85%A8/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/30/Cramer-Shoup%E6%96%B9%E6%A1%88%E6%98%AFCCA%E5%AE%89%E5%85%A8%E7%9A%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Cramer-Shoup方案是CCA安全的</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CCA安全定义"><span class="toc-number">1.1.</span> <span class="toc-text">CCA安全定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CCA安全-不可分辨实验"><span class="toc-number">1.1.1.</span> <span class="toc-text">CCA安全-不可分辨实验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CCA安全定义-1"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">CCA安全定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELGamal加密方案的CCA安全"><span class="toc-number">1.2.</span> <span class="toc-text">ELGamal加密方案的CCA安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ELGamal加密方案"><span class="toc-number">1.2.1.</span> <span class="toc-text">ELGamal加密方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ELGamal加密方案不是CCA安全"><span class="toc-number">1.2.2.</span> <span class="toc-text">ELGamal加密方案不是CCA安全</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+<div id="SOHUCS" sid="ELGamal加密方案不是CCA安全" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "1",
+        conf: "1"
+    });
+</script>
+</script>
+
+
+
+
+
+
+  <div id="giteement-ctn"></div>
+  
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    Oauthcallback();
+  <!-- id: "ELGamal加密方案不是CCA安全" -->
+  var giteement = new Giteement({
+    id: '20200430112647',
+    owner: 'gejiangxia',
+    repo: 'cunchupinglun',
+    backcall_uri: 'https://gejiangxia.github.io/',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: '27e177887f019cc620d25a9f6ff199009646d34dc2121893f5c3d8ef1b4d4dfb',
+      client_secret: 'e100abbdaee462a8b89440573514ead96f090348620cdfcc53b0fd6acdeea20f'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
-    <article id="post-我最喜欢的一个beamer模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/25/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E4%B8%AAbeamer%E6%A8%A1%E6%9D%BF/" target="_blank">我最喜欢的一个beamer模板</a>
-  
-    </h1>
-  
 
 
-  
-  
-<a href="/2020/04/25/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E4%B8%AAbeamer%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-        <time datetime="2020-04-25T12:53:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
 
-  
-  
-    
 
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/25/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E4%B8%AAbeamer%E6%A8%A1%E6%9D%BF/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">beamer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/简单的资源分享//" class="article-tag-list-link color3">简单的资源分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/25/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E4%B8%AAbeamer%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-矩阵的迹" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/25/%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%B9/" target="_blank">矩阵的迹</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/25/%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%B9/" class="archive-article-date">
-        <time datetime="2020-04-25T10:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/25/%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%B9/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">矩阵的迹</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/25/%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%B9/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-正规变换与正规矩阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/25/%E6%AD%A3%E8%A7%84%E5%8F%98%E6%8D%A2%E4%B8%8E%E6%AD%A3%E8%A7%84%E7%9F%A9%E9%98%B5/" target="_blank">正规变换与正规矩阵</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/25/%E6%AD%A3%E8%A7%84%E5%8F%98%E6%8D%A2%E4%B8%8E%E6%AD%A3%E8%A7%84%E7%9F%A9%E9%98%B5/" class="archive-article-date">
-        <time datetime="2020-04-25T03:52:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/25/%E6%AD%A3%E8%A7%84%E5%8F%98%E6%8D%A2%E4%B8%8E%E6%AD%A3%E8%A7%84%E7%9F%A9%E9%98%B5/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">正规变换</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">正规矩阵</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/25/%E6%AD%A3%E8%A7%84%E5%8F%98%E6%8D%A2%E4%B8%8E%E6%AD%A3%E8%A7%84%E7%9F%A9%E9%98%B5/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-伴随变换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/25/%E4%BC%B4%E9%9A%8F%E5%8F%98%E6%8D%A2/" target="_blank">伴随变换</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/25/%E4%BC%B4%E9%9A%8F%E5%8F%98%E6%8D%A2/" class="archive-article-date">
-        <time datetime="2020-04-25T02:51:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/25/%E4%BC%B4%E9%9A%8F%E5%8F%98%E6%8D%A2/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">伴随变换</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/25/%E4%BC%B4%E9%9A%8F%E5%8F%98%E6%8D%A2/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hermite变换与Hermite矩阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/24/Hermite%E5%8F%98%E6%8D%A2%E4%B8%8EHermite%E7%9F%A9%E9%98%B5/" target="_blank">Hermite变换与Hermite矩阵</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/24/Hermite%E5%8F%98%E6%8D%A2%E4%B8%8EHermite%E7%9F%A9%E9%98%B5/" class="archive-article-date">
-        <time datetime="2020-04-24T15:33:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/24/Hermite%E5%8F%98%E6%8D%A2%E4%B8%8EHermite%E7%9F%A9%E9%98%B5/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hermite变换</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hermite矩阵</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/24/Hermite%E5%8F%98%E6%8D%A2%E4%B8%8EHermite%E7%9F%A9%E9%98%B5/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-酉变换与酉矩阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" target="_blank">酉变换与酉矩阵</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/" class="archive-article-date">
-        <time datetime="2020-04-23T05:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉变换</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">酉矩阵</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/23/%E9%85%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E9%85%89%E7%9F%A9%E9%98%B5/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-量子信息中的狄拉克符号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/22/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%AD%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E7%AC%A6%E5%8F%B7/" target="_blank">量子信息中的狄拉克符号</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/22/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%AD%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E7%AC%A6%E5%8F%B7/" class="archive-article-date">
-        <time datetime="2020-04-22T08:57:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/22/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%AD%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E7%AC%A6%E5%8F%B7/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">狄拉克符号</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/22/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%AD%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E7%AC%A6%E5%8F%B7/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Schmidt正交化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/22/Schmidt%E6%AD%A3%E4%BA%A4%E5%8C%96/" target="_blank">Schmidt正交化</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/22/Schmidt%E6%AD%A3%E4%BA%A4%E5%8C%96/" class="archive-article-date">
-        <time datetime="2020-04-22T06:45:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/22/Schmidt%E6%AD%A3%E4%BA%A4%E5%8C%96/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Schmidt正交化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/22/Schmidt%E6%AD%A3%E4%BA%A4%E5%8C%96/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-范数，度量，内积与空间" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/21/%E8%8C%83%E6%95%B0%EF%BC%8C%E5%BA%A6%E9%87%8F%EF%BC%8C%E5%86%85%E7%A7%AF%E4%B8%8E%E7%A9%BA%E9%97%B4/" target="_blank">范数，度量，内积与空间</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/21/%E8%8C%83%E6%95%B0%EF%BC%8C%E5%BA%A6%E9%87%8F%EF%BC%8C%E5%86%85%E7%A7%AF%E4%B8%8E%E7%A9%BA%E9%97%B4/" class="archive-article-date">
-        <time datetime="2020-04-21T06:29:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/21/%E8%8C%83%E6%95%B0%EF%BC%8C%E5%BA%A6%E9%87%8F%EF%BC%8C%E5%86%85%E7%A7%AF%E4%B8%8E%E7%A9%BA%E9%97%B4/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">基础空间定义</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/21/%E8%8C%83%E6%95%B0%EF%BC%8C%E5%BA%A6%E9%87%8F%EF%BC%8C%E5%86%85%E7%A7%AF%E4%B8%8E%E7%A9%BA%E9%97%B4/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-任何方阵都可以表示成上三角与下三角阵的乘积" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/21/%E4%BB%BB%E4%BD%95%E6%96%B9%E9%98%B5%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E4%B8%8A%E4%B8%89%E8%A7%92%E4%B8%8E%E4%B8%8B%E4%B8%89%E8%A7%92%E9%98%B5%E7%9A%84%E4%B9%98%E7%A7%AF/" target="_blank">任何方阵都可以表示成上三角与下三角阵的乘积</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/21/%E4%BB%BB%E4%BD%95%E6%96%B9%E9%98%B5%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E4%B8%8A%E4%B8%89%E8%A7%92%E4%B8%8E%E4%B8%8B%E4%B8%89%E8%A7%92%E9%98%B5%E7%9A%84%E4%B9%98%E7%A7%AF/" class="archive-article-date">
-        <time datetime="2020-04-21T01:48:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
-    
-    <a class="article-more-a" href="/2020/04/21/%E4%BB%BB%E4%BD%95%E6%96%B9%E9%98%B5%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E4%B8%8A%E4%B8%89%E8%A7%92%E4%B8%8E%E4%B8%8B%E4%B8%89%E8%A7%92%E9%98%B5%E7%9A%84%E4%B9%98%E7%A7%AF/#more">更多内容 >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">方阵与上下三角</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/21/%E4%BB%BB%E4%BD%95%E6%96%B9%E9%98%B5%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E4%B8%8A%E4%B8%89%E8%A7%92%E4%B8%8E%E4%B8%8B%E4%B8%89%E8%A7%92%E9%98%B5%E7%9A%84%E4%B9%98%E7%A7%AF/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -1272,8 +563,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
