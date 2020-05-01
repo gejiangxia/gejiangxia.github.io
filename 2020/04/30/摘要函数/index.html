@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>线性空间的基本定义 | Hexo</title>
+  <title>摘要函数 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta property="og:type" content="article">
-<meta property="og:title" content="线性空间的基本定义">
-<meta property="og:url" content="http://yoursite.com/2020/04/18/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89/index.html">
+<meta property="og:title" content="摘要函数">
+<meta property="og:url" content="http://yoursite.com/2020/04/30/%E6%91%98%E8%A6%81%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-18T14:04:57.000Z">
-<meta property="article:modified_time" content="2020-04-21T01:48:15.298Z">
+<meta property="article:published_time" content="2020-04-30T05:53:34.000Z">
+<meta property="article:modified_time" content="2020-05-01T07:52:04.176Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="线性空间">
+<meta property="article:tag" content="摘要函数">
+<meta property="article:tag" content="Hash函数">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -213,14 +214,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-线性空间的基本定义" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-摘要函数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      线性空间的基本定义
+      摘要函数
     </h1>
   
 
@@ -232,8 +233,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/04/18/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89/" class="archive-article-date">
-        <time datetime="2020-04-18T14:04:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+<a href="/2020/04/30/%E6%91%98%E8%A6%81%E5%87%BD%E6%95%B0/" class="archive-article-date">
+        <time datetime="2020-04-30T05:53:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
 </a>
 
   
@@ -246,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">575字</span>
+      <span class="post-count">1.2k字</span>
     </span>
   </span>
 
@@ -255,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -267,41 +268,16 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;线性空间是代数里非常基础的一个定义，几年前刚学的时候我也仅仅感觉是一个定义而已，但现在回头看，发现这种基础的代数结构所能承载的信息真的很大，并不是我以前想象的那么简单，当然线性空间也是更复杂空间的基础，比如量子信息中常用到的$Hilbert$空间。</p>
-<p>&ensp;&ensp;&ensp;&ensp;给出定义前先给出一些基础定义如下：</p>
-<p>笛卡尔积：$S \times M := \lbrace (a,b)|a \in S, b \in M  \rbrace$称为$S$与$M$的笛卡尔积</p>
-<p>代数运算：非空集合$S$上的一个代数运算是指$S \times S$到$S$的一个映射<font color='red'> (代数运算重要的点是封闭性，这在以后群的定义中也会用到)</font></p>
-<p>&ensp;&ensp;&ensp;&ensp;由此给出线性空间定义如下:</p>
-<p>设$V$是一个非空集合，$K$是一个数域，$V$上有一个代数运算如下，称为加法</p>
-<script type="math/tex; mode=display">(\alpha ,\beta ) \mapsto \alpha  + \beta</script><p>$K$与$V$之间有一个运算如下，称为数量乘法</p>
-<script type="math/tex; mode=display">(k,\alpha ) \mapsto k\alpha</script><p>加法与数量乘法满足如下8条法则，加法与数量乘法各4条:</p>
-<center>
-$1^0 \quad \alpha + \beta =\beta +\alpha, \forall \alpha  ,\beta \in V$
-</center>
-<center>
-$2^0 \quad (\alpha  + \beta ) + \gamma  = \alpha  + (\beta  + \gamma ) \quad \forall \alpha ,\beta ,\gamma  \in V$
-</center>
-<center>
-$3^0 \quad V$中有一个元素，记成$0$，满足$\alpha+0=\alpha, \forall \alpha \in V$，把$0$称为$V$的零元
-</center>
-<center>
-$4^0 \quad $对于$\alpha \in V$，有$\beta \in V$，使$\alpha + \beta =0$，把$\beta$称为$\alpha$的负元
-</center>
-<center>
-$5^0 \quad $存在元素$1\in K$，使得$1\alpha=\alpha, \forall \alpha \in V$
-</center>
-<center>
-$6^0 \quad (kl) \alpha=k(l \alpha),\forall k,l \in K,\alpha  \in V$
-</center>
-<center>
-$7^0 \quad  (k+l) \alpha =k \alpha +l\alpha, \forall k,l \in K,\alpha  \in V$
-</center>
-<center>
-$8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \in V$
-</center>
-
-<p>则$V$称为数域$K$上的一个线性空间。</p>
-<p>&ensp;&ensp;&ensp;&ensp;可以发现，<font color='red'> 线性空间就是一个加法群再配上一个特殊的数乘运算，这样就表示了一种特殊的代数结构</font>，称为数乘是因为$K$一定是一个数域，这个$K$可以和$V$一样也可以不一样，这是空间的结构相比于群更丰富的一个原因。</p>
+<p>&ensp;&ensp;&ensp;&ensp;摘要函数其实就是$Hash$函数，只是叫法不一样而已，另外我们这里讨论的摘要函数一般都是函数族，而不是一个单个固定的函数，类似于拟随机函数的概念。在实际密码方案应用时，会先选定安全参数$\lambda$，然后由安全参数确定了一个函数集合，然后再输出一个函数索引，取出此索引对应的函数，这时这个函数就是确定的，然后让这个函数完成$Hash$函数的功能。</p>
+<h2 id="摘要函数具体定义"><a href="#摘要函数具体定义" class="headerlink" title="摘要函数具体定义"></a>摘要函数具体定义</h2><p>&ensp;&ensp;&ensp;&ensp;一个摘要函数$HASH$由两个$PPT$算法$(HGen,H)$组成，满足：<br>$\color{red}{HGen}$：是一个<script type="math/tex">PPT</script>算法，输出安全参数<script type="math/tex">1^\lambda</script>，输出一个键值$s(\lambda)$<br>$\color{red}{H^s(\cdot)}$：是一个由键值<script type="math/tex">s(\lambda)</script>确定的函数，对于任意串<script type="math/tex">x \in \{0,1\}^*, H^s(x) \in \{0,1\}^l</script>。其中<script type="math/tex">l</script>是<script type="math/tex">\lambda</script>的整多项式。如果<script type="math/tex">H</script>的输入是某个集合<script type="math/tex">\{0,1\}^{l'(\lambda)}</script>，其中<script type="math/tex">l' \leq l</script>，这时的摘要函数称为是定长的摘要函数。</p>
+<p>&ensp;&ensp;&ensp;&ensp;这个定义也是非常直观的，由安全参数确定函数集合，然后再由安全参数确定函数索引(键值)，确定一个函数。</p>
+<h2 id="摘要函数的强抗碰撞性"><a href="#摘要函数的强抗碰撞性" class="headerlink" title="摘要函数的强抗碰撞性"></a>摘要函数的强抗碰撞性</h2><p>&ensp;&ensp;&ensp;&ensp;抗碰撞性是摘要函数非常重要的性质，也是摘要函数存在的基础，既然想对一个长的字符串生成摘要，那就要尽量避免两个不同的字符串却生成了相同的摘要，当然这样的“碰撞”必然是存在的，我们只是想这种碰撞不能被高效的找到。首先来看强抗碰撞性，为了给这种性质标准的密码学语言表示，还是要用到实验的思想：<br>找碰撞实验<script type="math/tex">\color{red}{Expt_{\mathcal{A},HASH}^{hashcoll}(1^\lambda)}</script>：<br>1，生成一个键值<script type="math/tex">s(\lambda) \leftarrow HGen(1^\lambda)</script><br>2，敌手得到$s$后输出<script type="math/tex">x,x' \leftarrow \mathcal{A}(H^s,1^\lambda), x\neq x'</script><br>3，输出1当且仅当<script type="math/tex">H^s(x)=H^s(x')</script>，否则输出0<br>&ensp;&ensp;&ensp;&ensp;显然敌手$\mathcal{A}$是可以知道用了哪一个具体的摘要函数的，如果$HASH=(HGen,H)$满足：对任意$PPT$敌手$\mathcal{A}$都存在可忽略函数$negl$，使得</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},HASH}^{hashcoll}(\lambda):=Pr[Expt_{\mathcal{A},HASH}^{hashcoll}(1^\lambda)=1] \leq negl</script><p>则称$HASH=(HGen,H)$为强的抗碰撞的摘要函数。</p>
+<h2 id="摘要函数的弱抗碰撞性"><a href="#摘要函数的弱抗碰撞性" class="headerlink" title="摘要函数的弱抗碰撞性"></a>摘要函数的弱抗碰撞性</h2><p>&ensp;&ensp;&ensp;&ensp;摘要函数的弱抗碰撞性本质上就是去寻找第二原像，首先定义找第二原像的实验如下：<br>找第二原像实验<script type="math/tex">\color{red}{Expt_{\mathcal{A},HASH}^{tcr}(1^\lambda)}</script>：<br>1，生成一个键值<script type="math/tex">s(\lambda) \leftarrow HGen(1^\lambda)</script>和一个比特串<script type="math/tex">x\leftarrow \{0,1\}^*</script><br>2，敌手得到$s,x$后输出<script type="math/tex">x' \leftarrow \mathcal{A}(H^s,1^\lambda), x\neq x'</script><br>3，输出1当且仅当<script type="math/tex">H^s(x)=H^s(x')</script>，否则输出0<br>&ensp;&ensp;&ensp;&ensp;显然敌手$\mathcal{A}$是可以知道用了哪一个具体的摘要函数的，如果$HASH=(HGen,H)$满足：对任意$PPT$敌手$\mathcal{A}$都存在可忽略函数$negl$，使得</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},HASH}^{tcr}(\lambda):=Pr[Expt_{\mathcal{A},HASH}^{tcr}(1^\lambda)=1] \leq negl</script><p>则称$HASH=(HGen,H)$为弱的抗碰撞的摘要函数。</p>
+<h2 id="强与弱的不同"><a href="#强与弱的不同" class="headerlink" title="强与弱的不同"></a>强与弱的不同</h2><p>&ensp;&ensp;&ensp;&ensp;首先这两个实验的优势与之前学过的不可分辨实验的优势有一些差别，那里都需要减去一个$\frac{1}{2}$，但这里实际上并不是分辨，只是找碰撞而已，找到了就成功，找不到就失败，所以才有优势就是成功的概率：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},HASH}^{hashcoll}(\lambda):=Pr[Expt_{\mathcal{A},HASH}^{hashcoll}(1^\lambda)=1] \\
+Adv_{\mathcal{A},HASH}^{tcr}(\lambda):=Pr[Expt_{\mathcal{A},HASH}^{tcr}(1^\lambda)=1]</script><p>&ensp;&ensp;&ensp;&ensp;另外强与弱的区分点是敌手的能力，强碰撞实验那里，只要敌手随便找到一个碰撞就行了，随便找到一个碰撞就认为敌手$\mathcal{A}$成功了，但第二个实验是说随便一个碰撞不行，必须是给定的$x$的碰撞$x’$才行，哪怕敌手找出一个碰撞$y$和$y’$也不行，所以第一个实验的摘要函数对敌手的限制少，但限制少依旧有找到碰撞可忽略，就叫强摘要函数，第二个实验限制多才安全，就叫弱摘要函数。显然强摘要函数一定是弱摘要函数，弱摘要函数不一定是强摘要函数。</p>
 
     
 
@@ -348,7 +324,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/04/18/线性空间的基本定义/" title="线性空间的基本定义" target="_blank">http://yoursite.com/2020/04/18/线性空间的基本定义/</a>
+          <a href="http://yoursite.com/2020/04/30/摘要函数/" title="摘要函数" target="_blank">http://yoursite.com/2020/04/30/摘要函数/</a>
         </li>
         
         <li>
@@ -370,7 +346,11 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性空间</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">摘要函数</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hash函数</a>
         		</li>
       		
 		</ul>
@@ -382,7 +362,11 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
+        			<a href="/categories/公钥密码学基础理论//" class="article-tag-list-link color5">公钥密码学基础理论</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/公钥密码学基础理论/公钥密码学的基础原语//" class="article-tag-list-link color1">公钥密码学的基础原语</a>
         		</li>
       		
 		</ul>
@@ -437,7 +421,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/18/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/30/%E6%91%98%E8%A6%81%E5%87%BD%E6%95%B0/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -452,18 +436,9 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
 
 <nav id="article-nav">
   
-    <a href="/2020/04/20/%E4%BA%92%E9%80%86%E7%9F%A9%E9%98%B5%E5%8F%AF%E4%BA%A4%E6%8D%A2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          互逆矩阵必定可交换
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/16/%E7%BD%AE%E9%A1%B6%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">疫情期间的挣扎式学习</div>
+    <a href="/2020/04/30/ELGamal%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88%E4%B8%8D%E6%98%AFCCA%E5%AE%89%E5%85%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ELGamal加密方案不是CCA安全</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -490,7 +465,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要函数具体定义"><span class="toc-number">1.1.</span> <span class="toc-text">摘要函数具体定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要函数的强抗碰撞性"><span class="toc-number">1.2.</span> <span class="toc-text">摘要函数的强抗碰撞性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要函数的弱抗碰撞性"><span class="toc-number">1.3.</span> <span class="toc-text">摘要函数的弱抗碰撞性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强与弱的不同"><span class="toc-number">1.4.</span> <span class="toc-text">强与弱的不同</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -503,7 +478,7 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
 
 
 
-<div id="SOHUCS" sid="线性空间的基本定义" ></div> 
+<div id="SOHUCS" sid="摘要函数" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -524,9 +499,9 @@ $8^0 \quad k(\alpha +\beta )=k\alpha +k\beta, ,\forall k \in K,\alpha  ,\beta \i
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "线性空间的基本定义" -->
+  <!-- id: "摘要函数" -->
   var giteement = new Giteement({
-    id: '20200418220457',
+    id: '20200430135334',
     owner: 'gejiangxia',
     repo: 'cunchupinglun',
     backcall_uri: 'https://gejiangxia.github.io/',

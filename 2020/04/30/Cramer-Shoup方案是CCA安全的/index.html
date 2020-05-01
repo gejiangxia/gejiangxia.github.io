@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-30T03:19:59.000Z">
-<meta property="article:modified_time" content="2020-04-30T05:36:11.949Z">
+<meta property="article:modified_time" content="2020-05-01T15:31:45.600Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="Cramer-Shoup加密方案">
 <meta property="article:tag" content="DDH假设">
@@ -248,7 +248,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">199字</span>
+      <span class="post-count">1.5k字</span>
     </span>
   </span>
 
@@ -257,7 +257,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -269,8 +269,106 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;首先，之前的博文里面已经证明了ELGamal加密方案不是CCA安全的，可以发现CCA安全的方案其实并不是可以非常简单构造的，尤其是CCA安全的公钥加密方案。要想构造出CCA安全的公钥方案，就要借助一些性质更加特殊的密码原语如摘要函数(或$Hash$函数)才可以成功，公钥密码的课堂上老师证明了Cramer-Shoup加密方案是CCA安全的，但证明过程较为繁琐，首先来看Cramer-Shoup加密方案的具体流程。</p>
-<h2 id="Cramer-Shoup加密方案"><a href="#Cramer-Shoup加密方案" class="headerlink" title="Cramer-Shoup加密方案"></a>Cramer-Shoup加密方案</h2><p>&ensp;&ensp;&ensp;&ensp;Cramer-Shoup加密方案使用了抗目标碰撞的摘要函数$HasH=(HGen,T)$，其实就是个弱碰撞$Hash$函数</p>
+<p>&ensp;&ensp;&ensp;&ensp;首先，之前的博文里面已经证明了ELGamal加密方案不是CCA安全的，可以发现CCA安全的方案其实并不是可以非常简单构造的，尤其是CCA安全的公钥加密方案。要想构造出CCA安全的公钥方案，就要借助一些性质更加特殊的密码原语才可以成功，比如摘要函数，摘要函数之前的博文也有总结过。公钥密码的课堂上老师证明了Cramer-Shoup加密方案是CCA安全的，但证明过程较为繁琐，首先来看Cramer-Shoup加密方案的具体流程。</p>
+<h2 id="Cramer-Shoup加密方案"><a href="#Cramer-Shoup加密方案" class="headerlink" title="Cramer-Shoup加密方案"></a>Cramer-Shoup加密方案</h2><p>&ensp;&ensp;&ensp;&ensp;该方案使用了抗目标碰撞的摘要函数(弱$Hash$函数)$HASH=(HGen,T)$，假设$\mathcal{G}$是一个群生成算法，$\lambda$是安全参数。<br>Cramer-Shoup加密方案：$CS=(Gen,Enc,Dec)$<br>$\color{red}{Gen}$：输入$1^\lambda$，生成$(\mathbb{G},q,g_1) \leftarrow \mathcal{G}(1^\lambda)$，随机生成<script type="math/tex">\mathbb{Z}_q</script>中的元素<script type="math/tex">x_1,x_2,y_1,y_2,z_1,z_2</script>和<script type="math/tex">a\leftarrow \mathbb{Z}_q^*</script>，计算</p>
+<script type="math/tex; mode=display">g_2=g_1^a \quad X:=g_1^{x_1}g_2^{x_2} \quad Y:=g_1^{y_1}g_2^{y_2} \quad Z:=g_1^{z_1}g_2^{z_2} \quad s \leftarrow HGen(1^\lambda)</script><p>输出<script type="math/tex">pk=(g_1,g_2,X,Y,Z,T^s(\cdot))</script>和<script type="math/tex">sk=(x_1,x_2,y_1,y_2,z_1,z_2)</script><br>$\color{red}{Enc}$：对于输入$pk$和消息$m \in \mathcal{G}$，随机选取$r \leftarrow \mathbb{Z}_q, r\neq 0$，计算</p>
+<script type="math/tex; mode=display">u_1:=g_1^r \quad u_2=g_2^r \quad c:=Z^r \cdot m \quad \alpha:=T^s(u_1,u_2,c) \quad v:=X^rY^{\alpha r}</script><p>输出密文<script type="math/tex">(u_1,u_2,v,c)</script><br>$\color{red}{Dec}$：输入密文<script type="math/tex">(u_1,u_2,v,c)</script>和私钥$sk=(x_1,x_2,y_1,y_2,z_1,z_2)$，顺序计算</p>
+<script type="math/tex; mode=display">\alpha :=T^s(u_1,u_2,c) \quad v'=u_1^{x_1+\alpha y_1} u_2^{x_2+\alpha y_2} \quad m:=c \cdot (u_1^{z_1} u_2^{z_2})^{-1}</script><p>如果$v=v’$输出$m$，否则输出$\perp$</p>
+<p>&ensp;&ensp;&ensp;&ensp;这个方案的正确性是非常显然的，如果消息$m$诚如上述方式进行加密，则一定能够通过$v=v’$的检测且最后解密一定能成功解密出$m$。</p>
+<h2 id="Cramer-Shoup方案的CCA安全定理"><a href="#Cramer-Shoup方案的CCA安全定理" class="headerlink" title="Cramer-Shoup方案的CCA安全定理"></a>Cramer-Shoup方案的CCA安全定理</h2><p>&ensp;&ensp;&ensp;&ensp;首先有如下定理：对于任何$PPT$敌手$\mathcal{A}$对于Cramer-Shoup方案进行的CCA选择密文攻击实验，一定存在对于$\mathcal{G}$进行$DH$组分辨的$PPT$敌手$\mathcal{A}_1$，以及对于摘要函数$HASH$进行第二原像攻击的$PPT$敌手$\mathcal{A}_2$，使得它们的优势满足：</p>
+<script type="math/tex; mode=display">\color{red}{Adv_{\mathcal{A},CS}^{cca}(\lambda) \leq 2\cdot Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda)+Adv_{\mathcal{A}_2,HASH}^{tcr}(\lambda)+\frac{4+Q}{q} \tag{1}}</script><p>其中$Q$是敌手$\mathcal{A}$询问解密$oracle$的次数上界。<br>&ensp;&ensp;&ensp;&ensp;这里的$q$是在生成群的描述时产生的，一般情况下$q$是安全参数的指数级大小，比如安全参数为$\lambda$，要想生成群，就要先生成模$q$的剩余类环，而这个$q$恰巧是$\lambda$比特长的，则显然可以认为$q=q(2^\lambda)$。所以如果$DDH$对于$\mathcal{G}$难解，摘要函数$HASH$是抗目标碰撞的，则必有<script type="math/tex">Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda), Adv_{\mathcal{A}_2,HASH}^{tcr}(\lambda),\frac{4+Q}{q}</script>都是可忽略的函数，则有<script type="math/tex">Adv_{\mathcal{A},CS}^{cca}(\lambda)</script>是可忽略的函数，也就是说Cramer-Shoup方案的确是CCA安全的。<br>&ensp;&ensp;&ensp;&ensp;一般情形下，$DDH$的难解性和$HASH=(HGen,T)$是抗目标碰撞$HASH$函数都是假设，所以我们只要证明$\color{red}{(1)}$式成立即可。</p>
+<h2 id="具体证明"><a href="#具体证明" class="headerlink" title="具体证明"></a>具体证明</h2><p>&ensp;&ensp;&ensp;&ensp;这个的证明非常繁琐，但难度并不是特别难，需要利用实验序列的思想，构造六个实验，首先来看<script type="math/tex">Expt_1</script>与<script type="math/tex">Expt_2</script></p>
+<h3 id="Expt-1与Expt-2"><a href="#Expt-1与Expt-2" class="headerlink" title="Expt_1与Expt_2"></a><script type="math/tex">Expt_1</script>与<script type="math/tex">Expt_2</script></h3><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Exp_1: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad Dec_{sk}(\cdot)\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
+                u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, c^*:=Z^{r^*} \cdot m_{\delta}\\
+                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
+                v^*:=X^{r^*}Y^{\alpha^* r^*}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Exp_1: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad Dec_{sk}(\cdot)\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
+                u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, \color{red}{c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}}\\
+                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
+                \color{red}{v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+        </tr>
+    </table>
+</html>
+
+<p>非常显然的，<script type="math/tex">Expt_1</script>就是敌手$\mathcal{A}$对$CS$进行CCA攻击的分辨实验，所以必有下式成立：</p>
+<script type="math/tex; mode=display">\color{red}{Adv_{\mathcal{A},CS}^{cca}(\lambda)=|Pr[Expt_1 \quad success]-\frac{1}{2}| \tag{2}}</script><p>这就将我们想要证明的$\color{red}{(1)}$式的左边和实验序列的第一个实验<script type="math/tex">Expt_1</script>联系了起来。</p>
+<p>&ensp;&ensp;&ensp;&ensp;另外，可以直观的发现<script type="math/tex">Expt_1</script>与<script type="math/tex">Expt_2</script>其实没有区别，尽管实验里标红的地方有些区别，但根据$CS$方案的结构，那只是同一个量不同的表示方式而已，所以必有：</p>
+<script type="math/tex; mode=display">\color{red}{Pr[Expt_1 \quad success]=Pr[Expt_2 \quad success] \tag{3}}</script><h3 id="Expt-2与Expt-3"><a href="#Expt-2与Expt-3" class="headerlink" title="Expt_2与Expt_3"></a><script type="math/tex">Expt_2</script>与<script type="math/tex">Expt_3</script></h3><p>&ensp;&ensp;&ensp;&ensp;再考虑<script type="math/tex">Expt_2</script>与<script type="math/tex">Expt_3</script>如下：</p>
+<html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Exp_2: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad Dec_{sk}(\cdot)\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
+                u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}\\
+                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Exp_3: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad Dec_{sk}(\cdot)\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
+                u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, \color{red}{c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}}\\
+                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
+                \color{red}{v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+        </tr>
+    </table>
+</html>
+
+
+
+
+
+
+
+
+
+
 
     
 
@@ -471,7 +569,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cramer-Shoup加密方案"><span class="toc-number">1.1.</span> <span class="toc-text">Cramer-Shoup加密方案</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cramer-Shoup加密方案"><span class="toc-number">1.1.</span> <span class="toc-text">Cramer-Shoup加密方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cramer-Shoup方案的CCA安全定理"><span class="toc-number">1.2.</span> <span class="toc-text">Cramer-Shoup方案的CCA安全定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体证明"><span class="toc-number">1.3.</span> <span class="toc-text">具体证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-1与Expt-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">Expt_1与Expt_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-2与Expt-3"><span class="toc-number">1.3.2.</span> <span class="toc-text">Expt_2与Expt_3</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -710,11 +808,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,19 +840,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">张量积</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正规变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正规矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,11 +856,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+                <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">正规变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">正规矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,7 +876,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,6 +893,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
             
             <div class="clearfix"></div>
