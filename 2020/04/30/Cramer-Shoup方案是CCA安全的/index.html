@@ -16,11 +16,11 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-30T03:19:59.000Z">
-<meta property="article:modified_time" content="2020-05-01T15:31:45.600Z">
+<meta property="article:modified_time" content="2020-05-02T13:01:29.747Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="Cramer-Shoup加密方案">
 <meta property="article:tag" content="DDH假设">
 <meta property="article:tag" content="CCA安全">
+<meta property="article:tag" content="Cramer-Shoup加密方案">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -248,7 +248,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.5k字</span>
+      <span class="post-count">6.8k字</span>
     </span>
   </span>
 
@@ -257,7 +257,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
+      <span class="post-count">33分</span>
     </span>
   </span>
 </div>
@@ -291,7 +291,7 @@
                 (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
                 \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
                 u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, c^*:=Z^{r^*} \cdot m_{\delta}\\
-                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
+                \alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
                 v^*:=X^{r^*}Y^{\alpha^* r^*}\\
                 \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
                 \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
@@ -307,7 +307,7 @@
                 (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
                 \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
                 u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, \color{red}{c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}}\\
-                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
+                \alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
                 \color{red}{v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}}\\
                 \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
                 \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
@@ -334,7 +334,7 @@
                 (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
                 \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
                 u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}\\
-                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
+                \alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
                 v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
                 \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
                 \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
@@ -348,10 +348,11 @@
                 sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
                 \mathcal{A}(pk)\quad ask \quad Dec_{sk}(\cdot)\\  
                 (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
-                \delta \leftarrow \{0,1\} ,r^* \leftarrow \mathbb{Z}_q\\
-                u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}, \color{red}{c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}}\\
-                \alpha^*:=T^s(u_1^*,u_1^*,c^*)\\
-                \color{red}{v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}}\\
+                \color{red}{r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^*}\\
+                \color{red}{u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}}\\
+                \delta \leftarrow \{0,1\}, c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}\\
+                \alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
                 \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
                 \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
                 if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
@@ -360,15 +361,276 @@
     </table>
 </html>
 
+<p>可以发现仅仅一处有变动，就是$Expt_2$是<script type="math/tex">r^* \leftarrow \mathbb{Z}_q, u_1^*=g_1^{r^*}, u_2^*=g_2^{r^*}</script>，这里都是$g_1$或$g_2$的<script type="math/tex">r^*</script>次幂，但$Expt_3$中变成了<script type="math/tex">\color{red}{r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^* ,u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}}</script>，也就是说他们的幂次不是相等的，而是完全随机的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;我们要考虑<script type="math/tex">Expt_2</script>与<script type="math/tex">Expt_3</script>成功概率之间的联系，就要找到一些可联系的点，首先考虑每个实验中的<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>这个四元组，<script type="math/tex">Expt_2</script>中有:</p>
+<script type="math/tex; mode=display">(g_1,g_2,u_1^*,u_2^*)=(g_1,g_1^a,g_1^{r^*},g_2^{r^*})=(g_1,g_1^a,g_1^{r^*},g_1^{ar^*})</script><p>而在<script type="math/tex">Expt_3</script>中有<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)=(g_1,g_1^a,g_1^{r_1^*},g_1^{ar_2^*})</script>，也就是说<script type="math/tex">Expt_2</script>中的<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>一定是一个$DH$组，但<script type="math/tex">Expt_3</script>中的<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>与$DH$组有非常大的区别，由此可以利用$DDH$假设进行成功概率的分析。</p>
+<p>&ensp;&ensp;&ensp;&ensp;标准的$DH$组的形式是<script type="math/tex">(g,g^x,g^y,g^{xy})</script>，这里的$x,y$都没有取值的限制，也就是说$x,y \leftarrow \mathbb{Z}_q$，但<script type="math/tex">Expt_2</script>中的<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>是要求$g_2=g_1^a$，而且根据$CS$方案，这里的<script type="math/tex">a\leftarrow \mathbb{Z}_q^*</script>，这是非常显然的，出于加密的一些考虑，如果$a=0$，方案的安全性会不完美，此时的$g_2$就是单位元，也就违背了引入$g_2$的初衷。由于$q$是素数，所以<script type="math/tex">Expt_2</script>中的<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>与标准的$DH$组只差了一个$a=0$，那这样的<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>还满足$DDH$的假设吗？实际上依旧是满足的，这个称为是$DDH$假设的改进。</p>
+<h4 id="DDH-假设的改进"><a href="#DDH-假设的改进" class="headerlink" title="$DDH$假设的改进"></a>$DDH$假设的改进</h4><p>&ensp;&ensp;&ensp;&ensp;标准的$DDH$假设区分的是：</p>
+<script type="math/tex; mode=display">D_1:=\{(g,g^x,g^y,g^{xy})|x,y \in \mathbb{Z}_q\} \quad T_1:=\{(g,g^x,g^y,g^z)|x,y ,z\in \mathbb{Z}_q\}</script><p>改进的$DDH$假设区分的是：</p>
+<script type="math/tex; mode=display">D_2:=\{(g,g^x,g^y,g^{xy})|x \neq 0\} \quad T_2:=\{(g,g^x,g^y,g^z)|x \neq 0 ,z\neq xy\}</script><p>其实这个改进是根据<script type="math/tex">Expt_3</script>来的，首先根据$CS$方案的设计，$x \neq 0$是<script type="math/tex">D_2,T_2</script>的基础，但为什么<script type="math/tex">T_2</script>还要要求$z\neq xy$，这是因为<script type="math/tex">Expt_3</script>标红的地方要求<script type="math/tex">r_1^* \neq r_2^*</script>，则有<script type="math/tex">a r_1^* \neq ar_2^*</script>，这也就是$z\neq xy$。其实如果这条不满足，<script type="math/tex">Expt_3</script>与<script type="math/tex">Expt_2</script>也是完全没有区别的。<br>&ensp;&ensp;&ensp;&ensp;接下来我们考虑两个分辨$DH$组的实验<script type="math/tex">Expt_{\mathcal{A},\mathcal{G}}^{ddh}(\cdot)</script>和<script type="math/tex">Expt_{\mathcal{A},\mathcal{G}}^{ddh'}(\cdot)</script>如下：</p>
+<html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Expt_{\mathcal{A},\mathcal{G}}^{ddh}(\cdot): input 1^\lambda\\
+                (\mathbb{G},q,g) \leftarrow \mathcal{G}(1^\lambda)\\
+                b \leftarrow \{0,1\},X,Y,Z \leftarrow \mathbb{G}\\
+                if b=1,\hat{Z}=dh_g(X,Y)\\
+                if b=0,\hat{Z}=Z\\  
+                b' \leftarrow \mathcal{A}(\mathbb{G},q,g,X,Y,\hat{Z}), b' \in \{0,1\}\\
+                output \quad b'\\
+                $$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Expt_{\mathcal{A},\mathcal{G}}^{ddh'}(\cdot): input 1^\lambda\\
+                (\mathbb{G},q,g) \leftarrow \mathcal{G}(1^\lambda)\\
+                b \leftarrow \{0,1\},X,Y,Z \leftarrow \mathbb{G}, \color{red}{x \neq 0 ,z\neq xy}\\
+                if b=1,\hat{Z}=dh_g(X,Y)\\
+                if b=0,\hat{Z}=Z\\  
+                b' \leftarrow \mathcal{A}(\mathbb{G},q,g,X,Y,\hat{Z}), b' \in \{0,1\}\\
+                output \quad b'\\
+                $$
+            </td>
+        </tr>
+    </table>
+</html>
 
+<p>其中<script type="math/tex">dh_g(X,Y)</script>表示由$X,Y$生成一个$DH$组，我们接下来就要考虑这两个实验的优势</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\mathcal{G}}^{ddh-01}(\cdot) \quad Adv_{\mathcal{A},\mathcal{G}}^{ddh'-01}(\cdot)</script><p>有什么联系。</p>
+<p>&ensp;&ensp;&ensp;&ensp;要整理出这两个实验的优势有点繁琐，我们一步一步得来写，首先定义两个集合：</p>
+<script type="math/tex; mode=display">S_{1}^{\prime}:=\{(g^{x}, g^{y}, g^{x y}) | y \in \mathbb{Z}_{q}, x=0\} \\
+S_{2}^{\prime}:=\{(g^{x}, g^{y}, g^{z}) | x, y, z \in \mathbb{Z}_{q},(x=0 \vee z=x y)\}</script><p>可以发现有<script type="math/tex">D_1=D_2 \cup S_{1}^{\prime},T_1=T_2 \cup S_{2}^{\prime}</script>。<br>&ensp;&ensp;&ensp;&ensp;我们考虑集合<script type="math/tex">S_{1}^{\prime},S_{2}^{\prime}</script>中元素的个数，非常显然的有<script type="math/tex">|S_{1}^{\prime}|=q</script>，至于<script type="math/tex">|S_{2}^{\prime}|</script>，必有:</p>
+<script type="math/tex; mode=display">|S_{2}^{\prime}|=|T_1|-|T_2|=q^3-q(q-1)^2</script><p>首先设<script type="math/tex">X_{D_1}</script>为集合<script type="math/tex">D_1</script>里的一个随机元素，<script type="math/tex">X_{D_2}</script>为集合<script type="math/tex">D_2</script>里的一个随机元素，则对任意的集合<script type="math/tex">M \subset D_1</script>，必有:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+|Pr[X_{D_1} \in M]-Pr[X_{D_2} \in M]|&=|Pr[X_{D_1} \in M]-Pr[X_{D_2} \in M \cap D_2]| \\
+&=|Pr[X_{D_1} \in M \cap \overline{D_2}]+\color{red}{Pr[X_{D_1} \in M \cap D_2]-Pr[X_{D_2} \in M \cap D_2]}| \\
+& \leq |Pr[X_{D_1} \in M \cap \overline{D_2}]| \\
+& \leq |Pr[X_{D_1} \in D_1 \cap \overline{D_2}]|= |Pr[X_{D_1} \in S_{1}^{\prime}]|\\
+&= |Pr[X_{D_1} \in S_{1}^{\prime}]-0|\\
+&= |Pr[X_{D_1} \in S_{1}^{\prime}]-Pr[X_{D_2} \in S_{1}^{\prime}]|=\frac{1}{q}
+\end{aligned}</script><p>上面等式成立的一个重要条件就是标红的式子<script type="math/tex">\color{red}{Pr[X_{D_1} \in M \cap D_2]-Pr[X_{D_2} \in M \cap D_2]}</script>一定为负值，这是非常显然的，因为集合<script type="math/tex">D_1</script>里的元素个数比集合<script type="math/tex">D_2</script>里的元素个数要多。<br>&ensp;&ensp;&ensp;&ensp;同理，设<script type="math/tex">Y_{T_1}</script>为集合<script type="math/tex">T_1</script>里的一个随机元素，<script type="math/tex">Y_{T_2}</script>为集合<script type="math/tex">T_2</script>里的一个随机元素，则对任意的集合<script type="math/tex">M \subset T_1</script>，必有:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+|Pr[Y_{T_1} \in M]-Pr[Y_{T_2} \in M]|&=|Pr[Y_{T_1} \in M]-Pr[Y_{T_2} \in M \cap T_2]| \\
+&=|Pr[Y_{T_1} \in M \cap \overline{T_2}]+\color{red}{Pr[Y_{T_1} \in M \cap T_2]-Pr[Y_{T_2} \in M \cap T_2]}| \\
+& \leq |Pr[Y_{T_1} \in M \cap \overline{T_2}]| \\
+& \leq |Pr[Y_{T_1} \in T_1 \cap \overline{T_2}]|= |Pr[Y_{T_1} \in S_{2}^{\prime}]|\\
+&= |Pr[Y_{T_1} \in S_{2}^{\prime}]-0|\\
+&= |Pr[Y_{T_1} \in S_{2}^{\prime}]-Pr[Y_{T_2} \in S_{2}^{\prime}]|=\frac{q^3-q(q-1)^2}{q^3} \leq \frac{2q-1}{q^2} \leq \frac{2}{q}
+\end{aligned}</script><p>&ensp;&ensp;&ensp;&ensp;有了这两个不等式，我们现在终于可以讨论<script type="math/tex">Adv_{\mathcal{A},\mathcal{G}}^{ddh-01}(\cdot)</script>与<script type="math/tex">Adv_{\mathcal{A},\mathcal{G}}^{ddh'-01}(\cdot)</script>这两个优势之间有什么关系了，首先<script type="math/tex">Expt_{\mathcal{A},\mathcal{G}}^{ddh}(\cdot)</script>和<script type="math/tex">Expt_{\mathcal{A},\mathcal{G}}^{ddh'}(\cdot)</script>这两个实验对$\mathcal{A}$的输入$X,Y,\hat{Z}$要么是<script type="math/tex">D_1,T_1</script>，要么是<script type="math/tex">D_2,T_2</script>，<script type="math/tex">D_1,D_2</script>中的元素我们和前面一样，都记做<script type="math/tex">X_{D_1},X_{D_2}</script>，<script type="math/tex">T_1,T_2</script>中的元素都记做<script type="math/tex">Y_{T_1},Y_{T_2}</script>，则有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Adv_{\mathcal{A},\mathcal{G}}^{ddh'-01}(\lambda)&=|Pr[X_{D_2}:\mathcal{A}(1^\lambda, X_{D_2})=1]-Pr[Y_{T_2}:\mathcal{A}(1^\lambda, Y_{T_2})=1]|\\
+&=|Pr[X_{D_2}:\mathcal{A}(1^\lambda, X_{D_2})=1]-Pr[X_{D_1}:\mathcal{A}(1^\lambda, X_{D_1})=1]+Pr[X_{D_1}:\mathcal{A}(1^\lambda, X_{D_1})=1]\\
+&\quad -Pr[Y_{T_1}:\mathcal{A}(1^\lambda, Y_{T_1})=1]+Pr[Y_{T_1}:\mathcal{A}(1^\lambda, Y_{T_1})=1]-Pr[Y_{T_2}:\mathcal{A}(1^\lambda, Y_{T_2})=1]| \\
+&\leq |Pr[X_{D_2}:\mathcal{A}(1^\lambda, X_{D_2})=1]-Pr[X_{D_1}:\mathcal{A}(1^\lambda, X_{D_1})=1]|+|Pr[X_{D_1}:\mathcal{A}(1^\lambda, X_{D_1})=1]\\
+&\quad -Pr[Y_{T_1}:\mathcal{A}(1^\lambda, Y_{T_1})=1]|+|Pr[Y_{T_1}:\mathcal{A}(1^\lambda, Y_{T_1})=1]-Pr[Y_{T_2}:\mathcal{A}(1^\lambda, Y_{T_2})=1]| \\
+& \color{red}{\leq} \frac{1}{q}+Adv_{\mathcal{A},\mathcal{G}}^{ddh-01}(\lambda)+\frac{2}{q}\\
+&=\frac{3}{q}+Adv_{\mathcal{A},\mathcal{G}}^{ddh-01}(\lambda)
+\end{aligned}</script><p>为什么标红的$\color{red}{\leq}$是成立的呢？实际上$\mathcal{A}(1^\lambda, X)=1$就是对$X$做出了限制，这个等式实际上就相当于规定了一个概率总体上的子集$M$，再由前面的两个不等式，这个标红的$\color{red}{\leq}$是必然成立的，所以有：</p>
+<script type="math/tex; mode=display">Adv_{\mathcal{A},\mathcal{G}}^{ddh'}(\lambda)=\frac{1}{2}Adv_{\mathcal{A},\mathcal{G}}^{ddh'-01}(\lambda) \leq \frac{3}{2q}+\frac{1}{2}Adv_{\mathcal{A},\mathcal{G}}^{ddh-01}(\lambda)=\frac{3}{2q}+Adv_{\mathcal{A},\mathcal{G}}^{ddh}(\lambda)</script><p>这样就证明了我们非常需要的一个不等式:</p>
+<script type="math/tex; mode=display">\color{red}{Adv_{\mathcal{A},\mathcal{G}}^{ddh'}(\lambda) \leq \frac{3}{2q}+Adv_{\mathcal{A},\mathcal{G}}^{ddh}(\lambda) \tag{4}}</script><p>&ensp;&ensp;&ensp;&ensp;因为<script type="math/tex">Expt_2</script>与<script type="math/tex">Expt_3</script>的具体形式已经给出来了，为了利用上面的不等式，我们可以构造一个区分<script type="math/tex">D_2,T_2</script>的$PPT$算法$\mathcal{A}_1$如下:<br>$\mathcal{A}_1$的构造：输入$1^\lambda$<br>1，$b\leftarrow {0,1}$，如果$b=1$，则选取<script type="math/tex">(g_1,g_2,u_1^*,u_2^*) \in D_2</script>，如果$b=0$，则选取<script type="math/tex">(g_1,g_2,u_1^*,u_2^*) \in T_2</script><br>2，随机选择<script type="math/tex">x_1,x_2,y_1,y_2,z_1,z_2 \leftarrow \mathbb{Z}_q^*</script>，令</p>
+<script type="math/tex; mode=display">X:=g_1^{x_1}g_2^{x_2} \quad Y:=g_1^{y_1}g_2^{y_2} \quad Z:=g_1^{z_1}g_2^{z_2} \quad s \leftarrow HGen(1^\lambda)</script><p>输出公钥<script type="math/tex">pk=(g_1,g_2,X,Y,Z,T^s(\cdot))</script>，私钥<script type="math/tex">sk=(x_1,x_2,y_1,y_2,z_1,z_2)</script><br>3，$\mathcal{A}(pk)$询问时，$\mathcal{A}_1$用密钥$sk$解密回答，然后$\mathcal{A}$输出$(m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)$<br>4，随机选取$ \delta \leftarrow {0,1}$，如下计算并输出<script type="math/tex">(u_1^*,u_2^*,v^*,c^*)</script>给$\mathcal{A}$</p>
+<script type="math/tex; mode=display">c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}  \quad \alpha^*:=T^s(u_1^*,u_1^*,c^*) \quad  v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}</script><p>5，<script type="math/tex">\mathcal{A}(u_1^*,u_2^*,v^*,c^*)</script>可以解密询问，$\mathcal{A}_1$使用$sk$解密回答<br>6，算法$\mathcal{A}$输出$\delta’$<br>7，如果$\delta=\delta’$，则输出1，否则输出0<br>&ensp;&ensp;&ensp;&ensp;这个算法的构造真的是非常巧妙，首先在$CS$加密方案里，<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>这个组完全不涉及到密钥，它最多只是涉及到加密时的一些随机数，所以算法$\mathcal{A}_1$完全可以自己生成公钥私钥，然后利用<script type="math/tex">(g_1,g_2,u_1^*,u_2^*)</script>这个组回复算法$\mathcal{A}$的解密询问，实际上如果算法$\mathcal{A}$是$PPT$算法，则$\mathcal{A}_1$也必为$PPT$算法。另外这个$\mathcal{A}_1$也和<script type="math/tex">Expt_2</script>与<script type="math/tex">Expt_3</script>产生了联系，实际上如果$b=1$，那$\mathcal{A}_1$和<script type="math/tex">Expt_2</script>就是一模一样的，如果$b=0$，那$\mathcal{A}_1$和<script type="math/tex">Expt_3</script>就是一模一样，的非常直观的可以看到：</p>
+<script type="math/tex; mode=display">Pr[Expt_2 \quad success]=Pr[\mathcal{A}_1^{b=1}(1^\lambda)=1 ] \\
+Pr[Expt_3 \quad success]=Pr[\mathcal{A}_1^{b=0}(1^\lambda)=1 ]</script><p>所以有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+|Pr[Expt_2 \quad success]-Pr[Expt_3 \quad success]|&=|Pr[\mathcal{A}_1^{b=1}(1^\lambda)=1 ]-Pr[\mathcal{A}_1^{b=0}(1^\lambda)=1 ]|\\
+&=2Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh'}(\lambda)\\
+&\leq 2(\frac{3}{2q}+Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda))\\
+&=\frac{3}{q}+2Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda)
+\end{aligned}</script><p>由此我们终于证明了<script type="math/tex">Expt_2</script>与<script type="math/tex">Expt_3</script>之间的概率关系：、</p>
+<script type="math/tex; mode=display">\color{red}{|Pr[Expt_2 \quad success]-Pr[Expt_3 \quad success]| \leq \frac{3}{q}+2Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda) \tag{5}}</script><p>非常的不容易。</p>
+<h3 id="Expt-3与Expt-4"><a href="#Expt-3与Expt-4" class="headerlink" title="Expt_3与Expt_4"></a><script type="math/tex">Expt_3</script>与<script type="math/tex">Expt_4</script></h3><p>&ensp;&ensp;&ensp;&ensp;接下来再看<script type="math/tex">Expt_3</script>与<script type="math/tex">Expt_4</script>，具体结构如下：</p>
+<html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Exp_3: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad Dec_{sk}(\cdot)\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^*\\
+                u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}\\
+                \delta \leftarrow \{0,1\}, c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}\\
+                \alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad Dec_{sk}^*(\cdot)\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Exp_4: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad \color{red}{\overline{Dec_{sk}(\cdot)}}\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^*\\
+                u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}\\
+                \delta \leftarrow \{0,1\}, c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}\\
+                \alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad \color{red}{\overline{Dec_{sk}^*(\cdot)}}\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+        </tr>
+    </table>
+</html>
 
+<p>&ensp;&ensp;&ensp;&ensp;<script type="math/tex">Expt_4</script>与<script type="math/tex">Expt_3</script>不同的地方在于<script type="math/tex">Expt_4</script>的解密检验步骤更加丰富，要求更多，每当有解密询问<script type="math/tex">(u_1,u_2,v,c)</script>时，则对<script type="math/tex">\alpha =T^s(u_1,u_2,c)</script>做如下检查：若有<script type="math/tex">u_2=u_1^a \land v=u_1^{x+\alpha}</script>，则输出<script type="math/tex">c(u_1^z)^{-1}</script>，否则输出$\perp$，其中</p>
+<script type="math/tex; mode=display">g_2=g_1^a \quad x:=x_1+ax_2 \quad y:=y_1+ay_2 \quad z:=z_1+az_2</script><p>通过简单的计算之后可以发现，这里的检验和<script type="math/tex">Expt_3</script>中的检验仅仅是多了一个$u_2=u_1^a$，实际上这也是比较稳妥的，对于攻击者，$(u_1,u_2,v,c)$它都可以进行修改，也许会有某一组$(u_1,u_2,v,c)$使得通过<script type="math/tex">Expt_3</script>的验证且$u_2\neq u_1^a$，这种可能性不是没有。<br>&ensp;&ensp;&ensp;&ensp;由此我们定义事件$E_4$，表示敌手询问了能被<script type="math/tex">Expt_3</script>中应答器回答但<script type="math/tex">Expt_4</script>中应答器拒绝的密文。可以发现，如果事件$E_4$不出现，那实验<script type="math/tex">Expt_4</script>与<script type="math/tex">Expt_3</script>是完全相同的实验，所以根据概率差引理有：</p>
+<script type="math/tex; mode=display">\color{red}{|Pr[Expt_3 \quad success]-Pr[Expt_4 \quad success]| \leq Pr[E_4 ]  \tag{6}}</script><h3 id="Expt-4与Expt-5"><a href="#Expt-4与Expt-5" class="headerlink" title="Expt_4与Expt_5"></a><script type="math/tex">Expt_4</script>与<script type="math/tex">Expt_5</script></h3><p>&ensp;&ensp;&ensp;&ensp;接下来再看<script type="math/tex">Expt_4</script>与<script type="math/tex">Expt_5</script>，具体结构如下：</p>
+<html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Exp_4: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad \overline{Dec_{sk}(\cdot)}\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^*\\
+                u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}\\
+                \delta \leftarrow \{0,1\}, c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}\\
+                \alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad \overline{Dec_{sk}^*(\cdot)}\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Exp_5: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad \overline{Dec_{sk}(\cdot)}\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^*\\
+                u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}\\
+                \delta \leftarrow \{0,1\}\\
+                \color{red}{c^* \leftarrow \mathbb{G}} ,\alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad \overline{Dec_{sk}^*(\cdot)}\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+        </tr>
+    </table>
+</html>
 
+<p>&ensp;&ensp;&ensp;&ensp;它们的区别非常显然<script type="math/tex">Expt_4</script>中的挑战密文是<script type="math/tex">c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}</script>，但<script type="math/tex">Expt_5</script>中的挑战密文是<script type="math/tex">c^* \leftarrow \mathbb{G}</script>，我们接下来就要考虑这两个实验成功概率之间的关系。由于<script type="math/tex">c^*</script>永远是群$\mathbb{G}$的一个元素，必然有<script type="math/tex">r=log_{g_1}c^*</script>，根据<script type="math/tex">c^*:=(u_1^*)^{z_1}(u_2^*)^{z_2} \cdot m_{\delta}</script>可以得到：</p>
+<script type="math/tex; mode=display">r=r^*z_1+ar_2^*z_2+log_{g_1}m_{\delta}</script><p>根据$z=z_1+az_2$可知，有如下关系：</p>
+<script type="math/tex; mode=display">\left(\begin{array}{l}
+z \\
+r
+\end{array}\right)=\left(\begin{array}{cc}
+1 & a \\
+r_1^* & a r_2^*
+\end{array}\right) \cdot\left(\begin{array}{l}
+z_1 \\
+z_2
+\end{array}\right)+\left(\begin{array}{c}
+0 \\
+\log _{g_1} m_\delta
+\end{array}\right)</script><p>另外<script type="math/tex">Expt_4</script>和<script type="math/tex">Expt_5</script>中解密应答器的解密过程中，密文为<script type="math/tex">(u_1,u_2,v,c)</script>，如果我们不考虑验证过程，解密过程为<script type="math/tex">c/u_1^z</script>，显然仅仅使用了<script type="math/tex">z=z_1+az_2</script>这个密钥，我们现在考虑$r$和<script type="math/tex">z_1,z_2</script>的关系，在上面那个矩阵等式里，在计算<script type="math/tex">c^*</script>，也就是计算$r$时，<script type="math/tex">z,a,r_1^*,r_2^*,\delta</script>都是已经确定好的量，而且那个二阶矩阵还显然是可逆的，所以一个$r$就与一个<script type="math/tex">z_1,z_2</script>唯一对应。</p>
+<p>&ensp;&ensp;&ensp;&ensp;但<script type="math/tex">z_1,z_2</script>是怎么确定的？实际上，即使敌手知道$z$的值，敌手也不会有任何优势地知道<script type="math/tex">z_1,z_2</script>是多少，就像敌手拿到一个数100，那敌手就不会有任何优势去判断我给100的加法分解是什么，因为关于这些我完全没有和敌手交互，另外由于<script type="math/tex">a \in \mathbb{Z}_q^*</script>，那<script type="math/tex">z_1,z_2</script>就一共有$q$对，且每一个都是等概率出现，则对应的$r$也是有$q$个，每一个的概率都是相等的。<br>&ensp;&ensp;&ensp;&ensp;所以我们实际上发现<script type="math/tex">Expt_4</script>和<script type="math/tex">Expt_5</script>中的挑战密文<script type="math/tex">c^*</script>都是随机的，那<script type="math/tex">Expt_4</script>和<script type="math/tex">Expt_5</script>里这些需要挑选的随机变量都是同分布的，那<script type="math/tex">Expt_4</script>和<script type="math/tex">Expt_5</script>就完全是相同的实验，如果我们假设事件<script type="math/tex">E_5</script>是敌手询问了被<script type="math/tex">Expt_3</script>中应答器回答但被<script type="math/tex">Expt_5</script>中应答器拒绝的密文，则必有：</p>
+<script type="math/tex; mode=display">\color{red}{Pr[Expt_4 \quad success]=Pr[Expt_5 \quad success]  \tag{7}}</script><script type="math/tex; mode=display">\color{red}{Pr[E_4]=Pr[E_5]   \tag{8}}</script><p>因为<script type="math/tex">Expt_5</script>中的<script type="math/tex">c^*</script>完全是随机选取的，所以<script type="math/tex">c^*</script>中不含<script type="math/tex">m_{\delta}</script>的信息，所以有：</p>
+<script type="math/tex; mode=display">\color{red}{Pr[E_5] =\frac{1}{2}  }</script><h3 id="Expt-5与Expt-6"><a href="#Expt-5与Expt-6" class="headerlink" title="Expt_5与Expt_6"></a><script type="math/tex">Expt_5</script>与<script type="math/tex">Expt_6</script></h3><p>&ensp;&ensp;&ensp;&ensp;接下来再看<script type="math/tex">Expt_5</script>与<script type="math/tex">Expt_6</script>，具体结构如下：</p>
+<html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+                $$Exp_5: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad \overline{Dec_{sk}(\cdot)}\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^*\\
+                u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}\\
+                \delta \leftarrow \{0,1\}\\
+                c^* \leftarrow \mathbb{G} ,\alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad \overline{Dec_{sk}^*(\cdot)}\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+            <td>
+                <!--右侧内容-->
+                $$Exp_6: input 1^\lambda\\
+                pk,sk \leftarrow CS \quad scheme\\
+                pk=(g_1,g_2,X,Y,Z,T^s(\cdot))\\
+                sk=(x_1,x_2,y_1,y_2,z_1,z_2)\\
+                \mathcal{A}(pk)\quad ask \quad \overline{Dec_{sk}(\cdot)}\\  
+                (m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)\\
+                r_1^*,r_2^* \leftarrow \mathbb{Z}_q,r_1^* \neq r_2^*\\
+                u_1^*=g_1^{r_1^*}, u_2^*=g_2^{r_2^*}\\
+                \delta \leftarrow \{0,1\}\\
+                c^* \leftarrow \mathbb{G} ,\alpha^*:=T^s(u_1^*,u_2^*,c^*)\\
+                v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}\\
+                \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\quad ask \quad \color{red}{\widehat{Dec_{sk}^*(\cdot)}}\\
+                \delta' \leftarrow \mathcal{A}(pk,u_1^*,u_1^*,v^*,c^*)\\
+                if \delta'=\delta \quad output \quad 1  \quad else \quad 0$$
+            </td>
+        </tr>
+    </table>
+</html>
 
-
-
-
-
-
+<p>&ensp;&ensp;&ensp;&ensp;<script type="math/tex">Expt_6</script>中猜测阶段的应答器与<script type="math/tex">Expt_5</script>中猜测阶段的应答器存在一些区别，如果敌手询问的密文<script type="math/tex">(u_1,u_2,v,c)</script>满足<script type="math/tex">(u_1,u_2,c) \neq (u_1^*,u_2^*,c^*)</script>但是<script type="math/tex">\alpha=\alpha^*</script>，则回答$\perp$并停机，否则一切和<script type="math/tex">Expt_5</script>中猜测阶段的应答器完全一样。</p>
+<p>&ensp;&ensp;&ensp;&ensp;这里需要定义两个事件，一个事件<script type="math/tex">E_6</script>：敌手询问了被<script type="math/tex">Expt_3</script>中应答器回答但被<script type="math/tex">Expt_6</script>中应答器拒绝的密文，另外一个事件<script type="math/tex">F_6</script>：新的应答器<script type="math/tex">\color{red}{\widehat{Dec_{sk}^*(\cdot)}}</script>使用上述新的规则拒绝了一个密文。显然的是如果<script type="math/tex">F_6</script>不发生，就是说这个新设的限制完全没用，那<script type="math/tex">Expt_5</script>与<script type="math/tex">Expt_6</script>完全一样，则事件<script type="math/tex">E_6</script>和事件<script type="math/tex">E_5</script>也是一样的，因为他们所依赖的实验基础都是相同的，即<script type="math/tex">E_5\land \neg F_6=E_6 \land \neg F_6</script>，根据概率差引理有：</p>
+<script type="math/tex; mode=display">\color{red}{|Pr[E_5]-Pr[E_6]| \leq Pr[F_6] \tag{9}}</script><p>&ensp;&ensp;&ensp;&ensp;我们接下来要去考虑<script type="math/tex">Pr[F_6]</script>的大小，<script type="math/tex">F_6</script>这个事件与碰撞有关，我们利用$\mathcal{A}$构建一个对于$HASH$寻找第二原像攻击的敌手$\mathcal{A}_2$：<br>$\mathcal{A}_2$的构造：输入<script type="math/tex">s,(u_1^*,u_2^*,c^*)</script><br>1，随机选择<script type="math/tex">x_1,x_2,y_1,y_2,z_1,z_2 \leftarrow \mathbb{Z}_q^*</script>，令</p>
+<script type="math/tex; mode=display">X:=g_1^{x_1}g_2^{x_2} \quad Y:=g_1^{y_1}g_2^{y_2} \quad Z:=g_1^{z_1}g_2^{z_2}</script><p>输出公钥<script type="math/tex">pk=(g_1,g_2,X,Y,Z,T^s(\cdot))</script>，私钥<script type="math/tex">sk=(x_1,x_2,y_1,y_2,z_1,z_2)</script><br>2，$\mathcal{A}(pk)$询问<script type="math/tex">\overline{Dec_{sk}(\cdot)}</script>时，$\mathcal{A}_2$用密钥$sk$解密回答，然后$\mathcal{A}$输出$(m_0.m_1) \leftarrow \mathcal{A}(1^\lambda ,pk)$<br>3，$\mathcal{A}_2$如下计算挑战密文<script type="math/tex">(u_1^*,u_2^*,v^*,c^*)</script>给$\mathcal{A}$</p>
+<script type="math/tex; mode=display">c^* \leftarrow \mathbb{G} \quad \alpha^*:=T^s(u_1^*,u_2^*,c^*) \quad v^*:=(u_1^*)^{x_1+\alpha^* y_1} (u_2^*)^{x_2+\alpha^* y_2}</script><p>4，<script type="math/tex">\mathcal{A}(u_1^*,u_2^*,v^*,c^*)</script>可以询问<script type="math/tex">\color{red}{\widehat{Dec_{sk}^*(\cdot)}}</script>，如果敌手询问某个密文<script type="math/tex">(u_1,u_2,v,c)</script>满足</p>
+<script type="math/tex; mode=display">T^s(u_1,u_2,c)=\alpha^* \quad (u_1,u_2,c) \neq (u_1^*,u_2^*,c^*)</script><p>则回答$perp$并输出<script type="math/tex">(u_1,u_2,c)</script>，停机</p>
+<p>&ensp;&ensp;&ensp;&ensp;分析上述实验的成功优势我们有如下等式：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Adv_{\mathcal{A}_2,HASH}^{crt}&=Pr[\mathcal{A}_2  success]\\
+&=Pr[log_{g_1}u_1^* \neq log_{g_2}u_2^*]Pr[\mathcal{A}_2  success|log_{g_1}u_1^* \neq log_{g_2}u_2^*]\\
+&\quad +Pr[log_{g_1}u_1^* = log_{g_2}u_2^*]Pr[\mathcal{A}_2  success|log_{g_1}u_1^* = log_{g_2}u_2^*] \\
+&\color{red}{=}Pr[log_{g_1}u_1^* = log_{g_2}u_2^*]Pr[\mathcal{A}_2  success|log_{g_1}u_1^* = log_{g_2}u_2^*]+Pr[log_{g_1}u_1^* \neq log_{g_2}u_2^*]Pr[F_6]
+\end{aligned}</script><p>为什么最后一个标红的等号成立？实际上因为<script type="math/tex">\mathcal{A}_2</script>这个算法完全就是套在<script type="math/tex">Expt_6</script>这个壳子里运行的，如果<script type="math/tex">log_{g_1}u_1^* \neq log_{g_2}u_2^*</script>，则此时的<script type="math/tex">\mathcal{A}_2</script>与<script type="math/tex">Expt_6</script>根本就没区别，当然若此时<script type="math/tex">\mathcal{A}_2</script>成功，就等价于事件<script type="math/tex">F_6</script>出现，所以上面标红的等号必然成立。</p>
+<p>&ensp;&ensp;&ensp;&ensp;因为<script type="math/tex">(u_1^*,u_2^*,c^*)</script>这个组显然只有<script type="math/tex">q^3</script>个，所以有：</p>
+<script type="math/tex; mode=display">Pr[log_{g_1}u_1^* = log_{g_2}u_2^*] =\frac{q^2}{q^3}=\frac{1}{q}\\
+Pr[log_{g_1}u_1^* \neq log_{g_2}u_2^*] =1-\frac{1}{q}\\
+Adv_{\mathcal{A}_2,HASH}^{crt}=\frac{1}{q}Pr[\mathcal{A}_2  success|log_{g_1}u_1^* = log_{g_2}u_2^*]+(1-\frac{1}{q})Pr[F_6]</script><p>所以有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Pr[F_6]&=\frac{Adv_{\mathcal{A}_2,HASH}^{crt}-\frac{1}{q}Pr[\mathcal{A}_2  success|log_{g_1}u_1^* = log_{g_2}u_2^*]}{1-\frac{1}{q}}\\
+&=\frac{q}{q-1}Adv_{\mathcal{A}_2,HASH}^{crt}-\frac{1}{q-1}Pr[\mathcal{A}_2  success|log_{g_1}u_1^* = log_{g_2}u_2^*]\\
+&\leq \frac{q}{q-1}Adv_{\mathcal{A}_2,HASH}^{crt}\\
+& \leq 2Adv_{\mathcal{A}_2,HASH}^{crt}
+\end{aligned}</script><p>由此我们证明了：</p>
+<script type="math/tex; mode=display">\color{red}{Pr[F_6] \leq 2Adv_{\mathcal{A}_2,HASH}^{crt} \tag{10}}</script><p>&ensp;&ensp;&ensp;&ensp;接下来就剩了最后一个概率不等式没有解决，由于篇幅的原因，此概率不等式放到另外的博文里解决，其具体形式如下：</p>
+<script type="math/tex; mode=display">\color{red}{Pr[E_6] \leq \frac{Q}{q} \tag{11}}</script><p>其中$Q$表示敌手$\mathcal{A}$询问应答器的次数，当然为多项式次。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&ensp;&ensp;&ensp;&ensp;到现在就可以总结公式了，真的非常不容易，公式有：</p>
+<script type="math/tex; mode=display">
+\color{red}{Adv_{\mathcal{A},CS}^{cca}(\lambda)=|Pr[Expt_1 \quad success]-\frac{1}{2}| }\\
+\color{red}{Pr[Expt_1 \quad success]=Pr[Expt_2 \quad success] }\\
+\color{red}{|Pr[Expt_2 \quad success]-Pr[Expt_3 \quad success]| \leq \frac{3}{q}+2Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda)}\\
+\color{red}{|Pr[Expt_3 \quad success]-Pr[Expt_4 \quad success]| \leq Pr[E_4 ] }\\
+\color{red}{Pr[Expt_4 \quad success]=Pr[Expt_5 \quad success]  }\\
+\color{red}{Pr[E_4]=Pr[E_5]   }\\
+\color{red}{Pr[E_5] =\frac{1}{2}  }\\
+\color{red}{|Pr[E_5]-Pr[E_6]| \leq Pr[F_6] }\\
+\color{red}{Pr[F_6] \leq 2Adv_{\mathcal{A}_2,HASH}^{crt} }\\
+\color{red}{Pr[E_6] \leq \frac{Q}{q} }</script><p>最后我们得到了：</p>
+<script type="math/tex; mode=display">\color{red}{Adv_{\mathcal{A},CS}^{cca}(\lambda) \leq 2\cdot Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda)+2Adv_{\mathcal{A}_2,HASH}^{tcr}(\lambda)+\frac{3+Q}{q} }</script><p>也就证明了最终的结论，分辨的优势是可忽略的。</p>
+<h2 id="再次总结"><a href="#再次总结" class="headerlink" title="再次总结"></a>再次总结</h2><p>&ensp;&ensp;&ensp;&ensp;真的好繁琐，好在是弄完了，部分证明和老师讲的有出入，但我觉得应该是对的，问题不大。</p>
 
     
 
@@ -437,15 +699,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Cramer-Shoup加密方案</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DDH假设</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CCA安全</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Cramer-Shoup加密方案</a>
         		</li>
       		
 		</ul>
@@ -569,7 +831,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cramer-Shoup加密方案"><span class="toc-number">1.1.</span> <span class="toc-text">Cramer-Shoup加密方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cramer-Shoup方案的CCA安全定理"><span class="toc-number">1.2.</span> <span class="toc-text">Cramer-Shoup方案的CCA安全定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体证明"><span class="toc-number">1.3.</span> <span class="toc-text">具体证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-1与Expt-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">Expt_1与Expt_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-2与Expt-3"><span class="toc-number">1.3.2.</span> <span class="toc-text">Expt_2与Expt_3</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cramer-Shoup加密方案"><span class="toc-number">1.1.</span> <span class="toc-text">Cramer-Shoup加密方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cramer-Shoup方案的CCA安全定理"><span class="toc-number">1.2.</span> <span class="toc-text">Cramer-Shoup方案的CCA安全定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体证明"><span class="toc-number">1.3.</span> <span class="toc-text">具体证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-1与Expt-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">Expt_1与Expt_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-2与Expt-3"><span class="toc-number">1.3.2.</span> <span class="toc-text">Expt_2与Expt_3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DDH-假设的改进"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">$DDH$假设的改进</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-3与Expt-4"><span class="toc-number">1.3.3.</span> <span class="toc-text">Expt_3与Expt_4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-4与Expt-5"><span class="toc-number">1.3.4.</span> <span class="toc-text">Expt_4与Expt_5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Expt-5与Expt-6"><span class="toc-number">1.3.5.</span> <span class="toc-text">Expt_5与Expt_6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再次总结"><span class="toc-number">1.5.</span> <span class="toc-text">再次总结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -780,7 +1042,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,15 +1054,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,19 +1078,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">可忽略函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -840,11 +1094,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
+                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
+                <a href="javascript:void(0)" class="js-tag color1">可忽略函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -864,6 +1126,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正规变换</a>
               </li>
              
@@ -872,15 +1138,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -893,10 +1159,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
             
             <div class="clearfix"></div>
