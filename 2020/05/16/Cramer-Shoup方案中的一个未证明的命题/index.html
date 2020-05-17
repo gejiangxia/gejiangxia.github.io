@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-16T05:21:16.000Z">
-<meta property="article:modified_time" content="2020-05-16T14:54:06.230Z">
+<meta property="article:modified_time" content="2020-05-17T04:07:10.346Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="Cramer-Shoup方案中一个未证明命题">
 <meta name="twitter:card" content="summary">
@@ -246,7 +246,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.3k字</span>
+      <span class="post-count">4.8k字</span>
     </span>
   </span>
 
@@ -255,7 +255,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">11分</span>
+      <span class="post-count">22分</span>
     </span>
   </span>
 </div>
@@ -390,8 +390,116 @@ Adv_{\mathcal{A},CS}^{cca}(\lambda)&=|Pr[E_1 s]-\frac{1}{2}|=|Pr[E_2 s]-\frac{1}
 $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_2,c) \neq (u_1^*,u_2^*,c^*)$但是$\alpha=\alpha^*$，则回答$\perp$并停机"拒绝了一个密文
 </center>
 
+<p>但由于<script type="math/tex">Expt_5</script>第二阶段的应答器并不是<script type="math/tex">\color{red}{\widehat{Dec_{sk}^*(\cdot)}}</script>，故需要对<script type="math/tex">F_6</script>做一些修改，具体如下</p>
+<center>
+$F_6$：$Expt_5$第二阶段的敌手询问了某个密文$(u_1,u_2,v,c)$满足"$(u_1,u_2,c) \neq (u_1^*,u_2^*,c^*)$但是$\alpha=\alpha^*$"
+</center>
 
+<p>实际上这个$F_6$发生的概率也是可忽略的，证明方法与原来的证明一模一样，只需要将构造的寻找第二原像的敌手中的<script type="math/tex">Expt_6</script>换成<script type="math/tex">Expt_5</script>即可。</p>
+<p>&ensp;&ensp;&ensp;&ensp;首先对事件$E_5$发生的概率进行分析</p>
+<p><center>
+$E_5$：敌手询问了被$Expt_3$中应答器回答但被$Expt_5$中应答器拒绝的密文
+</center></p>
+<script type="math/tex; mode=display">Pr[E_5]=Pr[F_6]Pr[E_5|F_6]+Pr[\neg F_6]Pr[E_5|\neg F_6]\leq Pr[F_6]+Pr[E_5|\neg F_6]</script><p>首先$F_6$发生的概率是可忽略的，故只要证明<script type="math/tex">Pr[E_5|\neg F_6]</script>是可忽略的即可，实际上这也是后面的主要工作。</p>
+<p>&ensp;&ensp;&ensp;&ensp;$Expt_5$的解密应答器拒绝解密有两种情况，一是在第一阶段不满足某个规则而拒绝，二是在第二阶段不满足某个规则而拒绝，只要我们能证明在$\neg F_6$的条件下无论是第一阶段还是第二阶段拒绝的概率都是可忽略的即可。</p>
+<h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><p>&ensp;&ensp;&ensp;&ensp;首先来看第一阶段，注意<script type="math/tex">F_6</script>是对第二阶段的应答器做出的限制，所以<script type="math/tex">\neg F_6</script>对第一阶段完全没有影响，故此时的<script type="math/tex">E_5</script>出现意味着敌手提供的密文<script type="math/tex">(u_1,u_2,v,c)</script>满足<script type="math/tex">u_2 \neq u_1^a</script>且<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script>，分别用指数形式表示有</p>
+<script type="math/tex; mode=display">r_1:=\log _{g_1} u_1, \quad r_2:=\log _{g_2} u_2, \quad \alpha:=T^s\left(u_1, u_2, c\right), \quad \beta:=\log _{g_1} v</script><script type="math/tex; mode=display">\gamma:=x_1 r_1+\alpha r_1 y_1+a r_2 x_2+a \alpha r_2 y_2</script><p>则<script type="math/tex">u_2 \neq u_1^a</script>等价于<script type="math/tex">r_1 \neq r_2</script>，<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script>等价于<script type="math/tex">\gamma = \beta</script>。注意<script type="math/tex">(u_1,u_2,v,c)</script>是敌手构造的密文，所以<script type="math/tex">u_2 \neq u_1^a</script>是完全可能的，则此时有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Pr[E_5|\neg F_6]=Pr[E_5] &\leq Pr[u_2 \neq u_1^a \land v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}] \\
+&=Pr[r_1 \neq r_2 \land \gamma = \beta]\\
+&=Pr[r_1 \neq r_2 ]Pr[\gamma = \beta|r_1 \neq r_2]\\
+&\leq Pr[\gamma = \beta|r_1 \neq r_2]
+\end{aligned}</script><p>&ensp;&ensp;&ensp;&ensp;接下来就要考虑<script type="math/tex">r_1 \neq r_2</script>的情况下，<script type="math/tex">\gamma = \beta</script>的概率，首先对<script type="math/tex">\gamma = \beta</script>的意义做一下分析，<script type="math/tex">\gamma = \beta</script>等价于<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script>，实际上对于敌手而言，如果敌手使用标准的加密生成<script type="math/tex">(u_1,u_2,v,c)</script>，则<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script>是显然成立的，但注意这里要求<script type="math/tex">r_1 \neq r_2</script>，也就是<script type="math/tex">u_2 \neq u_1^a</script>，这与标准的加密是相背离的，所以就相当于敌手在规则之外构造了一个密文，然后交给解密应答器，解密应答器再验证$v$等不等于<script type="math/tex">u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script>，也就是<script type="math/tex">\gamma</script>是不是等于<script type="math/tex">\beta</script>，那这是就不一定成功了，这里<script type="math/tex">\beta</script>可以理解为敌手生成的，<script type="math/tex">\gamma</script>是解密应答器根据私钥生成的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;下面考虑<script type="math/tex">x_1,x_2,y_1,y_2</script>与<script type="math/tex">\gamma</script>的关系，可以得到如下线性方程组</p>
+<script type="math/tex; mode=display">\left(\begin{array}{l}
+x \\
+y \\
+\gamma
+\end{array}\right)=\left(\begin{array}{cccc}
+1 & a & 0 & 0 \\
+0 & 0 & 1 & a \\
+r_1 & a r_2 & \alpha r_1 & a \alpha r_2
+\end{array}\right)
 
+\left(\begin{array}{l}
+x_1 \\
+x_2 \\
+y_1 \\
+y_2
+\end{array}\right)</script><p>注意<script type="math/tex">r_1 \neq r_2</script>，$a\neq 0$，故此方程系数矩阵的秩一定为3，可对其进行初等行变换得到如下结果</p>
+<script type="math/tex; mode=display">\left(\begin{array}{l}
+x \\
+y \\
+\gamma-r_1x-r_1y
+\end{array}\right)=\left(\begin{array}{cccc}
+1 & a & 0 & 0 \\
+0 & 0 & 1 & a \\
+0 & a(r_2-r_1)& 0 & a\alpha (r_2-r_1)
+\end{array}\right)
+
+\left(\begin{array}{l}
+x_1 \\
+x_2 \\
+y_1 \\
+y_2
+\end{array}\right)</script><p>上面方程中的<script type="math/tex">r_1,r_2</script>是敌手给的，$\alpha$也相当于是敌手给的，至于$a$，解密应答器在生成公私钥对时可以将$a$固定，故一旦敌手给出密文，上述方程的系数矩阵就是确定的，另外对一个解密应答器而言，一旦公钥确定，那么<script type="math/tex">x=x_1+ax_2,y=y_1+ay_2</script>就是确定的，但即便如此，我们也可以合理假设<script type="math/tex">x_2,y_2</script>是<script type="math/tex">\mathbb{Z}_q</script>中的随机元素。</p>
+<p>&ensp;&ensp;&ensp;&ensp;在这样的情况下，考虑上述方程组的第三个等式</p>
+<script type="math/tex; mode=display">\gamma-r_1x-r_1y=a(r_2-r_1)x_2+a\alpha (r_2-r_1)y_2</script><script type="math/tex; mode=display">\gamma=r_1x+r_1y+a(r_2-r_1)x_2+a\alpha (r_2-r_1)y_2</script><p>显然在敌手给出密文后，上面的式子只有<script type="math/tex">x_2,y_2</script>是<script type="math/tex">\mathbb{Z}_q</script>中的随机元素，其余都是确定的值，故对任一个<script type="math/tex">\gamma \in \mathbb{Z}_q</script>，可以固定<script type="math/tex">y_2</script>的值，由于$a\neq 0$，<script type="math/tex">r_1\neq r_2</script>，故一定存在唯一的一个<script type="math/tex">x_2 \in \mathbb{Z}_q</script>使得上式成立，故<script type="math/tex">x_2,y_2</script>随机取时，<script type="math/tex">\gamma</script>也一定随机选取，故在这样的情况下，<script type="math/tex">\gamma</script>等于<script type="math/tex">\beta</script>这个定值的概率就是$\frac{1}{q}$，显然为可忽略的。</p>
+<h3 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h3><p>&ensp;&ensp;&ensp;&ensp;再来看第二阶段，第二阶段敌手得到了挑战密文<script type="math/tex">(u_1^*,u_2^*,v^*,c^*)</script>，下设</p>
+<script type="math/tex; mode=display">r_{1}^{*}:=\log _{g_{1}} u_{1}^{*}, \quad r_{2}^{*}:=\log _{g_{2}} u_{2}^{*}, \quad \beta^{*}:=\log _{g_{1}} v^{*}, \quad r^{*}:=\log _{g_{1}} c^{*}</script><p>然后敌手以密文<script type="math/tex">(u_1,u_2,v,c)</script>向第二阶段的解密应答器进行询问，实际敌手此时给出的<script type="math/tex">u_1,u_2,c</script>必满足</p>
+<script type="math/tex; mode=display">\alpha =T^s(u_1,u_2,c)\neq T^s(u_1^*,u_2^*,c^*)=\alpha^*</script><p>这是非常显然的，分析如下</p>
+<p>1，若<script type="math/tex">\alpha=\alpha^*</script>且<script type="math/tex">(u_1,u_2,c)=(u_1^*,u_2^*,c^*)</script>成立，则由<script type="math/tex">v^*</script>计算的形式<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}=(u_1^*)^{x_{1}+\alpha^* y_{1}} (u_2^*)^{x_{2}+\alpha^* y_{2}}=v^*</script>，则<script type="math/tex">(u_1,u_2,v,c)=(u_1^*,u_2^*,v^*,c^*)</script>，此时<script type="math/tex">Expt_3</script>不可能验证通过，故此事件不可能出现。</p>
+<p>2，若<script type="math/tex">\alpha=\alpha^*</script>且<script type="math/tex">(u_1,u_2,c)\neq (u_1^*,u_2^*,c^*)</script>成立，非常显然这就是事件<script type="math/tex">F_6</script>发生，但前面已经提过，我们的分析都是在<script type="math/tex">\neg F_6</script>条件下的，所以这种情况不会出现。</p>
+<p>&ensp;&ensp;&ensp;&ensp;所以可以认为<script type="math/tex">\alpha \neq \alpha^*</script>，则有下面方程组成立</p>
+<script type="math/tex; mode=display">\left(\begin{array}{c}
+x \\
+y \\
+\beta^{*} \\
+\gamma
+\end{array}\right)=\left(\begin{array}{cccc}
+1 & a & 0 & 0 \\
+0 & 0 & 1 & a \\
+r_{1}^{*} & a r_{2}^{*} & \alpha^{*} r_{1}^{*} & a \alpha^{*} r_{2}^{*} \\
+r_{1} & a r_{2} & \alpha r_{1} & a \alpha r_{2}
+\end{array}\right) \cdot\left(\begin{array}{c}
+x_{1} \\
+x_{2} \\
+y_{1} \\
+y_{2}
+\end{array}\right)</script><p>当敌手得到挑战密文后，<script type="math/tex">a,r_1^*,r_2^*,r^*,\alpha^*</script>也就确定了，当敌手以<script type="math/tex">(u_1,u_2,v,c)</script>询问解密应答器时，<script type="math/tex">r_1,r_2</script>也就确定了，故此时系数矩阵完全确定，矩阵的行列式为</p>
+<script type="math/tex; mode=display">\operatorname{det}(M)=a^{2}\left(r_{2}-r_{1}\right)\left(r_{2}^{*}-r_{1}^{*}\right)\left(\alpha^{*}-\alpha\right) \neq 0</script><p>显然系数矩阵是可逆矩阵，则设<script type="math/tex">s=-a(r_2-r_1)[a(r_2^*-r_1^*)]^{-1},t=(\alpha r_{1} +\alpha^{*}r_1^{*}s)y</script>，对上述方程组进行初等行变换可得</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{c}
+x \\
+y \\
+\beta^{*}-r_1^* x \\
+\gamma-r_1 x+s(\beta^{*}-r_1^* x)-t
+\end{array}\right)=\left(\begin{array}{cccc}
+1 & a & 0 & 0 \\
+0 & 0 & 1 & a \\
+0 & a (r_{2}^{*}-r_1^{*}) & \alpha^{*} r_{1}^{*} & a \alpha^{*} r_{2}^{*} \\
+0 & 0 & 0 & -a(\alpha r_{1} +\alpha^{*}r_1^{*}s)+a \alpha r_{2}+sa\alpha^*r_{2}^{*}
+\end{array}\right) \cdot\left(\begin{array}{c}
+x_{1} \\
+x_{2} \\
+y_{1} \\
+y_{2}
+\end{array}\right)</script><p>&ensp;&ensp;&ensp;&ensp;考虑第四个等式，则有</p>
+<script type="math/tex; mode=display">\gamma=-s(\beta^{*}-r_1^* x)+r_1 x+t+y_{2}(-a(\alpha r_{1} +\alpha^{*}r_1^{*}s)+a \alpha r_{2}+sa\alpha^*r_{2}^{*})</script><p>非常显然的是上式<script type="math/tex">y_2</script>的系数<script type="math/tex">-a(\alpha r_{1} +\alpha^{*}r_1^{*}s)+a \alpha r_{2}+sa\alpha^*r_{2}^{*}</script>必不为0，否则根据上面化简的矩阵可知，此矩阵不可逆，与原矩阵可逆矛盾。接下来的分析就与阶段一的分析类似，当敌手以<script type="math/tex">(u_1,u_2,v,c)</script>询问第二阶段的解密应答器后，上式的右边只有<script type="math/tex">y_2</script>是<script type="math/tex">\mathbb{Z}_q</script>上的随机元素，其余均为定值，且由于<script type="math/tex">y_2</script>的系数不为0，则$\gamma$也一定是<script type="math/tex">\mathbb{Z}_q</script>上的随机元素，则此时的$\gamma$等于一个确定的$\beta$的概率就是$\frac{1}{q}$，显然为可忽略的。</p>
+<h3 id="两个阶段的合并"><a href="#两个阶段的合并" class="headerlink" title="两个阶段的合并"></a>两个阶段的合并</h3><p>&ensp;&ensp;&ensp;&ensp;综上，我们证明了两个阶段都成立<script type="math/tex">Pr[E_5| \neg F_6]=\frac{1}{q}</script>，故整体的一次实验中当然有<script type="math/tex">Pr[E_5| \neg F_6]=\frac{1}{q}</script>，当然这是单次询问下的概率，<script type="math/tex">E_5</script>发生是指总共$Q$次询问中，只要有某一次询问时发生即可认为<script type="math/tex">E_5</script>在整体上发生，则可知在总共$Q$次询问中<script type="math/tex">Pr[E_5| \neg F_6]=\frac{Q}{q}</script>，由此有</p>
+<script type="math/tex; mode=display">Pr[E_5]=Pr[F_6]Pr[E_5|F_6]+Pr[\neg F_6]Pr[E_5|\neg F_6]\leq Pr[F_6]+Pr[E_5|\neg F_6]\leq 2Adv_{\mathcal{A}_2,HASH}^{tcr}+\frac{Q}{q}</script><p>显然<script type="math/tex">E_5</script>发生的概率可忽略，则原来博文里最后Cramer-Shoup方案CCA实验总的区分优势<script type="math/tex">Adv_{\mathcal{A},CS}^{cca}(\lambda)</script>可以改写为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Adv_{\mathcal{A},CS}^{cca}(\lambda)&=|Pr[E_1 s]-\frac{1}{2}|=|Pr[E_2 s]-\frac{1}{2}| \\
+&=|Pr[E_2 s]-Pr[E_3 s]+Pr[E_3 s]-Pr[E_4 s]+Pr[E_4 s]-\frac{1}{2}| \\
+& \leq |Pr[E_2 s]-Pr[E_3 s]|+|Pr[E_3 s]-Pr[E_4 s]|+|Pr[E_4 s]-\frac{1}{2}| \\
+& \leq \frac{3}{q}+2Adv_{\mathcal{A}_1,\mathcal{G} }^{ddh}(\lambda)+Pr[E_4 ] \\
+&=\frac{3}{q}+2Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda)+Pr[E_5 ]\\
+&\leq  \frac{3}{q}+2Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda)+2Adv_{\mathcal{A}_2,HASH}^{tcr}+\frac{Q}{q}\\
+&= 2Adv_{\mathcal{A}_1,\mathcal{G}}^{ddh}(\lambda)+2Adv_{\mathcal{A}_2,HASH}^{tcr}+\frac{3+Q}{q}
+\end{aligned}</script><p>这也就证明了最后的结论。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&ensp;&ensp;&ensp;&ensp;至此，Cramer-Shoup方案的CCA安全性就完全证明了，这个证明非常的繁琐，但非常的有规律，一步一步往下走即可，从中也能体会到原作者为什么要在加密方案里设置一些特殊的步骤。其实最有意思的部分还是这篇博文给出的证明，利用一些代数的性质，也巧妙利用了私钥的不同形式，居然真的完成了证明。</p>
 
     
 
@@ -584,7 +692,7 @@ $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#预备知识"><span class="toc-number">1.1.</span> <span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲义中的证明存在疑问"><span class="toc-number">1.2.</span> <span class="toc-text">讲义中的证明存在疑问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人感觉较为合理的证明"><span class="toc-number">1.3.</span> <span class="toc-text">个人感觉较为合理的证明</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#预备知识"><span class="toc-number">1.1.</span> <span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲义中的证明存在疑问"><span class="toc-number">1.2.</span> <span class="toc-text">讲义中的证明存在疑问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人感觉较为合理的证明"><span class="toc-number">1.3.</span> <span class="toc-text">个人感觉较为合理的证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一阶段"><span class="toc-number">1.3.1.</span> <span class="toc-text">第一阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二阶段"><span class="toc-number">1.3.2.</span> <span class="toc-text">第二阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两个阶段的合并"><span class="toc-number">1.3.3.</span> <span class="toc-text">两个阶段的合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -787,11 +895,19 @@ $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CPA安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CPA-多次加密安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,19 +919,7 @@ $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CPA安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CPA-多次加密安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -827,11 +931,7 @@ $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -839,7 +939,15 @@ $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -859,11 +967,19 @@ $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">beamer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -880,14 +996,6 @@ $F_6$：应答器$\color{red}{\widehat{Dec_{sk}^*(\cdot)}}$使用规则"$(u_1,u_
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
               </li>
              
               <li class="article-tag-list-item">
