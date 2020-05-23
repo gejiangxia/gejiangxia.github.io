@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-16T05:21:16.000Z">
-<meta property="article:modified_time" content="2020-05-17T04:07:10.346Z">
+<meta property="article:modified_time" content="2020-05-23T11:06:25.605Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="Cramer-Shoup方案中一个未证明命题">
 <meta name="twitter:card" content="summary">
@@ -372,7 +372,7 @@ $E_6$：敌手询问了被$Expt_3$中应答器回答但被$Expt_6$中应答器�
 <p>&ensp;&ensp;&ensp;&ensp;<script type="math/tex">Expt_3</script>与<script type="math/tex">Expt_6</script>就这两点区别，<font color='red'> 但讲义里说<script type="math/tex">E_6</script>发生一定有<script type="math/tex">u_2 \neq u_1^a</script>且<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script></font>，这个我认为并不正确。首先<script type="math/tex">E_6</script>发生，则敌手构造的密文必通过<script type="math/tex">Expt_3</script>的验证，通不过<script type="math/tex">Expt_6</script>的验证，既然通过<script type="math/tex">Expt_3</script>的验证，则只需<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script>即可，<script type="math/tex">u_2</script>是否等于<script type="math/tex">u_1^a</script>对<script type="math/tex">Expt_3</script>来说是无所谓的，因为它只验证$v$；既然通不过<script type="math/tex">Expt_6</script>的验证，可以分别在第一阶段与第二阶段考虑，若在<script type="math/tex">Expt_6</script>的第一阶段无法通过验证，必有<script type="math/tex">u_2 \neq u_1^a</script>，可以发现此时敌手构造的密文满足<script type="math/tex">u_2 \neq u_1^a</script>且<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script>，此时讲义的断言就是正确的。</p>
 <p>&ensp;&ensp;&ensp;&ensp;但若敌手构造的密文在<script type="math/tex">Expt_6</script>的第二阶段无法通过验证，第二阶段是有两个规则的，如果<script type="math/tex">u_2 \neq u_1^a</script>，输出$\perp$；如果<script type="math/tex">(u_1,u_2,c) \neq (u_1^*,u_2^*,c^*)</script>但是<script type="math/tex">\alpha=\alpha^*</script>输出$\perp$。这两个规则只要满足一个就输出$\perp$，如果满足的是第二个，一定有<script type="math/tex">u_2 \neq u_1^a</script>吗？我觉得是不一定的，比如令<script type="math/tex">u_1=u_1^*</script>，<script type="math/tex">u_2=u_2^*</script>，<script type="math/tex">c\neq c^*</script>，此时必有<script type="math/tex">u_2 = u_1^a</script>，但此时只要控制<script type="math/tex">c\neq c^*</script>使得摘要函数<script type="math/tex">T^s</script>出现碰撞</p>
 <script type="math/tex; mode=display">\alpha =T^s(u_1,u_2,c)=T^s(u_1^*,u_2^*,c^*)=\alpha^*</script><p>即可使得敌手构造的密文满足第二个规则，应答器输出$\perp$，事件<script type="math/tex">E_6</script>发生，但此时<script type="math/tex">u_2 = u_1^a</script>。</p>
-<p>&ensp;&ensp;&ensp;&ensp;注意这里的碰撞一定是存在的，我们不关注于怎么找到具体的$\alpha$，我们只关注于这种碰撞出现的可能性，这种可能性现在当然不为0，也就是说有可能出现，那就足够了，所以我觉得讲义里说<font color='red'> <script type="math/tex">E_6</script>发生一定有<script type="math/tex">u_2 \neq u_1^a</script>且<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script></font>是存在疑问的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;注意这里的碰撞，我们不关注于怎么找到具体的$\alpha$，我们只关注于这种碰撞出现的可能性，这种可能性现在当然不为0，也就是说有可能出现，那就足够了，所以我觉得讲义里说<font color='red'> <script type="math/tex">E_6</script>发生一定有<script type="math/tex">u_2 \neq u_1^a</script>且<script type="math/tex">v=u_{1}^{x_{1}+\alpha y_{1}} u_{2}^{x_{2}+\alpha y_{2}}</script></font>是存在疑问的。</p>
 <h2 id="个人感觉较为合理的证明"><a href="#个人感觉较为合理的证明" class="headerlink" title="个人感觉较为合理的证明"></a>个人感觉较为合理的证明</h2><p>&ensp;&ensp;&ensp;&ensp;这里给出一个我认为比较合理的证明，首先原命题是要证明<script type="math/tex">\color{red}{Pr[E_6] \leq \frac{Q}{q}}</script>，即事件<script type="math/tex">E_6</script>发生的概率是可忽略的，有了这个可忽略就可以利用其它一些命题证明Cramer-Shoup方案是CCA安全的，推导如下</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -931,15 +931,15 @@ Adv_{\mathcal{A},CS}^{cca}(\lambda)&=|Pr[E_1 s]-\frac{1}{2}|=|Pr[E_2 s]-\frac{1}
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -967,6 +967,14 @@ Adv_{\mathcal{A},CS}^{cca}(\lambda)&=|Pr[E_1 s]-\frac{1}{2}|=|Pr[E_2 s]-\frac{1}
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">张量积</a>
               </li>
              
@@ -975,19 +983,7 @@ Adv_{\mathcal{A},CS}^{cca}(\lambda)&=|Pr[E_1 s]-\frac{1}{2}|=|Pr[E_2 s]-\frac{1}
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -999,15 +995,19 @@ Adv_{\mathcal{A},CS}^{cca}(\lambda)&=|Pr[E_1 s]-\frac{1}{2}|=|Pr[E_2 s]-\frac{1}
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正规变换</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正规矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1019,15 +1019,15 @@ Adv_{\mathcal{A},CS}^{cca}(\lambda)&=|Pr[E_1 s]-\frac{1}{2}|=|Pr[E_2 s]-\frac{1}
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉变换</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
             
             <div class="clearfix"></div>
