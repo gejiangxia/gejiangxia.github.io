@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-25T13:24:11.000Z">
-<meta property="article:modified_time" content="2020-04-27T14:15:05.688Z">
+<meta property="article:modified_time" content="2020-05-28T09:21:36.529Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="奇异值分解">
 <meta property="article:tag" content="极式分解">
@@ -247,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">212字</span>
+      <span class="post-count">1.3k字</span>
     </span>
   </span>
 
@@ -256,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -281,6 +281,70 @@ s_0&0\\
 <h2 id="极式分解"><a href="#极式分解" class="headerlink" title="极式分解"></a>极式分解</h2><p>&ensp;&ensp;&ensp;&ensp;令$A$是向量空间$V$上的矩阵，则存在酉矩阵$U$和半正定$Hermite$矩阵$J,K$使得</p>
 <script type="math/tex; mode=display">A=UJ=KU</script><p>其中$J$和$K$是唯一满足这些方程的半正定$Hermite$矩阵，如果$A$可逆，则$U$是唯一的。</p>
 <p>&ensp;&ensp;&ensp;&ensp;极式分解涉及到正定和半正定的$Hermite$矩阵，详细证明见丘维声高等代数学习指导书下册的683页的例子76，非常经典。</p>
+<h2 id="奇异值分解的证明"><a href="#奇异值分解的证明" class="headerlink" title="奇异值分解的证明"></a>奇异值分解的证明</h2><p>&ensp;&ensp;&ensp;&ensp;这个的证明思想其实并不复杂，其实有两种证明方法，一是直接利用极式分解的结论，二是直接从矩阵的角度分析，为了表述更加简洁，这里仅证明矩阵$A$是方阵时的情形，非方阵时证明方法是类似的。</p>
+<h3 id="利用极式分解的证明思路"><a href="#利用极式分解的证明思路" class="headerlink" title="利用极式分解的证明思路"></a>利用极式分解的证明思路</h3><p>&ensp;&ensp;&ensp;&ensp;首先$n\times n$矩阵可分解为$A=UJ$，其中$U$为$n\times n$酉矩阵，$J$为$n\times n$半正定$Hermite$矩阵，则$J$一定可以酉对角化，即存在$n\times n$酉矩阵$P$使得$J=P^{-1}SP$，其中</p>
+<script type="math/tex; mode=display">S=\left[ \begin{array}{*{20}{c}}
+s_1&{}&0\\
+{}& \ddots &{}\\
+0&{}&s_n
+\end{array} \right] , s_1 \geq \cdots \geq s_n \geq 0</script><p>则有 </p>
+<script type="math/tex; mode=display">A=UP^{-1}SP</script><p>显然$UP^{-1}$仍为酉矩阵，奇异值分解得证。</p>
+<h3 id="矩阵角度的证明思路-下面的证明均考虑坐标，不涉及元素"><a href="#矩阵角度的证明思路-下面的证明均考虑坐标，不涉及元素" class="headerlink" title="矩阵角度的证明思路(下面的证明均考虑坐标，不涉及元素)"></a>矩阵角度的证明思路(下面的证明均考虑坐标，不涉及元素)</h3><p>&ensp;&ensp;&ensp;&ensp;首先$A$为$n\times n$的矩阵，则<script type="math/tex">A^*A</script>为$n\times n$的半正定$Hermite$阵，则有标准正交基<script type="math/tex">v_1,\ldots,v_n</script>使得</p>
+<script type="math/tex; mode=display">
+A^*A\left[ v_1\cdots v_n \right] =\left[ v_1\cdots v_n \right] \left[ \begin{matrix}
+    \lambda _1&        &        \\
+    &        \ddots&        \\
+    &        &        \lambda _n\\
+\end{matrix} \right]</script><p>其中<script type="math/tex">\lambda _1,\ldots,\lambda _n</script>均为非负实数，且<script type="math/tex">\lambda _1\geqslant \lambda _2\geqslant \cdots \geqslant \lambda _n\geqslant 0</script>，则有</p>
+<script type="math/tex; mode=display">
+\left[ \begin{matrix}
+    \lambda _1&        &        \\
+    &        \ddots&        \\
+    &        &        \lambda _n\\
+\end{matrix} \right] =\left[ \begin{array}{c}
+    v_{1}^{*}\\
+    \vdots\\
+    v_{n}^{*}\\
+\end{array} \right] A^*A\left[ \begin{matrix}
+    v_1&        \cdots&        v_n\\
+\end{matrix} \right]</script><p>则<script type="math/tex">\forall 1\leq i\neq j\leq n</script>有<script type="math/tex">(Av_i,Av_j)=v_j^*A^*Av_i=0</script>，<script type="math/tex">\forall 1\leq i\leq n</script>，有<script type="math/tex">(Av_i,Av_i)=v_i^*A^*Av_i=\lambda_i</script></p>
+<p>&ensp;&ensp;&ensp;&ensp;下面设<script type="math/tex">\lambda _1,\ldots,\lambda _k</script>不为0，<script type="math/tex">\lambda _{k+1},\ldots,\lambda _n</script>为0，则显然<script type="math/tex">Av_1,\ldots,Av_k</script>相互正交，且<script type="math/tex">Av_1,\ldots,Av_k</script>的长度为<script type="math/tex">\sqrt{\lambda_1},\ldots,\sqrt{\lambda_k}</script>，对于<script type="math/tex">i=k+1,\ldots,n</script>有</p>
+<script type="math/tex; mode=display">A^*Av_i=0</script><script type="math/tex; mode=display">v_i^*A^*Av_i=0</script><script type="math/tex; mode=display">(Av_i,Av_i)=0</script><p>则有<script type="math/tex">Av_i=0</script>且必然存在单位向量<script type="math/tex">\alpha_{k+1}\ldots\alpha_n</script>使得<script type="math/tex">\frac{1}{\sqrt{\lambda_1}}Av_1\ldots\frac{1}{\sqrt{\lambda_k}}Av_k,\alpha_{k+1}\ldots\alpha_n</script>为一组标准正交基，则有</p>
+<script type="math/tex; mode=display">
+A\left[ \begin{matrix}
+    v_1&        \cdots&        v_n\\
+\end{matrix} \right] =\left[ \frac{1}{\sqrt{\lambda _1}}Av_1...\frac{1}{\sqrt{\lambda _k}}Av_k,\alpha _{k+1}...\alpha _n \right] \left[ \begin{matrix}
+    \sqrt{\lambda _1}&        &        &        &        &        \\
+    &        \ddots&        &        &        &        \\
+    &        &        \sqrt{\lambda _k}&        &        &        \\
+    &        &        &        0&        &        \\
+    &        &        &        &        \ddots&        \\
+    &        &        &        &        &        0\\
+\end{matrix} \right]</script><p>记<script type="math/tex">P=[v_1\ldots v_n]</script>，<script type="math/tex">Q=[\frac{1}{\sqrt{\lambda_1}}Av_1\ldots\frac{1}{\sqrt{\lambda_k}}Av_k,\alpha_{k+1}\ldots\alpha_n ]</script>，则显然$P,Q$为酉矩阵且</p>
+<script type="math/tex; mode=display">A=Q\left[ \begin{matrix}
+    \sqrt{\lambda _1}&        &        &        &        &        \\
+    &        \ddots&        &        &        &        \\
+    &        &        \sqrt{\lambda _k}&        &        &        \\
+    &        &        &        0&        &        \\
+    &        &        &        &        \ddots&        \\
+    &        &        &        &        &        0\\
+\end{matrix} \right]P^{-1}</script><p>则奇异值分解得证，<script type="math/tex">\sqrt{\lambda _1}\ldots\sqrt{\lambda _k}</script>和0为奇异值。</p>
+<h2 id="矩阵奇异值和矩阵特征值之间的联系"><a href="#矩阵奇异值和矩阵特征值之间的联系" class="headerlink" title="矩阵奇异值和矩阵特征值之间的联系"></a>矩阵奇异值和矩阵特征值之间的联系</h2><p>&ensp;&ensp;&ensp;&ensp;矩阵的特征值可能为复数也可能为实数，但奇异值一定为非负实数，这里先直接给出矩阵奇异值和矩阵特征值之间的联系：奇异值的上界是特征值模长的一个上界，奇异值的下界是特征值模长的一个下界。<br>&ensp;&ensp;&ensp;&ensp;证明过程也非常简单，首先定义向量$\alpha$的长度<script type="math/tex">||\alpha||=\sqrt{(\alpha,\alpha)}</script>，显然酉矩阵保持长度不变，即若$U$为酉矩阵，则<script type="math/tex">||\alpha||=||U\alpha||</script>，设方阵$A$的奇异值分解为</p>
+<script type="math/tex; mode=display">A=USV=U\left[ \begin{matrix}
+    s_1&        &        \\
+    &        \ddots&        \\
+    &        &        s_n\\
+\end{matrix} \right] V</script><p>显然<script type="math/tex">s_1\ldots s_n</script>为矩阵$A$的奇异值，$U,V$为酉矩阵。</p>
+<p>&ensp;&ensp;&ensp;&ensp;下设<script type="math/tex">V\alpha=(b_1\ldots b_n)^T</script>，则有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+||A\alpha||&=||USV\alpha||=\sqrt{(USV\alpha,USV\alpha)}=\sqrt{\alpha^*V^*S^*U^*USV\alpha} \\
+&=\sqrt{\alpha^*V^*S^*SV\alpha}=\sqrt{s_1^2\bar{b_1}b_1+s_2^2\bar{b_2}b_2+\cdots+s_n^2\bar{b_n}b_n}
+\end{aligned}</script><p>设<script type="math/tex">s_1\leq s_2\leq \cdots \leq s_n</script>，则有</p>
+<script type="math/tex; mode=display">||A\alpha||\geq \sqrt{s_1^2(\bar{b_1}b_1+\bar{b_2}b_2+\cdots+\bar{b_n}b_n)}=s_1\sqrt{(V\alpha,V\alpha)}=s_1\sqrt{(\alpha,\alpha)}=s_1||\alpha||</script><script type="math/tex; mode=display">||A\alpha||\leq \sqrt{s_n^2(\bar{b_1}b_1+\bar{b_2}b_2+\cdots+\bar{b_n}b_n)}=s_n\sqrt{(V\alpha,V\alpha)}=s_n\sqrt{(\alpha,\alpha)}=s_n||\alpha||</script><p>即</p>
+<script type="math/tex; mode=display">s_1||\alpha||\leq ||A\alpha||\leq s_n||\alpha||</script><script type="math/tex; mode=display">s_1\leq \frac{||A\alpha||}{||\alpha||}\leq s_n</script><p>&ensp;&ensp;&ensp;&ensp;设<script type="math/tex">\alpha_i</script>是矩阵$A$特征值<script type="math/tex">\lambda_i</script>的特征向量，则有</p>
+<script type="math/tex; mode=display">\frac{||A\alpha_i||}{||\alpha_i||}=\frac{||\lambda_i\alpha||}{||\alpha||}=\frac{\sqrt{(\lambda_i\alpha_i,\lambda_i\alpha_i)}}{\sqrt{(\alpha_i,\alpha_i)}}=\frac{\sqrt{|\lambda_i|^2(\alpha_i,\alpha_i)}}{\sqrt{(\alpha_i,\alpha_i)}}=|\lambda_i|</script><p>则显然</p>
+<script type="math/tex; mode=display">s_1\leq |\lambda_i|\leq s_n</script><p>原命题得证，奇异值的上界是特征值模长的一个上界，奇异值的下界是特征值模长的一个下界。</p>
 
     
 
@@ -473,7 +537,7 @@ s_0&0\\
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解"><span class="toc-number">1.1.</span> <span class="toc-text">奇异值分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极式分解"><span class="toc-number">1.2.</span> <span class="toc-text">极式分解</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解"><span class="toc-number">1.1.</span> <span class="toc-text">奇异值分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极式分解"><span class="toc-number">1.2.</span> <span class="toc-text">极式分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解的证明"><span class="toc-number">1.3.</span> <span class="toc-text">奇异值分解的证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用极式分解的证明思路"><span class="toc-number">1.3.1.</span> <span class="toc-text">利用极式分解的证明思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵角度的证明思路-下面的证明均考虑坐标，不涉及元素"><span class="toc-number">1.3.2.</span> <span class="toc-text">矩阵角度的证明思路(下面的证明均考虑坐标，不涉及元素)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵奇异值和矩阵特征值之间的联系"><span class="toc-number">1.4.</span> <span class="toc-text">矩阵奇异值和矩阵特征值之间的联系</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -684,7 +748,7 @@ s_0&0\\
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,23 +760,15 @@ s_0&0\\
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,6 +777,18 @@ s_0&0\\
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,10 +801,6 @@ s_0&0\\
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -764,6 +828,10 @@ s_0&0\\
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
               </li>
              
@@ -773,14 +841,6 @@ s_0&0\\
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -797,6 +857,10 @@ s_0&0\\
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
