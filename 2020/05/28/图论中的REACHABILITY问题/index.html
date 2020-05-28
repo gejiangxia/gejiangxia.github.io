@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>张量积 | Hexo</title>
+  <title>图论中的REACHABILITY问题 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta property="og:type" content="article">
-<meta property="og:title" content="张量积">
-<meta property="og:url" content="http://yoursite.com/2020/04/25/%E5%BC%A0%E9%87%8F%E7%A7%AF/index.html">
+<meta property="og:title" content="图论中的REACHABILITY问题">
+<meta property="og:url" content="http://yoursite.com/2020/05/28/%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84REACHABILITY%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-25T13:50:55.000Z">
-<meta property="article:modified_time" content="2020-04-27T03:48:44.561Z">
+<meta property="article:published_time" content="2020-05-28T09:25:13.000Z">
+<meta property="article:modified_time" content="2020-05-28T13:41:38.016Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="张量积">
+<meta property="article:tag" content="REACHABILITY问题">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -213,14 +213,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-张量积" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-图论中的REACHABILITY问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      张量积
+      图论中的REACHABILITY问题
     </h1>
   
 
@@ -232,8 +232,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/04/25/%E5%BC%A0%E9%87%8F%E7%A7%AF/" class="archive-article-date">
-        <time datetime="2020-04-25T13:50:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
+<a href="/2020/05/28/%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84REACHABILITY%E9%97%AE%E9%A2%98/" class="archive-article-date">
+        <time datetime="2020-05-28T09:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
 </a>
 
   
@@ -246,7 +246,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">994字</span>
+      <span class="post-count">786字</span>
     </span>
   </span>
 
@@ -255,7 +255,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -267,53 +267,16 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;张量积也叫做直积，定义是非常简单的，现阶段我应该只要知道定义，会用就行了，至于张量积背后有什么数学上的考虑我就先不管了，后面如果遇到了，有机会再总结吧。<br>&ensp;&ensp;&ensp;&ensp;给定矩阵$A$和$B$，它们的直积定义如下：</p>
-<script type="math/tex; mode=display">A \otimes B = \left[ \begin{array}{*{20}{c}}
-a_{11}B&a_{12}B& \cdots &a_{1n}B\\
- \vdots & \vdots & \vdots & \vdots \\
-a_{m1}B&a_{m2}B& \cdots &a_{mn}B
-\end{array} \right]</script><p>直积的性质比较多，大多都比较平凡，但有一些还是挺有趣的，常用性质如下，比较简单的性质我就不证明了，个别性质给出了证明。</p>
-<h3 id="1-0-otimes-A-A-otimes-0-0"><a href="#1-0-otimes-A-A-otimes-0-0" class="headerlink" title="1 $0 \otimes A=A \otimes 0=0$"></a>1 $0 \otimes A=A \otimes 0=0$</h3><h3 id="2-A-1-A-2-otimes-B-A-1-otimes-B-A-2-otimes-B-A-otimes-B-1-B-2-A-otimes-B-1-A-otimes-B-2"><a href="#2-A-1-A-2-otimes-B-A-1-otimes-B-A-2-otimes-B-A-otimes-B-1-B-2-A-otimes-B-1-A-otimes-B-2" class="headerlink" title="2 $(A_1+A_2) \otimes B = A_1 \otimes B +A_2 \otimes B$,$A\otimes(B_1+B_2)=A\otimes B_1 +A\otimes B_2$"></a>2 $(A_1+A_2) \otimes B = A_1 \otimes B +A_2 \otimes B$,$A\otimes(B_1+B_2)=A\otimes B_1 +A\otimes B_2$</h3><h3 id="3-alpha-A-otimes-beta-B-alpha-beta-A-otimes-B"><a href="#3-alpha-A-otimes-beta-B-alpha-beta-A-otimes-B" class="headerlink" title="3 $(\alpha A)\otimes (\beta B)=\alpha \beta (A \otimes B)$"></a>3 $(\alpha A)\otimes (\beta B)=\alpha \beta (A \otimes B)$</h3><h3 id="4-A-otimes-B-otimes-C-A-otimes-B-otimes-C"><a href="#4-A-otimes-B-otimes-C-A-otimes-B-otimes-C" class="headerlink" title="4 $(A \otimes B) \otimes C =A \otimes (B \otimes C)$"></a>4 $(A \otimes B) \otimes C =A \otimes (B \otimes C)$</h3><h3 id="5-A-otimes-B-C-otimes-D-AC-otimes-BD"><a href="#5-A-otimes-B-C-otimes-D-AC-otimes-BD" class="headerlink" title="5 $(A\otimes B)(C \otimes D)=(AC)\otimes (BD)$"></a>5 $(A\otimes B)(C \otimes D)=(AC)\otimes (BD)$</h3><p>&ensp;&ensp;&ensp;&ensp;这个性质看起来就不那么平凡，有点像同构映射保持运算不变的性质，具体证明并不复杂，首先$A$和$C$都是$n$级矩阵，$B$和$D$都是$m$级矩阵，则有</p>
-<script type="math/tex; mode=display">A=(a_{ij}) , C=(c_{ij})</script><script type="math/tex; mode=display">B=(b_{ij}) , D=(d_{ij})</script><script type="math/tex; mode=display">(A \otimes B)(C \otimes D) = \left[ \begin{array}{*{20}{c}}
-a_{11}B&a_{12}B& \cdots &a_{1n}B\\
-a_{21}B&a_{22}B& \cdots &a_{2n}B\\
- \vdots & \vdots &{}& \vdots \\
-a_{n1}B&a_{n2}B& \cdots &a_{nn}B
-\end{array} \right]    \left[ \begin{array}{*{20}{c}}
-c_{11}D&c_{12}D& \cdots &c_{1n}D\\
-c_{21}D&c_{22}D& \cdots &c_{2n}D\\
- \vdots & \vdots &{}& \vdots \\
-c_{n1}D&c_{n2}D& \cdots &c_{nn}D
-\end{array} \right] =</script><script type="math/tex; mode=display">\left[ \begin{array}{*{20}{c}}
-\sum\limits_{i = 1}^n a_{1j}c_{j1}BD &\sum\limits_{i = 1}^n a_{1j}c_{j2}BD& \vdots &\sum\limits_{i = 1}^n a_{1j}c_{jn}BD \\
-\sum\limits_{i = 1}^n a_{2j}c_{j1}BD &\sum\limits_{i = 1}^n a_{2j}c_{j2}BD& \vdots &\sum\limits_{i = 1}^n a_{2j}c_{jn}BD \\
- \cdots & \cdots &{}& \cdots \\
-\sum\limits_{i = 1}^n a_{nj}c_{j1}BD &\sum\limits_{i = 1}^n a_{nj}c_{j2}BD& \vdots &\sum\limits_{i = 1}^n a_{nj}c_{jn}BD
-\end{array} \right] = (AC) \otimes (BD)</script><p>实际上可以简单扩展，只要$A$和$C$可乘，$B$和$D$可乘，这条性质就是成立的。</p>
-<h3 id="6-A-otimes-B-1-A-1-otimes-B-1"><a href="#6-A-otimes-B-1-A-1-otimes-B-1" class="headerlink" title="6 $(A \otimes B)^{-1}=A^{-1} \otimes B^{-1}$"></a>6 $(A \otimes B)^{-1}=A^{-1} \otimes B^{-1}$</h3><p>&ensp;&ensp;&ensp;&ensp;这个性质看起来也不平凡，但实际上可以用前面的性质证明，并不复杂。首先有</p>
-<script type="math/tex; mode=display">(A \otimes B)(A^{ - 1} \otimes B^{ - 1}) = (AA^{ - 1}) \otimes (BB^{ - 1}) = I_n \otimes I_m = I_{nm}</script><p>所以显然有$(A \otimes B)$是可逆的，且$(A \otimes B)^{-1}=A^{-1} \otimes B^{-1}$。</p>
-<h3 id="7-A-otimes-B-T-A-T-otimes-B-T"><a href="#7-A-otimes-B-T-A-T-otimes-B-T" class="headerlink" title="7 $(A \otimes B)^T=A^T \otimes B^T$"></a>7 $(A \otimes B)^T=A^T \otimes B^T$</h3><h3 id="8-两个上-下-三角矩阵的直积还是上下三角阵"><a href="#8-两个上-下-三角矩阵的直积还是上下三角阵" class="headerlink" title="8 两个上(下)三角矩阵的直积还是上下三角阵"></a>8 两个上(下)三角矩阵的直积还是上下三角阵</h3><h3 id="9-两个-Hermite-矩阵的直积还是-Hermite-矩阵"><a href="#9-两个-Hermite-矩阵的直积还是-Hermite-矩阵" class="headerlink" title="9 两个$Hermite$矩阵的直积还是$Hermite$矩阵"></a>9 两个$Hermite$矩阵的直积还是$Hermite$矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;这个的证明也并不复杂，主要利用了前面的性质：</p>
-<script type="math/tex; mode=display">(A \otimes B)^\dagger= \overline{((A \otimes B)^T)}=\overline{(A^T \otimes B^T)}=(\overline{A^T} \otimes \overline{B^T})=(A \otimes B)</script><p>显然$(A \otimes B)$的共轭转置就是它本身，原命题得证。</p>
-<h3 id="9-两个酉矩阵的直积还是酉矩阵"><a href="#9-两个酉矩阵的直积还是酉矩阵" class="headerlink" title="9 两个酉矩阵的直积还是酉矩阵"></a>9 两个酉矩阵的直积还是酉矩阵</h3><p>&ensp;&ensp;&ensp;&ensp;这个的证明也并不复杂，主要利用了前面的性质：</p>
-<script type="math/tex; mode=display">(A \otimes B)^{-1}=A^{-1} \otimes B^{-1}=A^\dagger \otimes B^\dagger=(A \otimes B)^\dagger</script><p>显然$(A \otimes B)$的逆矩阵就是它的共轭转置，原命题得证。</p>
-<h3 id="10-tr-A-otimes-B-tr-A-tr-B"><a href="#10-tr-A-otimes-B-tr-A-tr-B" class="headerlink" title="10 $tr(A \otimes B)=tr(A)tr(B)$"></a>10 $tr(A \otimes B)=tr(A)tr(B)$</h3><h3 id="11-rank-A-otimes-B-rank-A-rank-B"><a href="#11-rank-A-otimes-B-rank-A-rank-B" class="headerlink" title="11 $rank(A \otimes B)=rank(A)rank(B)$"></a>11 $rank(A \otimes B)=rank(A)rank(B)$</h3><h3 id="12-A-otimes-B-A-m-B-n-A-in-mathbb-C-nn-B-in-mathbb-C-mm"><a href="#12-A-otimes-B-A-m-B-n-A-in-mathbb-C-nn-B-in-mathbb-C-mm" class="headerlink" title="12 $|A \otimes B|=|A|^m  |B|^n, A \in \mathbb{C}^{nn}, B \in \mathbb{C}^{mm}$"></a>12 $|A \otimes B|=|A|^m  |B|^n, A \in \mathbb{C}^{nn}, B \in \mathbb{C}^{mm}$</h3><p>&ensp;&ensp;&ensp;&ensp;这个的证明也并不复杂，主要利用了前面的性质：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-|A \otimes B|&=|(AI_n) \otimes (I_mB)|=|(A \otimes I_m)(I_n \otimes B)|\\
-&=|A \otimes I_m||I_n \otimes B|\\
-&= \left[ \begin{array}{*{20}{c}}
-a_{11}I_m&a_{12}I_m& \cdots &a_{1n}I_m\\
-a_{21}I_m&a_{22}I_m& \cdots &a_{2n}I_m\\
- \vdots & \vdots &{}& \vdots \\
-a_{n1}I_m&a_{n2}I_m& \cdots &a_{nn}I_m
-\end{array} \right]  \left[ \begin{array}{*{20}{c}}
-B&0& \cdots &0\\
-0&B& \cdots &0\\
- \vdots & \vdots &{}& \vdots \\
-0&0& \cdots &B
-\end{array} \right] \\
-&=|A|^m|B|^n
-\end{aligned}</script><p>&ensp;&ensp;&ensp;&ensp;暂时就总结了这几个性质，以后遇到新的再进行总结。</p>
+<h2 id="问题简介"><a href="#问题简介" class="headerlink" title="问题简介"></a>问题简介</h2><p>&ensp;&ensp;&ensp;&ensp;图论中的REACHABILITY问题，也就是可达性问题，是图论中非常基础的问题，这个问题我在本科的图论课程中也学过，复杂性课程上也讲了这个问题，更加细致得分析了算法的运行时间。一个图$G=(V,E)$由一个顶点集$V$和边集$E$组成，其中<script type="math/tex">V=\{1,2,\cdots,n\}</script>，<script type="math/tex">E=\{(i,j):i,j\in V\}</script>均为有限集，图的可达性问题是指给定一个图$G$和两个顶点$1,n\in V$，是否有一条从$1$到$n$的通路(也称为$path$)，这里的图定义为有向图，此问题显然为判定性问题。</p>
+<h2 id="可达性问题的算法"><a href="#可达性问题的算法" class="headerlink" title="可达性问题的算法"></a>可达性问题的算法</h2><p>&ensp;&ensp;&ensp;&ensp;可达性问题的算法并不复杂，具体流程如下，整个算法流程中，我们保存一个顶点集合$S$:</p>
+<ol>
+<li>初始时<script type="math/tex">S=\{1\}</script>，每个顶点或者已经被标记或者未被标记，这里点$i$被标记意味着在过去的某一时刻曾在$S$中或者目前正在$S$中。因此初始只有$1$被标记</li>
+<li>从$S$中选择一个顶点$i\in S$，并且<script type="math/tex">S\leftarrow S\backslash \{i\}</script>，然后找出从$i$出发的所有的边<script type="math/tex">E_i=\{(i,j):i,j\in E\}</script>，逐条检查，如果$j$未被标记，则标记，并且将$j$放入$S$中，如果$j$已经被标记，不做处理</li>
+<li>重复执行第2步的操作，直到$S=\emptyset$时终止，此时若点$n$被标记，则输出yes，否则输出no</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;这个算法非常简单，显然，一个顶点被标记当且仅当存在一条从$1$到这个顶点的通路，因此该算法可以解决可达性问题，接下来要分析此算法的效率如何，是否一定可以终止。</p>
+<p>&ensp;&ensp;&ensp;&ensp;首先我们假设从$S$中选取元素，标记一个顶点以及判断一个顶点是否被标记等等，可在常数时间$t$内完成。$n$个点的图一般是用一个$n\times n$的邻接矩阵来描述的，当我们从$S$中确定了一个点之后，我们要判断与这个点相连接的点是否被标记，此时需要访问邻接矩阵的对应行，也就是$n$个值，$n$次操作，在这$n$次操作之后，集合$S$肯定要删去一个点，再加入一些新的点，且新的点与删去的点肯定不同，删去的点也不会再重新进入$S$，故集合$S$最多删除$n$个点，也就是$n$次操作最多进行$n$次，故该算法的时间损耗大约是$n(n+t)$，故此算法的时间复杂度是$O(n^2)$。<br>&ensp;&ensp;&ensp;&ensp;下面分析其所用的空间资源，显然，只需要存储集合$S$和顶点的标记即可，由于$|S|\leq n$，故至多只有$n$个标记，因此该算法的空间复杂度为$O(n)$。</p>
+<p>&ensp;&ensp;&ensp;&ensp;显然可达性问题存在高效判定的算法。</p>
 
     
 
@@ -360,7 +323,7 @@ B&0& \cdots &0\\
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/04/25/张量积/" title="张量积" target="_blank">http://yoursite.com/2020/04/25/张量积/</a>
+          <a href="http://yoursite.com/2020/05/28/图论中的REACHABILITY问题/" title="图论中的REACHABILITY问题" target="_blank">http://yoursite.com/2020/05/28/图论中的REACHABILITY问题/</a>
         </li>
         
         <li>
@@ -382,7 +345,7 @@ B&0& \cdots &0\\
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">张量积</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">REACHABILITY问题</a>
         		</li>
       		
 		</ul>
@@ -394,7 +357,7 @@ B&0& \cdots &0\\
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/量子信息的代数基础//" class="article-tag-list-link color5">量子信息的代数基础</a>
+        			<a href="/categories/计算复杂性理论基础//" class="article-tag-list-link color5">计算复杂性理论基础</a>
         		</li>
       		
 		</ul>
@@ -449,7 +412,7 @@ B&0& \cdots &0\\
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/25/%E5%BC%A0%E9%87%8F%E7%A7%AF/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/28/%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84REACHABILITY%E9%97%AE%E9%A2%98/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -464,18 +427,9 @@ B&0& \cdots &0\\
 
 <nav id="article-nav">
   
-    <a href="/2020/04/28/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          可忽略函数与不可分辨
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/25/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E5%92%8C%E6%9E%81%E5%BC%8F%E5%88%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">奇异值分解和极式分解</div>
+    <a href="/2020/05/16/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E7%8B%AC%E7%AB%8B%E7%9A%84%E4%B8%80%E4%B8%AA%E6%80%A7%E8%B4%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">概率分布独立的一个性质</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -502,7 +456,7 @@ B&0& \cdots &0\\
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-0-otimes-A-A-otimes-0-0"><span class="toc-number">1.0.1.</span> <span class="toc-text">1 $0 \otimes A&#x3D;A \otimes 0&#x3D;0$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-A-1-A-2-otimes-B-A-1-otimes-B-A-2-otimes-B-A-otimes-B-1-B-2-A-otimes-B-1-A-otimes-B-2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2 $(A_1+A_2) \otimes B &#x3D; A_1 \otimes B +A_2 \otimes B$,$A\otimes(B_1+B_2)&#x3D;A\otimes B_1 +A\otimes B_2$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-alpha-A-otimes-beta-B-alpha-beta-A-otimes-B"><span class="toc-number">1.0.3.</span> <span class="toc-text">3 $(\alpha A)\otimes (\beta B)&#x3D;\alpha \beta (A \otimes B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-A-otimes-B-otimes-C-A-otimes-B-otimes-C"><span class="toc-number">1.0.4.</span> <span class="toc-text">4 $(A \otimes B) \otimes C &#x3D;A \otimes (B \otimes C)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-A-otimes-B-C-otimes-D-AC-otimes-BD"><span class="toc-number">1.0.5.</span> <span class="toc-text">5 $(A\otimes B)(C \otimes D)&#x3D;(AC)\otimes (BD)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-A-otimes-B-1-A-1-otimes-B-1"><span class="toc-number">1.0.6.</span> <span class="toc-text">6 $(A \otimes B)^{-1}&#x3D;A^{-1} \otimes B^{-1}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-A-otimes-B-T-A-T-otimes-B-T"><span class="toc-number">1.0.7.</span> <span class="toc-text">7 $(A \otimes B)^T&#x3D;A^T \otimes B^T$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-两个上-下-三角矩阵的直积还是上下三角阵"><span class="toc-number">1.0.8.</span> <span class="toc-text">8 两个上(下)三角矩阵的直积还是上下三角阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-两个-Hermite-矩阵的直积还是-Hermite-矩阵"><span class="toc-number">1.0.9.</span> <span class="toc-text">9 两个$Hermite$矩阵的直积还是$Hermite$矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-两个酉矩阵的直积还是酉矩阵"><span class="toc-number">1.0.10.</span> <span class="toc-text">9 两个酉矩阵的直积还是酉矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-tr-A-otimes-B-tr-A-tr-B"><span class="toc-number">1.0.11.</span> <span class="toc-text">10 $tr(A \otimes B)&#x3D;tr(A)tr(B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-rank-A-otimes-B-rank-A-rank-B"><span class="toc-number">1.0.12.</span> <span class="toc-text">11 $rank(A \otimes B)&#x3D;rank(A)rank(B)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-A-otimes-B-A-m-B-n-A-in-mathbb-C-nn-B-in-mathbb-C-mm"><span class="toc-number">1.0.13.</span> <span class="toc-text">12 $|A \otimes B|&#x3D;|A|^m  |B|^n, A \in \mathbb{C}^{nn}, B \in \mathbb{C}^{mm}$</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题简介"><span class="toc-number">1.1.</span> <span class="toc-text">问题简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可达性问题的算法"><span class="toc-number">1.2.</span> <span class="toc-text">可达性问题的算法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -515,7 +469,7 @@ B&0& \cdots &0\\
 
 
 
-<div id="SOHUCS" sid="张量积" ></div> 
+<div id="SOHUCS" sid="图论中的REACHABILITY问题" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -536,9 +490,9 @@ B&0& \cdots &0\\
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "张量积" -->
+  <!-- id: "图论中的REACHABILITY问题" -->
   var giteement = new Giteement({
-    id: '20200425215055',
+    id: '20200528172513',
     owner: 'gejiangxia',
     repo: 'cunchupinglun',
     backcall_uri: 'https://gejiangxia.github.io/',
