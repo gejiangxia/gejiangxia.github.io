@@ -18,8 +18,9 @@
 <meta property="og:image" content="http://yoursite.com/images/1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/2.jpg">
 <meta property="og:image" content="http://yoursite.com/images/3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/4.jpg">
 <meta property="article:published_time" content="2020-05-31T11:51:36.000Z">
-<meta property="article:modified_time" content="2020-05-31T14:52:18.498Z">
+<meta property="article:modified_time" content="2020-06-01T02:32:30.938Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="MAXFLOW问题">
 <meta name="twitter:card" content="summary">
@@ -250,7 +251,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.1k字</span>
+      <span class="post-count">1.8k字</span>
     </span>
   </span>
 
@@ -259,7 +260,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -294,7 +295,19 @@
 
 <p>&ensp;&ensp;&ensp;&ensp;接着分析导出网络的作用，首先对于$f(i,j)=c(i,j)$的边，这些边上的流量不可能再增加了，只能减少，减少可以理解为反向的流量，所以在导出网络里将满足$f(i,j)=c(i,j)$的边直接反向且容量不变；满足$f(i,j)=0$的边$(i,j)$相当于根本没有用到，这种边还可以承受正向的流量，所以这些边不做任何变化；满足$f(i,j)&lt; c(i,j)$的边，首先边的容量没满，它还可以承受$c(i,j)-f(i,j)$的流量，所以要留一个正向容量$c’(i,j)=c(i,j)-f(i,j)$的边，由于已经有了$f(i,j)$的流量，这些流量由于是固定的，只能减少，不能增加，因为增加相当于是对正向容量为$c’(i,j)=c(i,j)-f(i,j)$的边增加的，所以这些容量只能减少，故要在边$(i,j)$的基础上新增一条边$(j,i)$，其容量为$c’(j,i)=f(i,j)$，意味着如果这条边上有流量，就是原来的流量减少。</p>
 <p>&ensp;&ensp;&ensp;&ensp;所以如果导出网络存在$s$到$t$的通路，则原来的流$f$必然不是最大流，还有增加的余地，可增加的量就是这条通路上的最小容量，故这就将MAXFLOW问题归约到了可达性问题上，可达性问题是存在$O(n^2)$的算法的，故解决MAXFLOW问题只需要调用可达性问题的算法即可。</p>
-<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>&ensp;&ensp;&ensp;&ensp;解决MAXFLOW问题的算法流程如下</p>
+<h2 id="算法流程与复杂度分析"><a href="#算法流程与复杂度分析" class="headerlink" title="算法流程与复杂度分析"></a>算法流程与复杂度分析</h2><p>&ensp;&ensp;&ensp;&ensp;解决MAXFLOW问题的算法流程如下</p>
+<ol>
+<li>设初始流量$f$为零流，即处处的流量均为零，执行下一步</li>
+<li>对流量$f$，构造导出网络$N(f)$，并对$N(f)$应用可达性问题的求解算法，若$N(f)$中存在$s$到$t$的通路，则沿此通路找到最小的容量$c’$，并将$c’$加到该通路上所有边的$f$值上，得到更大的流$f$</li>
+<li>重复第二步，直到找不到$s$到$t$的通路，输出流$f$</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;显然此算法可以完成最大流的计算，接着分析此算法的复杂度。首先算法每次重复地对导出网络$N(f)$找到一条通路，并增加该通路上的流量，每执行一次所用的时间和可达性问题一样，为$O(n^2)$。事实上，每次执行可达性的算法之后，流量至少增加1(我们的分析都是假设现在的流$f$还不是最大流)，若$C$为网络中边的最大容量，则最大流量不会超过$nC$(因为终点$t$最多只能与$n-1$个点相连)，故可达性问题的算法至多需要重复$nC$次，因此解决MAXFLOW问题的总时间为$O(Cn^3)$。</p>
+<p>&ensp;&ensp;&ensp;&ensp;注意，虽然看起来是一个多项式，但由于$C$的存在，只能是一个伪多项式，因为$C$可能是指数的，比如下面的这个网络，如果按照上面的算法从零流开始，如果每次找通路的运气不好，总是找不到$(s,b,t)$和$(s,a,t)$这样的通路，它是的确需要调用$2C$次可达性问题算法的(具体分析略了，这个很简单)，所以需要新的分析复杂度的方式。</p>
+<p><center>
+<img src="/images/4.jpg" width="35%" height="35%">
+</center><br>&ensp;&ensp;&ensp;&ensp;为克服这个缺陷，我们先用可达性问题算法宽度优先的方式找到最短通路，然后沿着最短通路增加流量，一条通路上有最小容量的边称之为瓶颈，故每次增加流量相当于克服一个瓶颈。整个网络至多有$n^2$条边，故瓶颈至多$n^2$个，且每次重复必然克服一个瓶颈，由于每条通路至多有$n$条边，在每一条边上都有可能出现瓶颈，故最多只重复$n^2 \cdot n=n^3$次可达性问题算法即可克服所有瓶颈，找到最大流，则此时复杂度为$O(n^5)$。于是可以在时间$O(n^5)$内解决MAXFLOW问题。</p>
+<p>&ensp;&ensp;&ensp;&ensp;接着分析算法的空间使用情况，算法的每次重复需要空间很小，类似于可达性问题，为$O(log^2n)$，但需要额外的$O(n^2)$空间存储当前的流，因为最多是$n^2$条边，故总的空间复杂度还是$O(n^2)$的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;所以MAXFLOW问题是多项式时间可解的。</p>
 
     
 
@@ -474,7 +487,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题简介"><span class="toc-number">1.1.</span> <span class="toc-text">问题简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思想"><span class="toc-number">1.2.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法流程"><span class="toc-number">1.3.</span> <span class="toc-text">算法流程</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题简介"><span class="toc-number">1.1.</span> <span class="toc-text">问题简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思想"><span class="toc-number">1.2.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法流程与复杂度分析"><span class="toc-number">1.3.</span> <span class="toc-text">算法流程与复杂度分析</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -701,6 +714,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
               </li>
              
@@ -709,11 +726,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,19 +734,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -745,6 +750,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">奇异值分解</a>
               </li>
              
@@ -753,7 +766,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
+                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -761,7 +774,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
+                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -773,15 +786,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -793,10 +810,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
@@ -805,11 +818,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">酉变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,7 +826,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+                <a href="javascript:void(0)" class="js-tag color4">酉变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
               </li>
             
             <div class="clearfix"></div>
