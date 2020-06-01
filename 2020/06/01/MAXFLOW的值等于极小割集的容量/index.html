@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-01T02:42:06.000Z">
-<meta property="article:modified_time" content="2020-06-01T02:45:08.355Z">
+<meta property="article:modified_time" content="2020-06-01T07:26:02.443Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="MAXFLOW等于极小割">
 <meta name="twitter:card" content="summary">
@@ -246,7 +246,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">62字</span>
+      <span class="post-count">1.1k字</span>
     </span>
   </span>
 
@@ -255,7 +255,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -267,7 +267,43 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<h2 id="定理简介"><a href="#定理简介" class="headerlink" title="定理简介"></a>定理简介</h2><p>&ensp;&ensp;&ensp;&ensp;这个定理的内容非常简洁，只有一句话，MAXFLOW的值等于极小割集的容量，MAXFLOW问题之前的博文已经总结过，这里需要给出割集的一些定义。</p>
+<h2 id="定理简介"><a href="#定理简介" class="headerlink" title="定理简介"></a>定理简介</h2><p>&ensp;&ensp;&ensp;&ensp;这个定理的内容非常简洁，只有一句话，MAXFLOW的值等于极小割集的容量，MAXFLOW问题之前的博文已经总结过，这里需要给出一些新的定义，这些定义和本科图论的定义类似，和复杂性课上老师给的定义有一些出入，但所指的具体概念是没有区别的。</p>
+<p><font color='red'> 可行流：</font>满足下述条件的流称为可行流(网络记为<script type="math/tex">D=(V,E,C)</script>)</p>
+<ol>
+<li>容量限制条件：对每一边<script type="math/tex">(v_i,v_j) \in E</script>，有<script type="math/tex">0 \leq f_{ij} \leq c_{ij}</script></li>
+<li>平衡条件：对于中间点，流出量等于流入量，即对于每个$i$($i \neq s,t$)有<script type="math/tex">\sum_{(v_i,v_j) \in A} f_{ij}-\sum_{(v_j,v_i) \in A} f_{ji}=0</script></li>
+<li>对于出发点<script type="math/tex">v_s</script>，记<script type="math/tex">\sum_{(v_s,v_j) \in A} f_{sj}-\sum_{(v_j,v_s) \in A} f_{js}=v(f)</script></li>
+<li>对于收点<script type="math/tex">v_t</script>，记<script type="math/tex">\sum_{(v_t,v_j) \in A} f_{sj}-\sum_{(v_j,v_t) \in A} f_{jt}=-v(f)</script>，式中<script type="math/tex">v_f</script>称为这个可行流的流量</li>
+</ol>
+<p>可行流显然是存在的，比如令所有的弧的流量$f_{ij}=0$，就得到一个可行流，其流量$v(f)=0$。</p>
+<p><font color='red'> 可行流$f$的增广链：</font>设$f$是一个可行流，$\mu$是从<script type="math/tex">v_s</script>到<script type="math/tex">v_t</script>的一条链，若$\mu$满足下列条件，称为关于可行流$f$的增广链</p>
+<ol>
+<li>在弧<script type="math/tex">(v_i,v_j) \in \mu^+</script>($\mu$的前向弧)上，<script type="math/tex">0 \leq f_{ij} < c_{ij}</script>，即<script type="math/tex">\mu^+</script>中每一弧是非饱和弧</li>
+<li>在弧<script type="math/tex">(v_i,v_j) \in \mu^-</script>($\mu$的后向弧)上，<script type="math/tex">0 < f_{ij} \leq  c_{ij}</script>，即<script type="math/tex">\mu^-</script>中每一弧是非零流弧</li>
+</ol>
+<p><font color='red'> 截集与截集的容量(也称为割集)：</font>网络$D=(V,A,C)$，点集$V$被分为两个非空集合<script type="math/tex">V_1</script>和<script type="math/tex">\bar{V_1}</script>，使得，<script type="math/tex">v_s \in V_1</script>，<script type="math/tex">v_t \in \bar{V_1}</script>则把弧集<script type="math/tex">(V_1,\bar{V_1})</script>称为是分离<script type="math/tex">v_s</script>和<script type="math/tex">v_t</script>的截集，截集<script type="math/tex">(V_1,\bar{V_1})</script>中所有弧的容量之和称为这个截集的容量(简称为截量)，记为<script type="math/tex">c(V_1,\bar{V_1})</script>，即</p>
+<script type="math/tex; mode=display">c(V_1,\bar{V_1})=\sum_{(v_i,v_j) \in (V_1,\bar{V_1})}c_{ij}</script><h2 id="定理证明"><a href="#定理证明" class="headerlink" title="定理证明"></a>定理证明</h2><p>&ensp;&ensp;&ensp;&ensp;由截集的定义可知，任何一个可行流的流量$v(f)$都不会超过任一截集的容量，即<script type="math/tex">v(f) \leq c(V_1,\bar{V_1})</script><br>显然，如果能找到一个可行流$f$，使得存在某个截集<script type="math/tex">(V_1,\bar{V_1})</script>有<script type="math/tex">v(f)=c(V_1,\bar{V_1})</script>成立，必有<script type="math/tex">v(f)</script>为一个最大流，<script type="math/tex">(V_1,\bar{V_1})</script>为最小截集，若<script type="math/tex">v(f)</script>不是最大流，即存在<script type="math/tex">f^*</script>使<script type="math/tex">v(f^* )>v(f)</script>，则有<script type="math/tex">v(f^*) >c(V_1,\bar{V_1})</script>，矛盾。若<script type="math/tex">(V_1,\bar{V_1})</script>不是最小截集，则有<script type="math/tex">({V_1}^*,\bar{V_1^*})</script>使得<script type="math/tex">c(V_1^*,\bar{V_1^*})< c(V_1,\bar{V_1})</script>则有<script type="math/tex">c(V_1^*,\bar{V_1^*}) < v(f)</script>，同样导出矛盾。</p>
+<p>&ensp;&ensp;&ensp;&ensp;下面假设<script type="math/tex">f^*</script>为最大流，若$D$中存在关于<script type="math/tex">f^*</script>的增广链$\mu$，取</p>
+<script type="math/tex; mode=display">\theta=min\{\mathop{min} \limits_{\mu^+}(c_{ij}-f_{ij}^*),\mathop{min} \limits_{\mu^-}f_{ij}^*\}</script><p>由增广链的定义，可知$\theta&gt;0$，令</p>
+<script type="math/tex; mode=display">f^{**}=\left\{\begin{array}{l}
+{f_{ij}^*+\theta \quad (v_i,v_j) \in \mu^+} \\ 
+{f_{ij}^*-\theta \quad (v_i,v_j) \in \mu^-} \\ 
+{f_{ij}^* \qquad (v_i,v_j) \notin \mu} 
+\end{array}\right.</script><p>此时的<script type="math/tex">f^{**}</script>显然也是一个可行流，且<script type="math/tex">v(f^{**})=v(f^*)+\theta>v(f^*)</script>，这与<script type="math/tex">f^*</script>是最大流矛盾，故此时$D$中不存在关于<script type="math/tex">f^*</script>的增广链$\mu$。</p>
+<p>&ensp;&ensp;&ensp;&ensp;已知关于<script type="math/tex">f^*</script>的增广链不存在，定义点集合<script type="math/tex">V_1^*</script>如下：</p>
+<ol>
+<li>令<script type="math/tex">v_s \in V_1^*</script></li>
+<li>若<script type="math/tex">v_i \in V_1^*</script>，且<script type="math/tex">f_{ij}^* < c_{ij}</script>，则令<script type="math/tex">v_j \in V_1^*</script></li>
+<li>若<script type="math/tex">v_i \in V_1^*</script>，且<script type="math/tex">f_{ji}^*>0</script>，则令<script type="math/tex">v_j \in V_1^*</script></li>
+</ol>
+<p>因为不存在关于<script type="math/tex">f^*</script>的增广链，故由增广链的定义可知<script type="math/tex">v_t \notin V_1^*</script>。</p>
+<p>&ensp;&ensp;&ensp;&ensp;则记<script type="math/tex">\bar{V_1^*}=V \backslash V_1^*</script>，得到一个截集<script type="math/tex">(V_1^*,\bar{V_1^*})</script>，显然有</p>
+<script type="math/tex; mode=display">f^{**}=\left\{\begin{array}{l}
+{c_{ij} \quad (v_i,v_j) \in (V_1^*,\bar{V_1^*})} \\ 
+{0 \quad (v_i,v_j) \in (\bar{V_1^*},V_1^*)}
+\end{array}\right.</script><p>这里<script type="math/tex">(V_1^*,\bar{V_1^*})</script>此截集上的正向流量都等于容量<script type="math/tex">c_{ij}</script>，不可能再增加流量，则必有</p>
+<script type="math/tex; mode=display">v(f^*)=c(V_1^*,\bar{V_1^*})</script><p>最大流<script type="math/tex">f^*</script>的流量<script type="math/tex">v(f^*)</script>等于一个截集<script type="math/tex">(V_1^*,\bar{V_1^*})</script>的容量，则<script type="math/tex">(V_1^*,\bar{V_1^*})</script>必为最小截集，则最大流量等于最小截集的容量，原命题得证。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 这个问题的证明很巧妙，把比较抽象的东西用数学语言表述出来了，图论方面的很多命题都有这样的特点。</p>
 
     
 
@@ -447,7 +483,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定理简介"><span class="toc-number">1.1.</span> <span class="toc-text">定理简介</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定理简介"><span class="toc-number">1.1.</span> <span class="toc-text">定理简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定理证明"><span class="toc-number">1.2.</span> <span class="toc-text">定理证明</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -658,10 +694,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
@@ -674,7 +706,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,7 +722,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,10 +735,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,15 +758,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">奇异值分解</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">极式分解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,19 +778,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,15 +802,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正规变换</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正规矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
