@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-15T07:17:49.000Z">
-<meta property="article:modified_time" content="2020-07-12T11:56:27.294Z">
+<meta property="article:modified_time" content="2020-07-12T13:17:58.069Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="Boolean逻辑基础">
 <meta property="article:tag" content="SAT问题">
@@ -247,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">182字</span>
+      <span class="post-count">1k字</span>
     </span>
   </span>
 
@@ -256,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -268,8 +268,20 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<h2 id="Boolean逻辑基础"><a href="#Boolean逻辑基础" class="headerlink" title="Boolean逻辑基础"></a>Boolean逻辑基础</h2><p>&ensp;&ensp;&ensp;&ensp;设Boolean变量<script type="math/tex">x_1 \cdots x_n \cdots</script>组成一个可数的无限字母集<script type="math/tex">X=\{x_1 \cdots x_n \cdots\}</script>，这些变量取真值true或false，简记为1或0，同时这些变量可以通过析取$\lor$，合取$\land$，否$\neg$这些运算符号连接起来得到一个Boolean表达式。另外还有符号$\Rightarrow$，<script type="math/tex">x_1\Rightarrow x_2</script>意味着<script type="math/tex">\neg x_1 \lor x_2</script>，<script type="math/tex">x_1\Rightarrow x_2</script>并且<script type="math/tex">x_2\Rightarrow x_1</script>意味着<script type="math/tex">x_1\Leftrightarrow x_2</script>，即<script type="math/tex">(\neg x_1 \lor x_2)\land (\neg x_2 \lor x_1)</script>。对于Boolean变量$x$，$x$与$\neg x$均称为文字。</p>
-<p>&ensp;&ensp;&ensp;&ensp;一个赋值$T$是一个映射，其定义域是$n$个Boolean变量，值域是一个长度为$n$的01串。对于一个Boolean表达式$\varphi$，记；</p>
+<h2 id="Boolean逻辑基础"><a href="#Boolean逻辑基础" class="headerlink" title="Boolean逻辑基础"></a>Boolean逻辑基础</h2><p>&ensp;&ensp;&ensp;&ensp;设Boolean变量<script type="math/tex">x_1 \cdots x_n \cdots</script>组成一个可数的无限字母集<script type="math/tex">X=\{x_1 \cdots x_n \cdots\}</script>，这些变量取真值true或false，简记为1或0，同时这些变量可以通过析取$\lor$，合取$\land$，否$\neg$这些运算符号连接起来得到一个Boolean表达式。另外还有符号蕴含：$\Rightarrow$，<script type="math/tex">x_1\Rightarrow x_2</script>意味着<script type="math/tex">\neg x_1 \lor x_2</script>，<script type="math/tex">x_1\Rightarrow x_2</script>并且<script type="math/tex">x_2\Rightarrow x_1</script>意味着<script type="math/tex">x_1\Leftrightarrow x_2</script>，即<script type="math/tex">(\neg x_1 \lor x_2)\land (\neg x_2 \lor x_1)</script>。对于Boolean变量$x$，$x$与$\neg x$均称为文字。</p>
+<p>&ensp;&ensp;&ensp;&ensp;一个赋值$T$是从Boolean变量的集合到真值集合<script type="math/tex">\{0,1\}</script>的一个映射，对于一个Boolean表达式$\phi$，记$X(\phi)$表示$\phi$中Boolean变量的集合，如果$X(\phi)$在$T$的定义域内，称赋值$T$适合$\phi$。设赋值$T$适合$\phi$，如果$X(\phi)$中变量在$T$下的取值使得$\phi$的真值为1，则称$T$满足$\phi$，记为$T|=\phi$，否则，称$T$不满足$\phi$，记为$T|\neq \phi$。显然，根据Boolean变量真值的取值，Boolean表达式可以取0或1，如果存在适合$\phi$的赋值$T$，有$T|=\phi$，则称$\phi$是可满足的，否则，称之为不可满足。</p>
+<p>&ensp;&ensp;&ensp;&ensp;如果<script type="math/tex">\bigwedge_{i=1}^n{\phi _i}</script>，其中$n\geq 1$，且每个<script type="math/tex">\phi _i</script>为一些文字的析取，则称$\phi$为合取范式，称<script type="math/tex">\phi _i</script>为分句，类似的，可以定义析取范式形式为<script type="math/tex">\bigvee _{i=1}^n{D _i}</script>，其中$n\geq 1$，且每个<script type="math/tex">D_i</script>为一些文字的合取，易证，每个Boolean表达式等价于一个合取范式，而且也等价于一个析取范式。</p>
+<h2 id="SAT问题与HORNSAT问题"><a href="#SAT问题与HORNSAT问题" class="headerlink" title="SAT问题与HORNSAT问题"></a>SAT问题与HORNSAT问题</h2><center>
+SAT问题：给定一个合取范式形式的Boolean表达式$\phi$，问$\phi$是否可满足？
+</center>
+
+<p>&ensp;&ensp;&ensp;&ensp;SAT问题是一个NP完备问题，虽然我们目前没有找到SAT问题的确定的有效算法，但是有一类特殊的SAT问题是比较容易求解的，比如HORNSAT问题。如果一个分句至多有一个正的文字，如<script type="math/tex">\neg x_1 \lor \neg x_2 \lor x_3</script>和<script type="math/tex">x_1 \lor \neg x_2</script>，则称此分句为HORN分句，HORNSAT问题即设$\phi$为HORN分句的合取，问$\phi$是否为可满足的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;HORNSAT问题的算法非常简单，首先任意HORN分句都可以写成蕴含式，比如<script type="math/tex">\neg x_1 \lor \neg x_2 \lor x_3</script>可以改写成<script type="math/tex">(x_1 \land x_2)\Rightarrow x_3</script>，<script type="math/tex">x_1 \lor \neg x_2</script>可以改写为<script type="math/tex">x_2 \Rightarrow x_1</script>。这种蕴含式只在左边为1，右边为0时取到false。HORNSAT问题的算法流程非常简单，令$T$为赋值为true的变量的集合，初始令$T$为空集，即所有的变量都取0，执行下列步骤直到所有蕴含式都被满足：</p>
+<p><center>
+挑选$\phi$中任意一个不满足的蕴含式$(x_1 \land \cdots \land x_t)\Rightarrow y$，令$T\leftarrow y$，即把$y$放入$T$中。
+</center><br>得到适合$\phi$的赋值$T$之后，检查所有分句即可确定$\phi$是否能被满足。</p>
+<p>&ensp;&ensp;&ensp;&ensp;算法里有几个需要注意的点，首先对于蕴含式$x\Rightarrow y$，如果$x$与$y$都取0，这个蕴含式显然是取1的，但HORN分句不止这种类型，单个的$x$或$\neg x$也是一种HORN分句，那此时让所有的变量都取0就不一定能让所有分句取1，所以算法中重复寻找不满足的蕴含式是有必要的。由于$x\Rightarrow y$只在$x=1$，$y=0$时取0，则对于$(x_1 \land \cdots \land x_t)\Rightarrow y$，若其为0，则必有<script type="math/tex">x_1=\cdots =x_t=1</script>，$y=0$，接下来只需令$y=1$，即$T\leftarrow y$即可把此蕴含式的值变为1，也就是在集合$T$中放入了一个新的元素。</p>
+<p>&ensp;&ensp;&ensp;&ensp;由于变量的个数必为有限的，不妨设为$n$个，上面的算法至多会把$n$个元素放入$T$中，也就是算法最多重复执行$n$次，显然是多项式时间的。所以特殊的HORNSAT问题是有效可解的。</p>
 
     
 
@@ -453,7 +465,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Boolean逻辑基础"><span class="toc-number">1.1.</span> <span class="toc-text">Boolean逻辑基础</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Boolean逻辑基础"><span class="toc-number">1.1.</span> <span class="toc-text">Boolean逻辑基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SAT问题与HORNSAT问题"><span class="toc-number">1.2.</span> <span class="toc-text">SAT问题与HORNSAT问题</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -668,11 +680,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">DDH假设</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,10 +704,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
               </li>
              
@@ -700,15 +712,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">二分图的匹配</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,11 +724,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">二分图的匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,11 +752,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,11 +760,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,6 +772,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
               </li>
              
@@ -768,23 +788,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -796,11 +804,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,10 +825,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
             
             <div class="clearfix"></div>
