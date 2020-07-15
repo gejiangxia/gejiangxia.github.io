@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-15T03:11:55.000Z">
-<meta property="article:modified_time" content="2020-07-15T03:47:22.266Z">
+<meta property="article:modified_time" content="2020-07-15T12:28:59.678Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="一阶逻辑">
 <meta name="twitter:card" content="summary">
@@ -246,7 +246,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">434字</span>
+      <span class="post-count">1.3k字</span>
     </span>
   </span>
 
@@ -255,7 +255,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -277,6 +277,33 @@
 <li>常数为0元函数，另外这里假设$\Pi$总含有二元相等关系。</li>
 </ol>
 <h2 id="一阶逻辑表达式"><a href="#一阶逻辑表达式" class="headerlink" title="一阶逻辑表达式"></a>一阶逻辑表达式</h2><p>&ensp;&ensp;&ensp;&ensp;有了词汇表的定义，就可以定义定义一些表达式，和Boolean逻辑一样，这些表达式可以用逻辑符号连接，如$\neg,\land ,\lor ,\forall$等等。但一阶逻辑表达式并不是直接就可以定义的，首先要给出单项式(Term)和表达式(Atomic)的定义。</p>
+<font color='red'> 单项式(Term)的归纳定义：</font>
+
+<ol>
+<li>$V$中的任何变量都是Term</li>
+<li>若$f\in \Phi$且$r(f)=k$，$t_1,\cdots ,t_k$为Term，则$f(t_1,\cdots ,t_k)$也为Term</li>
+<li>常数也为Term</li>
+</ol>
+<p><font color='red'>表达式(Atomic)的定义：</font>若$R\in \Pi$且$r(R)=k$，$t_1,\cdots ,t_k$为Term，则$R(t_1,\cdots ,t_k)$为表达式(Atomic)。即Atomic是Term加上关系。</p>
+<p><font color='red'> 一阶逻辑表达式的归纳定义：</font></p>
+<ol>
+<li>所有的Atomic都是一阶逻辑表达式</li>
+<li>若$\phi$与$\psi$均为Atomic，则$\neg \phi,\neg \psi,\phi \lor\psi,\phi \land \psi$也是一阶逻辑表达式</li>
+<li>若$\phi$为Atomic，$x$为变量，则$\forall x\phi$也是一阶逻辑表达式，其中$\forall$是全称量词，对应的$\exists$是存在量词，$\phi$称为$x$的辖域，$\phi$中的变元$x$称为约束变元，其余变元称为自由变元。($\exists x\phi$等价于$\neg(\forall x\neg \phi)$)</li>
+</ol>
+<h2 id="一阶逻辑表达式的赋值"><a href="#一阶逻辑表达式的赋值" class="headerlink" title="一阶逻辑表达式的赋值"></a>一阶逻辑表达式的赋值</h2><p>&ensp;&ensp;&ensp;&ensp;一阶逻辑的表达式定义已经给出，接下来要考虑一阶逻辑表达式的赋值，一阶逻辑的真值是由各部分真值取值来决定的，故需要一个确切的模型，也就是一个将一阶逻辑赋予实际意义的“环境”，这个模型也是一个更复杂的数学对象。对于词汇表$\Sigma=(V,\Phi,\Pi,r)$，适合$\Sigma$的模型是一个二元关系$M=(U,\mu)$，满足下列性质:</p>
+<ol>
+<li>$U$是一个集合，称为二元关系$M=(U,\mu)$的定义域</li>
+<li>$\mu$是一个函数，$\mu$给$V\cup \Psi\cup \Pi$中的每个变量，函数符号和关系符号分配一个$U$中的对象，对于每个变量$x$，$\mu$的赋值为$x^M \in U$，对于每个$k$元函数符号$f\in \Phi$，$\mu$的赋值为函数$f^M:U^k\rightarrow U$，若$c\in\Phi$是常数，则$\mu$的赋值为$c^M\in U$，对每个$k$元关系$R\in \Pi$，$\mu$的赋值为$R^M\subseteq U^k$。对于相等关系“=”，$\mu$的赋值为$=^M$，即${(\mu,\mu):\mu \in U}$</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;定义了模型之后，考虑一阶逻辑表达式的赋值，也就是在一个模型下一阶逻辑表达式满足不满足。给定一个$M$，要考虑一阶逻辑表达式满不满足，要先定义出单项式在$\mu$下的像，若单项式$t$为变量或常数，则$t$在$\mu$下的像为$t^M$，若$t=f(x_1,\cdots,x_k)$，则定义$t$在$\mu$下的像为$t^M=f^M(x_1^M,\cdots,x_k^M)$，接下来讨论一阶逻辑表达式$\phi$在模型$M$下如何被满足：</p>
+<ol>
+<li>若$\phi$是一个Atomic，即$\phi=R(t_1,\cdots,t_k)$，则若有$(t_1^M,\cdots,t_k^M)\in R^M$，则称$M$满足$\phi$，记为$M|=\phi$</li>
+<li>若$\phi=\neg \psi$，则若有$M|\neq \psi$，则称$M|=\phi$</li>
+<li>若$\phi=\psi_1\lor\psi_2$，当$M|=\psi_1$或$M|=\psi_2$时，则称$M|=\phi$，若$\phi=\psi_1\land\psi_2$，当$M|=\psi_1$且$M|=\psi_2$时，则称$M|=\phi$</li>
+<li>若$\phi=\forall x \psi$，考虑$u\in U$，设<script type="math/tex">M_{x=u}</script>是一个除了<script type="math/tex">x^{M_{x=u}}=u</script>之外均等同于$M$的模型，若<script type="math/tex">\forall u\in U</script>，均有<script type="math/tex">M_{x=u}|=\psi</script>，则称$M|=\phi$</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;$\forall x\phi$是一个一阶逻辑表达式，若$\phi$中没有自由变元，则$\forall x\phi$叫做一个句子，在一个确定的模型下，一个句子满不满足是完全确定的，所以一个模型会存在许多被满足的句子，一个句子也肯定会对应有满足此句子的许多模型，即一个句子刻画了模型的一个性质。所以句子和模型之间存在一个对偶的关系。</p>
 
     
 
@@ -456,7 +483,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#词汇表定义"><span class="toc-number">1.1.</span> <span class="toc-text">词汇表定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一阶逻辑表达式"><span class="toc-number">1.2.</span> <span class="toc-text">一阶逻辑表达式</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#词汇表定义"><span class="toc-number">1.1.</span> <span class="toc-text">词汇表定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一阶逻辑表达式"><span class="toc-number">1.2.</span> <span class="toc-text">一阶逻辑表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一阶逻辑表达式的赋值"><span class="toc-number">1.3.</span> <span class="toc-text">一阶逻辑表达式的赋值</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -675,6 +702,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
@@ -687,23 +718,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,11 +730,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,7 +750,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">二分图的匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,19 +770,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">可忽略函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,19 +790,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">张量积</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">beamer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,11 +810,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
+                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
+                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,11 +830,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
