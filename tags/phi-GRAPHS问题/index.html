@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一阶逻辑的基础定义 | Hexo</title>
+  <title>Tag: $\phi$-GRAPHS问题 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="article">
-<meta property="og:title" content="一阶逻辑的基础定义">
-<meta property="og:url" content="http://yoursite.com/2020/07/15/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89/index.html">
+  <meta name="description" content="人非生而知之者，孰能无惑">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/phi-GRAPHS%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="人非生而知之者，孰能无惑">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-15T03:11:55.000Z">
-<meta property="article:modified_time" content="2020-07-15T12:28:59.678Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="一阶逻辑">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -213,160 +212,41 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-一阶逻辑的基础定义" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2020/07/16/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E4%B8%AD%E7%9A%84phi-GRAPHS%E9%97%AE%E9%A2%98/" class="archive-article-date">
+        <time datetime="2020-07-16T10:59:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
+</a>
+
+        </div>
+    	 
   
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2020/07/16/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E4%B8%AD%E7%9A%84phi-GRAPHS%E9%97%AE%E9%A2%98/" target="_blank">一阶逻辑中$\phi$-GRAPHS问题的分析</a>
   
-    <h1 class="article-title" itemprop="name">
-      一阶逻辑的基础定义
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2020/07/15/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89/" class="archive-article-date">
-        <time datetime="2020-07-15T03:11:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.3k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">5分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;一阶逻辑在语义上将句子和其应用的数学对象视为等同，具有强大综合性的原始证明系统，为我们提供用于详细表达数学命题的语法。与Boolean逻辑相比，它能表达更广泛的数学思想和事实；这些表达涉及了数学各领域的常数、函数和关系。当然，每个表达式仅涉及这些中的一个小部分。因此，利用一阶逻辑，我们可以统一地研究定义域上的所有推理。</p>
-<h2 id="词汇表定义"><a href="#词汇表定义" class="headerlink" title="词汇表定义"></a>词汇表定义</h2><p>&ensp;&ensp;&ensp;&ensp;词汇表$\Sigma=(V,\Phi,\Pi,r)$定义如下</p>
-<ol>
-<li>$V$为固定的可数变量集合$V={x,y,z \cdots}$，其中所有变量取值于由特定表达式所讨论事物全体组成的定义域，不同模型的定义域有所不同。</li>
-<li>$\Phi$为函数符号集合，$\Pi$为关系符号集合，$\Phi \cap \Pi =\emptyset$</li>
-<li>$r$为一个计数函数，将$\Phi \cup \Pi $映到非负整数，即说明每个函数和关系符号取多少个变量。</li>
-<li>如果$f\in \Phi$且$r(f)=k$，则称$f$是一个$k$元函数，如果$R\in \Pi$且$r(R)=k$，则称$R$是一个$k$元关系</li>
-<li>常数为0元函数，另外这里假设$\Pi$总含有二元相等关系。</li>
-</ol>
-<h2 id="一阶逻辑表达式"><a href="#一阶逻辑表达式" class="headerlink" title="一阶逻辑表达式"></a>一阶逻辑表达式</h2><p>&ensp;&ensp;&ensp;&ensp;有了词汇表的定义，就可以定义定义一些表达式，和Boolean逻辑一样，这些表达式可以用逻辑符号连接，如$\neg,\land ,\lor ,\forall$等等。但一阶逻辑表达式并不是直接就可以定义的，首先要给出单项式(Term)和表达式(Atomic)的定义。</p>
-<font color='red'> 单项式(Term)的归纳定义：</font>
-
-<ol>
-<li>$V$中的任何变量都是Term</li>
-<li>若$f\in \Phi$且$r(f)=k$，$t_1,\cdots ,t_k$为Term，则$f(t_1,\cdots ,t_k)$也为Term</li>
-<li>常数也为Term</li>
-</ol>
-<p><font color='red'>表达式(Atomic)的定义：</font>若$R\in \Pi$且$r(R)=k$，$t_1,\cdots ,t_k$为Term，则$R(t_1,\cdots ,t_k)$为表达式(Atomic)。即Atomic是Term加上关系。</p>
-<p><font color='red'> 一阶逻辑表达式的归纳定义：</font></p>
-<ol>
-<li>所有的Atomic都是一阶逻辑表达式</li>
-<li>若$\phi$与$\psi$均为Atomic，则$\neg \phi,\neg \psi,\phi \lor\psi,\phi \land \psi$也是一阶逻辑表达式</li>
-<li>若$\phi$为Atomic，$x$为变量，则$\forall x\phi$也是一阶逻辑表达式，其中$\forall$是全称量词，对应的$\exists$是存在量词，$\phi$称为$x$的辖域，$\phi$中的变元$x$称为约束变元，其余变元称为自由变元。($\exists x\phi$等价于$\neg(\forall x\neg \phi)$)</li>
-</ol>
-<h2 id="一阶逻辑表达式的赋值"><a href="#一阶逻辑表达式的赋值" class="headerlink" title="一阶逻辑表达式的赋值"></a>一阶逻辑表达式的赋值</h2><p>&ensp;&ensp;&ensp;&ensp;一阶逻辑的表达式定义已经给出，接下来要考虑一阶逻辑表达式的赋值，一阶逻辑的真值是由各部分真值取值来决定的，故需要一个确切的模型，也就是一个将一阶逻辑赋予实际意义的“环境”，这个模型也是一个更复杂的数学对象。对于词汇表$\Sigma=(V,\Phi,\Pi,r)$，适合$\Sigma$的模型是一个二元关系$M=(U,\mu)$，满足下列性质:</p>
-<ol>
-<li>$U$是一个集合，称为二元关系$M=(U,\mu)$的定义域</li>
-<li>$\mu$是一个函数，$\mu$给$V\cup \Psi\cup \Pi$中的每个变量，函数符号和关系符号分配一个$U$中的对象，对于每个变量$x$，$\mu$的赋值为$x^M \in U$，对于每个$k$元函数符号$f\in \Phi$，$\mu$的赋值为函数$f^M:U^k\rightarrow U$，若$c\in\Phi$是常数，则$\mu$的赋值为$c^M\in U$，对每个$k$元关系$R\in \Pi$，$\mu$的赋值为$R^M\subseteq U^k$。对于相等关系“=”，$\mu$的赋值为$=^M$，即${(\mu,\mu):\mu \in U}$</li>
-</ol>
-<p>&ensp;&ensp;&ensp;&ensp;定义了模型之后，考虑一阶逻辑表达式的赋值，也就是在一个模型下一阶逻辑表达式满足不满足。给定一个$M$，要考虑一阶逻辑表达式满不满足，要先定义出单项式在$\mu$下的像，若单项式$t$为变量或常数，则$t$在$\mu$下的像为$t^M$，若$t=f(x_1,\cdots,x_k)$，则定义$t$在$\mu$下的像为$t^M=f^M(x_1^M,\cdots,x_k^M)$，接下来讨论一阶逻辑表达式$\phi$在模型$M$下如何被满足：</p>
-<ol>
-<li>若$\phi$是一个Atomic，即$\phi=R(t_1,\cdots,t_k)$，则若有$(t_1^M,\cdots,t_k^M)\in R^M$，则称$M$满足$\phi$，记为$M|=\phi$</li>
-<li>若$\phi=\neg \psi$，则若有$M|\neq \psi$，则称$M|=\phi$</li>
-<li>若$\phi=\psi_1\lor\psi_2$，当$M|=\psi_1$或$M|=\psi_2$时，则称$M|=\phi$，若$\phi=\psi_1\land\psi_2$，当$M|=\psi_1$且$M|=\psi_2$时，则称$M|=\phi$</li>
-<li>若$\phi=\forall x \psi$，考虑$u\in U$，设<script type="math/tex">M_{x=u}</script>是一个除了<script type="math/tex">x^{M_{x=u}}=u</script>之外均等同于$M$的模型，若<script type="math/tex">\forall u\in U</script>，均有<script type="math/tex">M_{x=u}|=\psi</script>，则称$M|=\phi$</li>
-</ol>
-<p>&ensp;&ensp;&ensp;&ensp;$\forall x\phi$是一个一阶逻辑表达式，若$\phi$中没有自由变元，则$\forall x\phi$叫做一个句子，在一个确定的模型下，一个句子满不满足是完全确定的，所以一个模型会存在许多被满足的句子，一个句子也肯定会对应有满足此句子的许多模型，即一个句子刻画了模型的一个性质。所以句子和模型之间存在一个对偶的关系。</p>
-
-    
-
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝冰露<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/alipay.jpg">
-                    <span class="reward-type">支付宝</span>
-                  </div>
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/weixin.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          sklois-gjx
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/07/15/一阶逻辑的基础定义/" title="一阶逻辑的基础定义" target="_blank">http://yoursite.com/2020/07/15/一阶逻辑的基础定义/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -374,11 +254,15 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">一阶逻辑</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">$\phi$-GRAPHS问题</a>
+        		</li>
       		
 		</ul>
 	</div>
 
-    
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -391,152 +275,75 @@
 	</div>
 
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/15/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
   
-  
-    <a href="/2020/07/01/Boolean%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8EBoolean%E7%94%B5%E8%B7%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Boolean表达式与Boolean电路</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2020/07/15/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BE%8B%E5%AD%90/" class="archive-article-date">
+        <time datetime="2020-07-15T03:11:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#词汇表定义"><span class="toc-number">1.1.</span> <span class="toc-text">词汇表定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一阶逻辑表达式"><span class="toc-number">1.2.</span> <span class="toc-text">一阶逻辑表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一阶逻辑表达式的赋值"><span class="toc-number">1.3.</span> <span class="toc-text">一阶逻辑表达式的赋值</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
+    	 
+  
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2020/07/15/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BE%8B%E5%AD%90/" target="_blank">一阶逻辑的基础定义与例子</a>
+  
+    </h1>
+  
+
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">一阶逻辑</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">$\phi$-GRAPHS问题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算复杂性理论基础//" class="article-tag-list-link color5">计算复杂性理论基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
         </div>
-        
-    </div>
-</aside>
-
-
-
-
-
-<div id="SOHUCS" sid="一阶逻辑的基础定义" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "1",
-        conf: "1"
-    });
-</script>
-</script>
-
-
-
-
-
-
-  <div id="giteement-ctn"></div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
-    <link rel="stylesheet" href="/lib/default.css">
-    <script src="/lib/giteement.browser.js"></script>
   
-  <script>
-  <!-- id: "一阶逻辑的基础定义" -->
-  var giteement = new Giteement({
-    id: '20200715111155',
-    owner: 'gejiangxia',
-    repo: 'cunchupinglun',
-    backcall_uri: 'https://gejiangxia.github.io/',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
-    oauth: {
-      client_id: '27e177887f019cc620d25a9f6ff199009646d34dc2121893f5c3d8ef1b4d4dfb',
-      client_secret: 'e100abbdaee462a8b89440573514ead96f090348620cdfcc53b0fd6acdeea20f'
-    },
-  })
-  giteement.render('giteement-ctn')
-  </script>
+    </div></section>
+  
 
-
-
-
-
-
+    
 
 
           </div>
@@ -577,9 +384,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -730,10 +537,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
               </li>
              
@@ -742,11 +545,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">一阶逻辑</a>
+                <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,7 +557,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">一阶逻辑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">$\phi$-GRAPHS问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">二分图的匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,15 +581,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">可忽略函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -787,10 +602,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">极式分解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,6 +621,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
               </li>
              
@@ -818,7 +633,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,10 +649,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
@@ -846,15 +657,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉变换</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
               </li>
             
             <div class="clearfix"></div>
