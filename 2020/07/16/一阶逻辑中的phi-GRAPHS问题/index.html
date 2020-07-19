@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-16T10:59:24.000Z">
-<meta property="article:modified_time" content="2020-07-16T11:00:21.009Z">
+<meta property="article:modified_time" content="2020-07-19T10:41:03.883Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="一阶逻辑">
 <meta property="article:tag" content="$\phi$-GRAPHS问题">
@@ -247,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">0字</span>
+      <span class="post-count">1.2k字</span>
     </span>
   </span>
 
@@ -256,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -268,6 +268,33 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
+<h2 id="phi-GRAPHS问题"><a href="#phi-GRAPHS问题" class="headerlink" title="$\phi$-GRAPHS问题"></a>$\phi$-GRAPHS问题</h2><p>&ensp;&ensp;&ensp;&ensp;这个问题的定义上一篇博文已经给出了，在一阶逻辑的图论例子中，每个句子都描述了图的一个性质，当然，图的任何性质也对应于一个计算问题：给定一个图，问该图是否具有这个性质？我们称此问题为$\phi$-GRAPHS问题，严格说就是：</p>
+<center>
+设$\phi$是一个$\Sigma_G$上的一阶逻辑表达式，给定一个关于$\phi$的模型$\Gamma$，是否有$\Gamma|=\phi$？
+</center>
+
+
+<p>这当然是一个判定问题，对这个问题，实际上有下面的结论，这也是这篇博文主要讨论的内容。</p>
+<center>
+对于任何$\Sigma_G$上的表达式$\phi$，$\phi$-GRAPHS问题是多项式时间可解的
+</center>
+
+<p>注意这里的“可解”，它的意思实际上就是存在某个算法可以判断句子是满足还是不满足。</p>
+<h2 id="phi-GRAPHS问题的分析"><a href="#phi-GRAPHS问题的分析" class="headerlink" title="$\phi$-GRAPHS问题的分析"></a>$\phi$-GRAPHS问题的分析</h2><p>&ensp;&ensp;&ensp;&ensp;$\phi$是一个一阶逻辑表达式，其归纳定义如下：</p>
+<ol>
+<li>所有的Atomic都是一阶逻辑表达式</li>
+<li>若$\phi$与$\psi$均为Atomic，则$\neg \phi,\neg \psi,\phi \lor\psi,\phi \land \psi$也是一阶逻辑表达式</li>
+<li>若$\phi$为Atomic，$x$为变量，则$\forall x\phi$也是一阶逻辑表达式，其中$\forall$是全称量词，对应的$\exists$是存在量词，$\phi$称为$x$的辖域，$\phi$中的变元$x$称为约束变元，其余变元称为自由变元。($\exists x\phi$等价于$\neg(\forall x\neg \phi)$)</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;可以发现$\phi$是由Atomic归纳定义得来的，那么$\phi$-GRAPHS的满足问题也可以利用归纳，将其归纳到Atomic的满足问题上，这里的$\Sigma_G$是图论模型，其关系$\Pi_G$只有两个，“=”和$G$，模型$\Gamma$将$G$映射成$G^\Gamma$，这里$G^\Gamma$非常简单，对于$G(x,y)$，如果$(x,y)$是图$H$的一条边则称$(x,y)$满足关系$G^\Gamma$，也就是$\Gamma|=G(x,y)$，所以$\phi$-GRAPHS问题实际上可以进行如下归纳：</p>
+<ol>
+<li>若$\phi$为形如$G(x,y)$，$G(y,x)$的Atomic，则只需查询邻接矩阵，确定$(x,y)$，$(y,x)$是否为边即可，当然此时$\phi$在确定多项式时间内可解</li>
+<li>若$\phi=\neg \psi$，且存在确定多项式时间算法$\mathcal{A}$解决$\psi$，则可构造算法$\mathcal{A}’$，$\mathcal{A}’$调用算法$\mathcal{A}$且交换算法$\mathcal{A}$的输出，则显然$\mathcal{A}’$可以解决$\psi$，且$\mathcal{A}’$显然为确定多项式时间</li>
+<li>若$\phi=\psi_1 \lor \psi_2$，且存在确定多项式时间算法$\mathcal{A}_1$，$\mathcal{A}_2$解决$\psi_1$，$\psi_2$，则可构造算法$\mathcal{A}’$，$\mathcal{A}’$分别调用算法$\mathcal{A}_1$，$\mathcal{A}_2$，且只要有一个输出yes，就输出yes，则显然$\mathcal{A}’$可以解决$\phi$且$\mathcal{A}’$显然为确定多项式时间</li>
+<li>若$\phi=\psi_1 \land \psi_2$，且存在确定多项式时间算法$\mathcal{A}_1$，$\mathcal{A}_2$解决$\psi_1$，$\psi_2$，则可构造算法$\mathcal{A}’$，$\mathcal{A}’$分别调用算法$\mathcal{A}_1$，$\mathcal{A}_2$，只有$\mathcal{A}_1$，$\mathcal{A}_2$都输出yes，才输出yes，否则输出no，则显然$\mathcal{A}’$可以解决$\phi$且$\mathcal{A}’$显然为确定多项式时间</li>
+<li>若$\phi=\exists x\psi$，且存在确定多项式时间算法$\mathcal{A}$解决$\psi$，则可构造算法$\mathcal{A}’$解决$\phi$，流程如下，首先对于图$H$的任意顶点$u$，对于$\psi$的原模型$\Gamma$，构造新模型<script type="math/tex">\Gamma_{x=u}</script>，只是将模型$\Gamma$中$x$的像调整为$u$，其余均与$\Gamma$相同，则可以调用算法$\mathcal{A}$，判断是否有<script type="math/tex">\Gamma_{x=u}|=\psi</script>，取遍所有的$u$，检查是否有<script type="math/tex">\Gamma_{x=u}|=\psi</script>，只要有一个$u$使得<script type="math/tex">\Gamma_{x=u}|=\psi</script>，则$\mathcal{A}’(\phi)$输出yes，否则输出no。$\mathcal{A}’$的运行时间为顶点个数乘上$Time(\mathcal{A})$，显然为确定多项式时间</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;到此，一阶逻辑中$\phi$-GRAPHS问题分析完成，对于任何$\Sigma_G$上的表达式$\phi$，$\phi$-GRAPHS问题是多项式时间可解的。这里非常重要的一点是<font color='red'> “任何$\Sigma_G$上的表达式$\phi$”</font>，也就是说虽然句子$\phi$可以在确定多项式时间内被判断出是满足还是不满足的，但这个句子$\phi$必须是$\Sigma_G$上的表达式，或者说$\Sigma_G$上的一阶逻辑表达式，所以一阶逻辑表达式能完整的表达所有图上的问题吗？实际上这显然是不可能的，一阶逻辑存在局限性，具体如何局限见下篇博文。</p>
 
     
 
@@ -451,7 +478,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#phi-GRAPHS问题"><span class="toc-number">1.1.</span> <span class="toc-text">$\phi$-GRAPHS问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phi-GRAPHS问题的分析"><span class="toc-number">1.2.</span> <span class="toc-text">$\phi$-GRAPHS问题的分析</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -670,10 +697,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
@@ -682,7 +705,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CCA安全</a>
+                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,11 +713,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">CCA安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
+                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,7 +729,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
+                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,11 +757,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,18 +801,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
               </li>
              
@@ -794,7 +809,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,15 +837,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -827,6 +850,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">狄拉克符号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">基础空间定义</a>
               </li>
             
             <div class="clearfix"></div>
