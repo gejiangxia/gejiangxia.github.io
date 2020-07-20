@@ -15,11 +15,13 @@
 <meta property="og:url" content="http://yoursite.com/2020/07/19/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%B1%80%E9%99%90/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/10.jpg">
 <meta property="article:published_time" content="2020-07-19T10:43:21.000Z">
-<meta property="article:modified_time" content="2020-07-19T10:45:51.509Z">
+<meta property="article:modified_time" content="2020-07-20T10:46:59.986Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="一阶逻辑">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/10.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -246,7 +248,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">179字</span>
+      <span class="post-count">1.2k字</span>
     </span>
   </span>
 
@@ -255,7 +257,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -268,6 +270,26 @@
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
 <p>&ensp;&ensp;&ensp;&ensp;前一篇博文分析了一阶逻辑的图论模型中的$\phi$-GRAPHS问题，得到结论是对于任何$\Sigma_G$上的表达式$\phi$，$\phi$-GRAPHS问题是多项式时间可解的。这里非常重要的一点是<font color='red'> “任何$\Sigma_G$上的表达式$\phi$”</font>，也就是说虽然句子$\phi$可以在确定多项式时间内被判断出是满足还是不满足的，但这个句子$\phi$必须是$\Sigma_G$上的表达式，或者说$\Sigma_G$上的一阶逻辑表达式，所以一阶逻辑表达式能完整的表达所有图上的问题吗？实际上这显然是不可能的，一阶逻辑存在局限性。</p>
+<h2 id="一个引理"><a href="#一个引理" class="headerlink" title="一个引理"></a>一个引理</h2><p>&ensp;&ensp;&ensp;&ensp;在讨论一阶逻辑的局限性之前，需要先引入一个引理，具体内容如下：</p>
+<center>
+若句子$\phi$有任意大规模(cardinality)的有限模型，则$\phi$有一个无限模型
+</center>
+
+<p>这个引理的证明很麻烦，这里不再详细给出。引理想表达的是如果一个$\Sigma_G$对任意大小的图都存在一个模型$\Gamma$，则$\Sigma_G$对一个无限图必然存在一个模型$\Gamma’$，这里图的大小意味着图的顶点个数。</p>
+<h2 id="一阶逻辑无法表达REACHABILITY问题"><a href="#一阶逻辑无法表达REACHABILITY问题" class="headerlink" title="一阶逻辑无法表达REACHABILITY问题"></a>一阶逻辑无法表达REACHABILITY问题</h2><p>&ensp;&ensp;&ensp;&ensp;之前我们用一阶逻辑表达了图的性质：出度为1、对称性、传递性等；并且证明了可由一个句子$\phi$表达的图的性质是容易验证的，即$\phi$-GRAPHS问题有多项式时间算法。那么，是否所有的多项式可验证的图的性质都可用一阶逻辑表达？答案是否定的。实际上利用上面的引理可以证明REACHABILITY问题不能用一阶逻辑表达式表示。</p>
+<center>
+没有(有两个约束变元$x$和$y$的)一阶逻辑表达式$\phi$使得$\phi$-GRAPHS问题与REACHABILITY问题等价
+</center>
+
+
+<p>&ensp;&ensp;&ensp;&ensp;为了证明这个定理，首先假设某个句子$\phi$的$\phi$-GRAPHS问题等价于REACHABILITY问题，则可定义如下三个一阶逻辑表达式：</p>
+<script type="math/tex; mode=display">\psi_0=\forall x\forall y\phi  \qquad \psi_1=\forall x \exists y G(x, y) \wedge \forall x \forall y \forall z(G(x, y) \wedge G(x, z) \Rightarrow (y=z))</script><script type="math/tex; mode=display">\psi_2=\forall x \exists y G(y, x) \wedge \forall x \forall y \forall z(G(y, x) \wedge G(z, x) \Rightarrow (y=z))</script><p>其中$\psi_0$表示图中的任意两个点都存在通路，即为强连通的，$\psi_1$说明每个顶点的出度为1，$\psi_2$说明每个顶点的入度为1，设$\psi=\psi_0\land\psi_1\land\psi_2$，易得$\psi$必为一个圈，如下图所示(6个顶点的圈)。</p>
+<center>
+<img src="/images/10.jpg" width="30%" height="35%">
+</center>
+
+<p>&ensp;&ensp;&ensp;&ensp;显然只要给定了顶点个数，这种圈是必然存在的，且不止一个，故句子$\psi$有任意大的有限模型，由前面引理可知$\psi$必然存在一个无限模型<script type="math/tex">G_\infty</script>，也就是对应的图有无穷多个顶点。接下来主要考虑<script type="math/tex">G_\infty</script>，<script type="math/tex">G_\infty</script>的顶点个数必然是可数的，不妨设这个圈对应的顶点序列为<script type="math/tex">v_0,v_1,v_2,\cdots</script>，其中<script type="math/tex">(v_i,v_{i+1})</script>为边，且所有的顶点出度和入度均为1，故<script type="math/tex">v_0</script>的入度为1，于是存在某个顶点<script type="math/tex">v_j</script>，<script type="math/tex">v_j</script>必然处于序列<script type="math/tex">v_0,v_1,v_2,\cdots</script>中的某个位置且<script type="math/tex">(v_j,v_0)</script>为一条边，则此时<script type="math/tex">G_\infty</script>对应的图必然有<script type="math/tex">j+1</script>个点，显然为有限图，这与<script type="math/tex">G_\infty</script>是无限图矛盾，故原假设不成立，即与REACHABILITY问题等价的$\phi$-GRAPHS问题是不存在的，即一阶逻辑表达式表达不了REACHABILITY问题。</p>
+<p>&ensp;&ensp;&ensp;&ensp;直观上说，一阶逻辑中的量词仅仅关注于一个元素的性质，比如$\forall x$，它就仅仅关注于$x$，再加上关系的话，它也就仅仅关注于$x$的一步关系，比如$\forall x\exists y G(x,y)$，表示$(x,y)$有一条边，这仅仅是一步关系，但REACHABILITY问题关注的是$x$与$y$之间有没有通路，这个通路可能不是一步关系，可能是很多步的关系，比如经过很多边之后才形成通路。由此可见，REACHABILITY问题是一阶逻辑不可表达的。但该结果是很有趣的，主要原因是这是一个非平凡的不可能结论，该结论恰是复杂性理论中所要研究的结果类型。而且这种不可能结果促使我们对一阶逻辑进行了推广研究，比如在关系之间加入量词，也就是二阶逻辑。</p>
 
     
 
@@ -418,6 +440,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2020/07/20/%E4%BA%8C%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BE%8B%E5%AD%90/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          二阶逻辑的基础定义与例子
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/07/16/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91%E4%B8%AD%E7%9A%84phi-GRAPHS%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">一阶逻辑中$\phi$-GRAPHS问题的分析</div>
@@ -447,7 +478,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一个引理"><span class="toc-number">1.1.</span> <span class="toc-text">一个引理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一阶逻辑无法表达REACHABILITY问题"><span class="toc-number">1.2.</span> <span class="toc-text">一阶逻辑无法表达REACHABILITY问题</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -666,23 +697,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,6 +713,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
               </li>
              
@@ -707,6 +730,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,6 +754,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">二分图的匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">二阶逻辑</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,27 +785,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">奇异值分解</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">极式分解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,7 +805,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hash函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +837,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
