@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>二阶逻辑的基础定义与例子 | Hexo</title>
+  <title>存在二阶逻辑的基础定义与例子 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta property="og:type" content="article">
-<meta property="og:title" content="二阶逻辑的基础定义与例子">
+<meta property="og:title" content="存在二阶逻辑的基础定义与例子">
 <meta property="og:url" content="http://yoursite.com/2020/07/20/%E4%BA%8C%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BE%8B%E5%AD%90/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-20T10:51:13.000Z">
-<meta property="article:modified_time" content="2020-07-20T10:53:13.806Z">
+<meta property="article:modified_time" content="2020-07-25T08:22:19.628Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="二阶逻辑">
+<meta property="article:tag" content="存在二阶逻辑">
+<meta property="article:tag" content="存在二阶逻辑的HORN表达式">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -220,7 +221,7 @@
   
   
     <h1 class="article-title" itemprop="name">
-      二阶逻辑的基础定义与例子
+      存在二阶逻辑的基础定义与例子
     </h1>
   
 
@@ -246,7 +247,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">50字</span>
+      <span class="post-count">2.5k字</span>
     </span>
   </span>
 
@@ -255,7 +256,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">10分</span>
     </span>
   </span>
 </div>
@@ -267,7 +268,37 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<p>&ensp;&ensp;&ensp;&ensp;二阶逻辑是一阶逻辑的推广，它的能力更加强大，可以表达更多的性质，表示更多的问题，是更为复杂的研究对象。</p>
+<p>&ensp;&ensp;&ensp;&ensp;存在二阶逻辑是一阶逻辑的推广，它的能力更加强大，可以表达更多的性质，表示更多的问题，是更为复杂的研究对象。首先给定词汇表$\Sigma=(V,\Phi,\Pi,r)$，关系$P\notin \Pi$，是一个新的$r(P)$-元关系，一个存在二阶逻辑的表达式形如$\exists P\phi$，其中$\phi$为基于词汇表$\Sigma’=(V,\Phi,\Pi\cup {P },r)$的一个一阶逻辑表达式，显然$\phi$一定会涉及到$P$这个新的关系。如果只看表达式$\exists P\phi$，它的直观意义是说存在一个关系$P$使得表达式$\phi$成立(即在某个模型下被满足)。注意这里我们用的是存在量词，$\exists P\phi$，实际上定义要求存在二阶逻辑的表达式必须为$\exists P\phi$的形式，开头不能出现全称量词。</p>
+<p>&ensp;&ensp;&ensp;&ensp;称适合$\Sigma$的一个模型$M=(U,\mu)$满足$\exists P\phi$，如果存在一个关系$P^M\subseteq U^{r(P)}$，使得$P^M$扩充到$M$后得到的新模型$M\cup{P^M}$满足$\phi$。这个定义也是比较平凡的，$\Pi$中新增了一个关系$P$，那$M$中的函数$\mu$当然要给$P$一个函数值，也就是$P^M$。</p>
+<h2 id="REACHABILITY问题的二阶逻辑表达式"><a href="#REACHABILITY问题的二阶逻辑表达式" class="headerlink" title="REACHABILITY问题的二阶逻辑表达式"></a>REACHABILITY问题的二阶逻辑表达式</h2><p>&ensp;&ensp;&ensp;&ensp;图的可达性问题用二阶逻辑进行表达式是非常复杂的，这里实际上讨论的是不可达(UNREACHABILITY)问题的二阶逻辑表达式，其补即为可达性。首先定义$\phi(x,y)$如下：</p>
+<script type="math/tex; mode=display">\phi(x,y)=\exists P[\forall u \forall v \forall w(P(u, u) \wedge(G(u, v) \Rightarrow P(u, v)) \wedge((P(u, v) \wedge P(v, w)) \Rightarrow P(u, w)) \wedge \neg P(x, y))]</script><p>$\phi(x,y)$中$P(u,u)$表明图$P$的自反性，$G(u, v) \Rightarrow P(u, v)$表示图$G$是$P$的子图，$(P(u, v) \wedge P(v, w)) \Rightarrow P(u, w)$表明图$P$具有传递性，故图$P$必然包含图$G$的自反和传递闭包，$\phi(x,y)$最后合取了$\neg P(x, y)$，故若$\phi(x,y)$为true的话，$P(x, y)$必须为false才行，也就是$(x,y)$不是图$P$的边，注意这里的$x$和$y$都是图$G$的点，如果$x$到$y$存在通路，由于图$P$包含图$G$的自反和传递闭包，那$(x,y)$一定是图$P$的边，但现在$(x,y)$不是图$P$的边，所以$x$到$y$一定没有通路，所以$\phi(x,y)$就表达$x$和$y$之间没有通路。</p>
+<p>&ensp;&ensp;&ensp;&ensp;另外这里$P$是包含$G$的图，所以$P$肯定不只一个，但$\phi(x,y)$要求只要存在满足条件的$P$即可，实际上这也是显然存在的，只需让$P$取图$G$的自反和传递闭包即可。于是$\phi(x,y)$-GRAPHS恰恰描述了REACHABILITY问题的补，即UNREACHABILITY问题。</p>
+<p>&ensp;&ensp;&ensp;&ensp;虽然$\phi(x,y)$表述的是不可达，但$\neg \phi(x,y)$并不是表述的可达，因为这里是两个问题类之间的互补，并不是单独的二阶逻辑表达式取否。二阶逻辑在取否下不封闭，另外要确切的表达REACHABILITY问题，需要更多的工作，这里不再讨论。</p>
+<h2 id="Hamilton通路问题的二阶逻辑表达式"><a href="#Hamilton通路问题的二阶逻辑表达式" class="headerlink" title="Hamilton通路问题的二阶逻辑表达式"></a>Hamilton通路问题的二阶逻辑表达式</h2><p>&ensp;&ensp;&ensp;&ensp;Hamilton通路问题非常简洁，即给定一个图，是否有一条通路通过每个顶点恰好一次？目前。没有多项式时间的算法判定一个图是否有一条Hamilton通路，设此问题的二阶逻辑表达式为$\psi=\exists P\chi$，实际上$P$是图$G$顶点的一个线性序，也就是一个二元关系，$\chi$是下面三个部分的合取，每个部分有不同的作用：</p>
+<ol>
+<li>$G$的所有顶点可由$P$比较：$\forall x \forall y(P(x, y) \vee P(y, x) \vee x=y)$，即要么为$x&lt; y$，要么$x&gt;y$，要么$x=y$</li>
+<li>$P$是传递的，但不是自反的：$\forall x \forall y \forall z[\neg P(x, x) \wedge((P(x, y) \wedge P(y, z)) \Rightarrow P(x, z))]$</li>
+<li>$P$中任意先后相邻两点在$G$中一定邻接：$\forall x \forall y[(P(x, y) \wedge \forall z(\neg P(x, z) \vee \neg P(z, y))) \Rightarrow G(x, y)]$，这里的$P(x,y)$表示$x,y$之间有通路，$\forall z(\neg P(x, z) \vee \neg P(z, y))$是$\exists z( P(x, z) \land  P(z, y))$的否，代表$x,y$之间没有别的点，即$x,y$相邻</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;显然$\psi$-GRAPHS与Hamilton通路问题相同，事实上，满足这三个性质的$P$一定是线性序，而且任意两个先后相邻的元素必在$G$中邻接，故$P$是一个Hamilton通路。</p>
+<h2 id="UNREACHABILITY问题与Hamilton通路问题的异同"><a href="#UNREACHABILITY问题与Hamilton通路问题的异同" class="headerlink" title="UNREACHABILITY问题与Hamilton通路问题的异同"></a>UNREACHABILITY问题与Hamilton通路问题的异同</h2><p>&ensp;&ensp;&ensp;&ensp;由上面的两个例子可以看出，存在二阶逻辑具有强大功能，后面其功能会进一步体现。现在我们再分析UNREACHABILITY问题和HAMILTON通路问题的异同，已知前者是多项式时间可求解的，而后者被相信没有确定多项式时间算法可解，为什么会有这样的差异，是否和它们的二阶逻辑表达式有关？实际上是有关系的。对于UNREACHABILITY问题表达式：</p>
+<script type="math/tex; mode=display">\phi(x,y)=\exists P[\forall u \forall v \forall w(P(u, u) \wedge(G(u, v) \Rightarrow P(u, v)) \wedge((P(u, v) \wedge P(v, w)) \Rightarrow P(u, w)) \wedge \neg P(x, y))]</script><p>这是一个前缀范式，$P$后面仅有全称量词，而且是合取范式的形式，有分句$P(u, u)$， $G(u, v) \Rightarrow P(u, v)$，$ \neg P(x, y)$，$ \neg P(u, v) \vee \neg P(v, w) \vee P(u, w)$，第二个分句涉及到$G(u,v)$，则可以控制变量的选择使得这个涉及到$P$外关系$G$的分句恒为真，故这种分句可以删去，不影响整个句子的判断，最后只剩下由$P$的原子表达式构成的分句：</p>
+<script type="math/tex; mode=display">P(u, u), \quad \neg P(x, y), \quad \neg P(x, y) \vee \neg P(y, z) \vee P(x, z)</script><p>这三个分句中，每个都至多有一个非负的涉及$P$的原子表达式，和之前一样，这些分句也称作HORN分句。</p>
+<p>&ensp;&ensp;&ensp;&ensp;<font color='red'> 称存在二阶逻辑表达式为一个HORN表达式，如果其前缀形式中仅有一阶全称量词，且其每个分句至多含有一个非负的关于$P$的原子表达式</font>。显然UNREACHABILITY问题的表达式是一个HORN表达式，Hamilton通路问题表达式不是HORN表达式，因为其分句$P(x, y) \vee P(y, x) \vee x=y$显然不满足HORN表达式的条件。实际上就是这个不同，导致一个多项式时间内可求解，一个不确定能否在多项式时间内可求解，也就是下面的定理：</p>
+<center>
+对于任意存在二阶逻辑的HORN表达式$\exists P\phi$，问题$\exists P\phi$-GRAPHS可由确定的多项式时间算法求解
+</center>
+
+<p>&ensp;&ensp;&ensp;&ensp;这个定理的证明并不复杂，设$\exists P \phi=\exists P \forall x_1 \cdots \forall x_k \eta$，其中$\eta$为HORN分句的合取，$P$为$r$-元关系，给定一个图$G$，顶点集合<script type="math/tex">V=\{1,2,\cdots ,n\}</script>，此集合也是字母表的变量集合，$\exists P\phi$-GRAPHS就是问图$G$是否是一个$\exists P\phi$的YES实例，即是否存在一个关系<script type="math/tex">P\subseteq \{1,2,\cdots,n\}</script>使得$\phi$可满足。</p>
+<p>&ensp;&ensp;&ensp;&ensp;对于$x_1 \cdots \forall x_k\in V$，由于$\eta$必须对$x_1 \cdots \forall x_k$的任意取值都成立，故可将$\exists P\phi$重写为</p>
+<script type="math/tex; mode=display">\exists P \phi=\underset{v_{1}, \cdots, v_{k}}{\wedge} \eta\left[x_{1} \leftarrow v_{1}, \cdots, x_{k} \leftarrow v_{k}\right]</script><p>其中$v_1, \cdots, v_k \in V$，显然$v_1, \cdots, v_k $共有$n^k$个选择，不妨设$h$为$\eta$中分句的个数，则$\exists P\phi$中共有$hn^k$个分句，且每个分句均为HORN分句。</p>
+<p>&ensp;&ensp;&ensp;&ensp;$\exists P\phi$的所有分句中至多有三种原子表达式，分别为<script type="math/tex">G(v_i,v_j)</script>，<script type="math/tex">v_i=v_j</script>，<script type="math/tex">P(v_{i_1},\cdots v_{i_r})</script>，前两种通过询问图$G$的邻接矩阵可以快速计算是0还是1，所以可以对$\exists P\phi$做如下简化：</p>
+<ol>
+<li>如果一个原子表达式取值为0，则将该表达式从其分句中删除</li>
+<li>若一个原子表达式取值为1，则将此表达式所在分句删除</li>
+<li>重复执行前两步，若最终得到含有空分句的表达式，即某个分句中的所有原子表达式均取0，则$\phi$显然不被满足，即$G$不满足$\phi$</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;经此处理后，留下至多$hn^K$个分句，每个分句均形为<script type="math/tex">P\left(v_{i_{1}}, \cdots, v_{i_{r}}\right)</script>和<script type="math/tex">\neg P\left(v_{i_{1}}, \cdots, v_{i_{r}}\right)</script>的析取，且分句都为HORN分句，由于每个<script type="math/tex">P\left(v_{i_{1}}, \cdots, v_{i_{r}}\right)</script>独立的取值0或1，故可以用不同的Boolean变量<script type="math/tex">x^{v_{i_1} \cdots, v_{i_{r}}}</script>代替它的每次出现，得到新的表达式$F$。显然存在$P$使得$\phi$可满足当且仅当$F$是可满足的，且我们利用使得$F$满足的变量取值可以具体构造出这个关系$P$。由于留下的每个分句都是HORN分句，故$F$是一个有至多$hn^k$个分句和至多$n^r$个变量的普通HORN表达式，其中$k$和$r$都是常数，于是利用HORNSAT问题的多项式时间算法，可以求解$F$的满足问题，也就可以构造关系$P$，也就是求解$\exists P\phi$-GRAPHS问题，且这个求解过程显然是多项式时间内可以完成的，原命题得证。</p>
 
     
 
@@ -314,7 +345,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/07/20/二阶逻辑的基础定义与例子/" title="二阶逻辑的基础定义与例子" target="_blank">http://yoursite.com/2020/07/20/二阶逻辑的基础定义与例子/</a>
+          <a href="http://yoursite.com/2020/07/20/二阶逻辑的基础定义与例子/" title="存在二阶逻辑的基础定义与例子" target="_blank">http://yoursite.com/2020/07/20/二阶逻辑的基础定义与例子/</a>
         </li>
         
         <li>
@@ -336,7 +367,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二阶逻辑</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">存在二阶逻辑</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">存在二阶逻辑的HORN表达式</a>
         		</li>
       		
 		</ul>
@@ -447,7 +482,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#REACHABILITY问题的二阶逻辑表达式"><span class="toc-number">1.1.</span> <span class="toc-text">REACHABILITY问题的二阶逻辑表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hamilton通路问题的二阶逻辑表达式"><span class="toc-number">1.2.</span> <span class="toc-text">Hamilton通路问题的二阶逻辑表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UNREACHABILITY问题与Hamilton通路问题的异同"><span class="toc-number">1.3.</span> <span class="toc-text">UNREACHABILITY问题与Hamilton通路问题的异同</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -481,7 +516,7 @@
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "二阶逻辑的基础定义与例子" -->
+  <!-- id: "存在二阶逻辑的基础定义与例子" -->
   var giteement = new Giteement({
     id: '20200720185113',
     owner: 'gejiangxia',
@@ -678,7 +713,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CCA安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,23 +737,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cramer-Shoup加密方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,11 +757,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">二分图的匹配</a>
+                <a href="javascript:void(0)" class="js-tag color2">存在二阶逻辑</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">二阶逻辑</a>
+                <a href="javascript:void(0)" class="js-tag color5">存在二阶逻辑的HORN表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">二分图的匹配</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,11 +773,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">方阵与上下三角</a>
+                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,10 +790,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">不可分辨</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAXFLOW问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,11 +805,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
+                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,19 +821,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">张量积</a>
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">beamer</a>
+                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
               </li>
              
               <li class="article-tag-list-item">

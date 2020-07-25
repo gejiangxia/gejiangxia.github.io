@@ -6,25 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>图论中的MAXFLOW问题 | Hexo</title>
+  <title>Tag: 存在二阶逻辑的HORN表达式 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="article">
-<meta property="og:title" content="图论中的MAXFLOW问题">
-<meta property="og:url" content="http://yoursite.com/2020/05/31/%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84MAXFLOW%E9%97%AE%E9%A2%98/index.html">
+  <meta name="description" content="人非生而知之者，孰能无惑">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/%E5%AD%98%E5%9C%A8%E4%BA%8C%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84HORN%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="人非生而知之者，孰能无惑">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/images/1.jpg">
-<meta property="og:image" content="http://yoursite.com/images/2.jpg">
-<meta property="og:image" content="http://yoursite.com/images/3.jpg">
-<meta property="og:image" content="http://yoursite.com/images/4.jpg">
-<meta property="article:published_time" content="2020-05-31T11:51:36.000Z">
-<meta property="article:modified_time" content="2020-06-01T02:32:30.938Z">
 <meta property="article:author" content="sklois-gjx">
-<meta property="article:tag" content="MAXFLOW问题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -218,171 +212,57 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-图论中的MAXFLOW问题" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2020/07/20/%E4%BA%8C%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BE%8B%E5%AD%90/" class="archive-article-date">
+        <time datetime="2020-07-20T10:51:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+</a>
+
+        </div>
+    	 
   
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2020/07/20/%E4%BA%8C%E9%98%B6%E9%80%BB%E8%BE%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BE%8B%E5%AD%90/" target="_blank">存在二阶逻辑的基础定义与例子</a>
   
-    <h1 class="article-title" itemprop="name">
-      图论中的MAXFLOW问题
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2020/05/31/%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84MAXFLOW%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2020-05-31T11:51:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.8k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><a id="more"></a>
-<h2 id="问题简介"><a href="#问题简介" class="headerlink" title="问题简介"></a>问题简介</h2><p>&ensp;&ensp;&ensp;&ensp;图论中的MAXFLOW问题，也叫作极大流量问题，这个问题是REACHABILITY问题的一个推广。一个网络$N=(V,E,s,t,c)$是一个带有两个特定顶点$s$和$t$的图$(V,E)$，其中称$s$为源，$t$为接收器。并且没有进入源$s$的边，也没有离开接收器$t$的边，对每条边$(i,j)$，给定一个称为容量的正整数$c(i,j)$。<br>&ensp;&ensp;&ensp;&ensp;$N$中的一个流量$f$是对每条边$(i,j)$的一个非负整数赋值$f(i,j)\leq c(i,j)$，满足除了$s$和$t$外，每个顶点的进入边的$f$值的和等于其离开边的$f$值的和。一个流量$f$的值则是离开$s$，到达$t$的边的流量的和。极大流量问题就是给定一个网络$N$，找到一个最大可能值的流量。<br>&ensp;&ensp;&ensp;&ensp;这个问题本科图论中也讲过，但方法和复杂性课上有些区别，是利用寻找增广链来寻找最大流，但当时没有估计算法的复杂度，这里主要写复杂性课上讲的构造导出网络的方法。</p>
-<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>&ensp;&ensp;&ensp;&ensp;算法的思想并不复杂，首先已知网络$N=(V,E,s,t,c)$中已经有了一个流$f$，这个流是初始的流，接着要对这个流构造导出网络，构造导出网络的方法也很简单，具体流程如下</p>
-<ol>
-<li>原网络$N=(V,E,s,t,c)$，依据流$f$构造的导出网络记为$N(f)=(V,E’,s,t,c’)$</li>
-<li>满足$f(i,j)=c(i,j)$的边$(i,j)$要进行反向，即原来的$(i,j)$变为$(j,i)$，且容量不变，$c’(j,i)=c(i,j)$</li>
-<li>满足$f(i,j)=0$的边$(i,j)$不做任何变化，方向不改变，容量不变，$c’(i,j)=c(i,j)$</li>
-<li>满足$f(i,j)&lt; c(i,j)$的边，首先要对边的容量进行变化，，原来的$c(i,j)$变为$c’(i,j)=c(i,j)-f(i,j)$，然后在边$(i,j)$的基础上新增一条边$(j,i)$，其容量为$c’(j,i)=f(i,j)$</li>
-</ol>
-<p>&ensp;&ensp;&ensp;&ensp;导出网络的构造是非常简单的，直接看流程并不清晰，可以结合例子看更加清楚，首先给出一个网络$N=(V,E,s,t,c)$如下</p>
-<center>
-<img src="/images/1.jpg" width="40%" height="40%">
-</center>
-接着给出此网络上的一个流如下
-<center>
-<img src="/images/2.jpg" width="40%" height="40%">
-</center>
-接着利用前面的流程，得到导出网络$N(f)=(V,E',s,t,c')$如下
-<center>
-<img src="/images/3.jpg" width="40%" height="40%">
-</center>
-
-<p>&ensp;&ensp;&ensp;&ensp;接着分析导出网络的作用，首先对于$f(i,j)=c(i,j)$的边，这些边上的流量不可能再增加了，只能减少，减少可以理解为反向的流量，所以在导出网络里将满足$f(i,j)=c(i,j)$的边直接反向且容量不变；满足$f(i,j)=0$的边$(i,j)$相当于根本没有用到，这种边还可以承受正向的流量，所以这些边不做任何变化；满足$f(i,j)&lt; c(i,j)$的边，首先边的容量没满，它还可以承受$c(i,j)-f(i,j)$的流量，所以要留一个正向容量$c’(i,j)=c(i,j)-f(i,j)$的边，由于已经有了$f(i,j)$的流量，这些流量由于是固定的，只能减少，不能增加，因为增加相当于是对正向容量为$c’(i,j)=c(i,j)-f(i,j)$的边增加的，所以这些容量只能减少，故要在边$(i,j)$的基础上新增一条边$(j,i)$，其容量为$c’(j,i)=f(i,j)$，意味着如果这条边上有流量，就是原来的流量减少。</p>
-<p>&ensp;&ensp;&ensp;&ensp;所以如果导出网络存在$s$到$t$的通路，则原来的流$f$必然不是最大流，还有增加的余地，可增加的量就是这条通路上的最小容量，故这就将MAXFLOW问题归约到了可达性问题上，可达性问题是存在$O(n^2)$的算法的，故解决MAXFLOW问题只需要调用可达性问题的算法即可。</p>
-<h2 id="算法流程与复杂度分析"><a href="#算法流程与复杂度分析" class="headerlink" title="算法流程与复杂度分析"></a>算法流程与复杂度分析</h2><p>&ensp;&ensp;&ensp;&ensp;解决MAXFLOW问题的算法流程如下</p>
-<ol>
-<li>设初始流量$f$为零流，即处处的流量均为零，执行下一步</li>
-<li>对流量$f$，构造导出网络$N(f)$，并对$N(f)$应用可达性问题的求解算法，若$N(f)$中存在$s$到$t$的通路，则沿此通路找到最小的容量$c’$，并将$c’$加到该通路上所有边的$f$值上，得到更大的流$f$</li>
-<li>重复第二步，直到找不到$s$到$t$的通路，输出流$f$</li>
-</ol>
-<p>&ensp;&ensp;&ensp;&ensp;显然此算法可以完成最大流的计算，接着分析此算法的复杂度。首先算法每次重复地对导出网络$N(f)$找到一条通路，并增加该通路上的流量，每执行一次所用的时间和可达性问题一样，为$O(n^2)$。事实上，每次执行可达性的算法之后，流量至少增加1(我们的分析都是假设现在的流$f$还不是最大流)，若$C$为网络中边的最大容量，则最大流量不会超过$nC$(因为终点$t$最多只能与$n-1$个点相连)，故可达性问题的算法至多需要重复$nC$次，因此解决MAXFLOW问题的总时间为$O(Cn^3)$。</p>
-<p>&ensp;&ensp;&ensp;&ensp;注意，虽然看起来是一个多项式，但由于$C$的存在，只能是一个伪多项式，因为$C$可能是指数的，比如下面的这个网络，如果按照上面的算法从零流开始，如果每次找通路的运气不好，总是找不到$(s,b,t)$和$(s,a,t)$这样的通路，它是的确需要调用$2C$次可达性问题算法的(具体分析略了，这个很简单)，所以需要新的分析复杂度的方式。</p>
-<p><center>
-<img src="/images/4.jpg" width="35%" height="35%">
-</center><br>&ensp;&ensp;&ensp;&ensp;为克服这个缺陷，我们先用可达性问题算法宽度优先的方式找到最短通路，然后沿着最短通路增加流量，一条通路上有最小容量的边称之为瓶颈，故每次增加流量相当于克服一个瓶颈。整个网络至多有$n^2$条边，故瓶颈至多$n^2$个，且每次重复必然克服一个瓶颈，由于每条通路至多有$n$条边，在每一条边上都有可能出现瓶颈，故最多只重复$n^2 \cdot n=n^3$次可达性问题算法即可克服所有瓶颈，找到最大流，则此时复杂度为$O(n^5)$。于是可以在时间$O(n^5)$内解决MAXFLOW问题。</p>
-<p>&ensp;&ensp;&ensp;&ensp;接着分析算法的空间使用情况，算法的每次重复需要空间很小，类似于可达性问题，为$O(log^2n)$，但需要额外的$O(n^2)$空间存储当前的流，因为最多是$n^2$条边，故总的空间复杂度还是$O(n^2)$的。</p>
-<p>&ensp;&ensp;&ensp;&ensp;所以MAXFLOW问题是多项式时间可解的。</p>
-
-    
-
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝冰露<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/alipay.jpg">
-                    <span class="reward-type">支付宝</span>
-                  </div>
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/weixin.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          sklois-gjx
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/05/31/图论中的MAXFLOW问题/" title="图论中的MAXFLOW问题" target="_blank">http://yoursite.com/2020/05/31/图论中的MAXFLOW问题/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MAXFLOW问题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">存在二阶逻辑</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">存在二阶逻辑的HORN表达式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -395,161 +275,17 @@
 	</div>
 
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/31/%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84MAXFLOW%E9%97%AE%E9%A2%98/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2020/06/01/MAXFLOW%E7%9A%84%E5%80%BC%E7%AD%89%E4%BA%8E%E6%9E%81%E5%B0%8F%E5%89%B2%E9%9B%86%E7%9A%84%E5%AE%B9%E9%87%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MAXFLOW的值等于极小割集的容量
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/05/28/%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84REACHABILITY%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">图论中的REACHABILITY问题</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题简介"><span class="toc-number">1.1.</span> <span class="toc-text">问题简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思想"><span class="toc-number">1.2.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法流程与复杂度分析"><span class="toc-number">1.3.</span> <span class="toc-text">算法流程与复杂度分析</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-
-
-<div id="SOHUCS" sid="图论中的MAXFLOW问题" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "1",
-        conf: "1"
-    });
-</script>
-</script>
-
-
-
-
-
-
-  <div id="giteement-ctn"></div>
-  
-    <link rel="stylesheet" href="/lib/default.css">
-    <script src="/lib/giteement.browser.js"></script>
-  
-  <script>
-  <!-- id: "图论中的MAXFLOW问题" -->
-  var giteement = new Giteement({
-    id: '20200531195136',
-    owner: 'gejiangxia',
-    repo: 'cunchupinglun',
-    backcall_uri: 'https://gejiangxia.github.io/',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
-    oauth: {
-      client_id: '27e177887f019cc620d25a9f6ff199009646d34dc2121893f5c3d8ef1b4d4dfb',
-      client_secret: 'e100abbdaee462a8b89440573514ead96f090348620cdfcc53b0fd6acdeea20f'
-    },
-  })
-  giteement.render('giteement-ctn')
-  </script>
-
-
-
-
-
-
+    
 
 
           </div>
@@ -590,9 +326,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
