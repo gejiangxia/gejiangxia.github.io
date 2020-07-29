@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-28T08:16:10.000Z">
-<meta property="article:modified_time" content="2020-07-29T03:36:46.744Z">
+<meta property="article:modified_time" content="2020-07-29T10:15:41.638Z">
 <meta property="article:author" content="sklois-gjx">
 <meta property="article:tag" content="多带图灵机">
 <meta property="article:tag" content="时间复杂度">
@@ -245,7 +245,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.3k字</span>
+      <span class="post-count">3.3k字</span>
     </span>
   </span>
 
@@ -254,7 +254,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">9分</span>
+      <span class="post-count">13分</span>
     </span>
   </span>
 </div>
@@ -342,7 +342,24 @@
 </ol>
 <p>&ensp;&ensp;&ensp;&ensp;显然上面的过程可以完美模拟多带图灵机$M$，且有$M(x)=M’(x)$，接着分析$M’$模拟$M$所用的转移函数转移次数。关于输入$x$，由于$M$在$f(|x|)$步内停机，故$M$各带上串的长$\leq f(|x|)$。于是$M’$的串的总长$\leq k(f(|x|)+1)+2$，这个长度是包含$\rhd,\rhd’,\lhd,\lhd’$这些符号的。模拟$M$的一次移动要有至多两次来往扫描，则至多有$4k(f(|x|)+1)+8$步,在模拟$M$的每个串时，为了在某个位置添加一个$\cup$，需要将此位置后面的所有字符右移一格，这需要至多$3k(f(|x|)+1)+6$步，因为增添字符这个操作的复杂度是$O(3n)$，之前有讨论过。另外$M$的一步中，每条带都有可能加空格，则加空格这个操作$M’$至多需要$k(3k(f(|x|)+1)+6)$步，由于$M$在$f(|x|)$步内停机，则$M’$的模拟至多需要如下步数：</p>
 <script type="math/tex; mode=display">(f(|x|)+1)(4k(f(|x|)+1)+8+k(3k(f(|x|)+1)+6))</script><p>即$O(k^2f(|x|)^2)$，由于$k$为固定的，且与$x$无关，故为$O(f(|x|)^2)$，另外复杂度中关于带数$k$的依赖性可以通过不同的模拟避免，但$f$的次数不能改变。另外，作为一个计算模型，添加有限多条带不能增加其计算能力，对效率影响仅为多项式。</p>
-<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>&ensp;&ensp;&ensp;&ensp;首先多带图灵机是刻画图灵机计算时间的基础，要刻画图灵机运行的时间，这个时间最好可以反映问题任何实例的求解所需的时间，由此，实例的大小$n$可以用于实例计算所用时间的刻画，即为$n$的函数。这里的时间定义也很简单，它就是图灵机计算过程中转移函数的转移次数，如果对于输入$x$，$t$次转移后，图灵机停机，则称关于输入$x$，$M$需要时间$t$，显然$t$必为实例大小$n$的函数。设$f$为非负整数到非负整数的函数(后面讨论的所有$f$都是这种类型的函数)，称$M$在时间$f(n)$内计算，如果对于任意输入串$x$，$M$计算的时间$\leq f(|x|)$，也把$f(|x|)$叫做M的时间界。</p>
+<p>&ensp;&ensp;&ensp;&ensp;有了时间的具体定义就可以定义复杂类，设<script type="math/tex">L\subseteq(\Sigma \backslash\{\cup\})^{*}</script>在时间$f(n)$内被一个多带图灵机判定，则称$L\in TIME(f(n))$，这里$TIME(f(n))$是一个语言集合，其所含的每个语言可由一个多带图灵机在时间$f(n)$内判定，因此$TIME(f(n))$为一个复杂类。显然，当$f(n)&lt; g(n)$时，有$TIME(f(n))\subseteq TIME(g(n))$。特别的，关于复杂类$TIME(f(n))$，有如下线性加速定理：</p>
+<center>
+<font color='red'>对于任意$\epsilon>0$，$TIME(f(n))=TIME(\epsilon f(n)+n+2)$</font>
+</center>
+
+<p>&ensp;&ensp;&ensp;&ensp;由此可见，对于任意多项式$f(n)\geq n$，若$f(n)$为线性，则$TIME(f(n))=TIME(n)$；若$f(n)$是非线性，则首项系数可以任意小而且时间界可以包含任意线性界，因此可以忽略低阶项，即若$f(n)=n^t+c_1n^{t-1}+\cdots +c_t$，则$TIME(f(n))=TIME(n^t)$，由此可以定义复杂类$P$为</p>
+<script type="math/tex; mode=display">P=\underset{f}{\cup} TIME(f(n))=\underset{t \geq 0}{TIME\left(n^{t}\right)}</script><p>这个$P$也是最中心的复杂类，即多项式时间内可以计算完成的问题。</p>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>&ensp;&ensp;&ensp;&ensp;计算一个问题所用的空间大小，就是此问题的空间复杂度，也就是图灵机运行时所用到的格子的数量。为了规范的定义空间复杂度，规定多带图灵机的第一条带为只读带，也叫输入带，只是存储输入，最后一条带为只写带，也叫输出带，输出最后的结果，其余的带称为工作带，完成主要的计算过程，显然，这种规定并没有改变图灵机的计算能力。</p>
+<p>&ensp;&ensp;&ensp;&ensp;由此，对于一个$k$带图灵机$M$和一个输入$x$，设<script type="math/tex">H\in \{h,yes,no\}</script>为一个停机状态，若</p>
+<script type="math/tex; mode=display">(s, \rhd, x, \rhd, \varepsilon, \cdots, \rhd, \varepsilon) \stackrel{M^t}{\longrightarrow}\left(H, w_{1}, u_{1}, \ldots, w_{k}, u_{k}\right)</script><p>则关于输入$x$，$M$所要求的空间为<script type="math/tex">\sum_{i=1}^{k}\left|w_{i} u_{i}\right|</script>，但是对于带有输入输出带的$M$，则其所要求的空间为<script type="math/tex">\sum_{i=2}^{k-1}\left|w_{i} u_{i}\right|</script>。由此，若对于任意输入$x$，$M$所要求的空间至多为$f(|x|)$，则称图灵机$M$在空间界$f(n)$内运作。</p>
+<p>&ensp;&ensp;&ensp;&ensp;称$L$属于空间复杂类$SPACE(f(n))$，若存在一个带有输入输出带的图灵机$M$在空间$f(n)$内判定$L$。特别的，关于复杂类$SPACE(f(n))$，有如下空间压缩定理：</p>
+<center>
+<font color='red'>对于任意$\epsilon>0$，有$SPACE(f(n))=SPACE(\epsilon f(n)+n+2)$</font>
+</center>
+
+<p>和时间复杂度的线性加速定理一样，可以简单推导得$SPACE(f(n))=SPACE(n^k)$，其中$f(n)$为$k$次多项式，由此可类似定义复杂类$PSPACE=\underset{k \geq 0}{\cup} SPACE(n^k)$。这个$PSPACE$也是非常重要的复杂类，即占用多项式的空间就可以完成计算的问题。</p>
+
     
 
     
@@ -740,6 +757,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CPA安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CPA-多次加密安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ELGamal加密方案</a>
               </li>
              
@@ -752,11 +781,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CPA安全</a>
+                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CPA-多次加密安全</a>
+                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,27 +801,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Cramer-Shoup方案中一个未证明命题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MAXFLOW等于极小割</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Schmidt正交化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Boolean逻辑基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SAT问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -804,7 +817,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color5">公式排版</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -820,7 +833,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,19 +849,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">伴随变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">图灵机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">奇异值分解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">极式分解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -868,15 +873,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
+                <a href="javascript:void(0)" class="js-tag color5">REACHABILITY问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -888,6 +885,22 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">奇异值分解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">极式分解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">拟随机置换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">拟随机函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">摘要函数</a>
               </li>
              
@@ -896,7 +909,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">概率差引理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,7 +925,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布独立</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵的迹</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -921,10 +942,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">酉矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性空间</a>
               </li>
              
               <li class="article-tag-list-item">
